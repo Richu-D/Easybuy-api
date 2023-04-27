@@ -1,0 +1,13 @@
+{
+    "displayName": "Easybuy-api",
+    "appName": "easybuy-api",
+    "description": "Easy buy api",
+    "lastModified": "2023-04-27T07:05:05.847Z",
+    "imgSourcePath": "appIcon-1682579104983.webp",
+    "version": "1.0.0",
+    "appType": "apiOnly",
+    "templateName": "blank",
+    "createDate": "2023-04-27T07:05:04.982Z",
+    "analyticsId": "fc0d621e-e3a5-e335-d8bd-9c1639040903",
+    "createdStudioVersion": "9.1.2"
+}
