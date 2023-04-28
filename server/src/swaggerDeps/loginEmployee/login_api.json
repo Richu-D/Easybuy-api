@@ -1,0 +1,17 @@
+{
+    "/employee/login": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "login_api"
+            ]
+        }
+    }
+}

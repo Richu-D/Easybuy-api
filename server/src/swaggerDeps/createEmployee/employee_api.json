@@ -1,0 +1,17 @@
+{
+    "/admin/employee": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "employee_api"
+            ]
+        }
+    }
+}

@@ -6,7 +6,10 @@ export default {
     logFile: 'logs/console.log',
   },
   middlewares: {
-    pre: [{ __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' }],
+    pre: [
+      { __ssdGlobalMiddlewares__: 'sd_2hBZjlncSVhHsAYH' },
+      { __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' },
+    ],
     post: [],
     sequences: {},
   },

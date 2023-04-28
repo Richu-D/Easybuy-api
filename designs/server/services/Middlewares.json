@@ -5,38 +5,64 @@
         "createdDate": "createdDate",
         "label": "Middlewares",
         "disabled": false,
-        "info": ""
+        "info": "",
+        "generateNext": true,
+        "serviceName": "Middlewares",
+        "relativeParentPath": ""
     },
     {
         "id": "ssd_global_middleware_start_id",
         "type": "GlobalMiddlewareStart",
         "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
         "inputs": 0,
         "outputs": 1,
-        "x": 141,
-        "y": 102.8125,
-        "wires": [["sd_Tp9jNbUvUZ1kJnAn"]]
+        "category": "Middleware",
+        "x": 105,
+        "y": 100,
+        "wires": [
+            [
+                "sd_2hBZjlncSVhHsAYH"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     },
     {
         "id": "ssd_global_next_id",
         "type": "GlobalNext",
         "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
         "inputs": 1,
         "outputs": 1,
-        "x": 474.1875,
-        "y": 103.90625,
-        "wires": [["ssd_global_middleware_end_id"]]
+        "category": "Middleware",
+        "x": 485,
+        "y": 100,
+        "wires": [
+            [
+                "ssd_global_middleware_end_id"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     },
     {
         "id": "ssd_global_middleware_end_id",
         "type": "GlobalMiddlewareEnd",
         "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
         "name": "",
         "inputs": 1,
         "outputs": 0,
-        "x": 657.84375,
-        "y": 102.8125,
-        "wires": []
+        "category": "Middleware",
+        "x": 645,
+        "y": 100,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     },
     {
         "id": "sd_Tp9jNbUvUZ1kJnAn",
@@ -44,21 +70,81 @@
         "z": "ssd_mw_ws",
         "viewType": "server",
         "nodeType": "middleware",
+        "name": "",
         "methods": [],
         "origin": true,
         "editableListData": {
             "methods": [],
             "allowedHeaders": [],
-            "exposedHeaders": []
+            "exposedHeaders": [],
+            "origin": [
+                {
+                    "key": "http://localhost:4200",
+                    "rowId": "sd_qjRYan2CE0X2NiIP",
+                    "valid": true,
+                    "type": "str"
+                }
+            ]
         },
-        "showOriginToggleButton": true,
-        "credentials": false,
+        "showOriginToggleButton": false,
+        "credentials": true,
         "maxAge": "",
         "preflightContinue": false,
         "optionsSuccessStatus": "",
+        "functionName": "sd_Tp9jNbUvUZ1kJnAn",
         "category": "Global",
-        "x": 308.890625,
-        "y": 103.78125,
-        "wires": [["ssd_global_next_id"]]
+        "x": 345,
+        "y": 100,
+        "wires": [
+            [
+                "ssd_global_next_id"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_2hBZjlncSVhHsAYH",
+        "type": "GlobalMongoSession",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "middleware",
+        "name": "",
+        "cookieDomain": "",
+        "cookieSecure": false,
+        "cookieExpires": "",
+        "cookieHttpOnly": true,
+        "cookieMaxAge": "3600000",
+        "cookiePath": "",
+        "cookieSameSite": "\"lax\"",
+        "proxy": false,
+        "resave": true,
+        "rolling": false,
+        "saveUninitialized": false,
+        "secret": "\"employee\"",
+        "dbConnectionName": "mongodb_0",
+        "unset": "keep",
+        "autoremove": "native",
+        "db": "sd_vsXSfiucndOZF9WI",
+        "store": "db",
+        "autoremoveInterval": "",
+        "functionName": "sd_2hBZjlncSVhHsAYH",
+        "category": "Global",
+        "x": 225,
+        "y": 100,
+        "wires": [
+            [
+                "sd_Tp9jNbUvUZ1kJnAn"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "secret": {
+                "type": "str",
+                "value": "employee",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     }
 ]
