@@ -1,0 +1,265 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "type": "tab",
+        "createdDate": "2023-04-28T10:31:42.564Z",
+        "label": "service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "service",
+        "relativeParentPath": "addCoupon"
+    },
+    {
+        "id": "sd_Klde6g00qH7GYvww",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "addCouponService",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "addCouponService",
+        "category": "General",
+        "x": 85,
+        "y": 95,
+        "wires": [
+            [
+                "sd_plvIz0vn2Ik0QC8S"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "service"
+    },
+    {
+        "id": "sd_plvIz0vn2Ik0QC8S",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.body)\nbh.local.collection = 'coupon'\nbh.local.findCoupon = { couponcode: bh.input.body.couponcode }\n",
+        "functionName": "sd_plvIz0vn2Ik0QC8S",
+        "category": "Function",
+        "x": 205,
+        "y": 95,
+        "wires": [
+            [
+                "sd_MTupO75GxHlJmqyD"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_MTupO75GxHlJmqyD",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.coupons",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findCoupon",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_MTupO75GxHlJmqyD",
+        "category": "Storage",
+        "x": 345,
+        "y": 95,
+        "wires": [
+            [
+                "sd_AHkuRacUiBgYpkN9"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "coupons",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findCoupon",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_AHkuRacUiBgYpkN9",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "if(bh.local.coupons.length === 0) {\n    bh.local.isCoupon = false;\n    bh.local.isCouponCode = 200;\n    bh.local.isCouponMsg = 'coupon added successfully'\n} else {\n    bh.local.isCoupon = true;\n    bh.local.isCouponCode = 404;\n    bh.local.isCouponMsg = 'coupon already added';\n}",
+        "functionName": "sd_AHkuRacUiBgYpkN9",
+        "category": "Function",
+        "x": 485,
+        "y": 95,
+        "wires": [
+            [
+                "sd_Ckbp48t8pNtvDSWw"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_Ckbp48t8pNtvDSWw",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isCoupon",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isCoupon",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_Ckbp48t8pNtvDSWw",
+        "category": "Function",
+        "x": 620,
+        "y": 95,
+        "wires": [
+            [],
+            [
+                "sd_srmxlBZGEpdLhQ47"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_srmxlBZGEpdLhQ47",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.input.body",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_srmxlBZGEpdLhQ47",
+        "category": "Storage",
+        "x": 725,
+        "y": 140,
+        "wires": [
+            []
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    }
+]

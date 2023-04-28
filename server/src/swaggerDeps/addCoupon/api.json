@@ -1,0 +1,22 @@
+{
+    "/admin/coupon": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "couponDetails",
+                    "description": "coupon details as req body to add a coupon ",
+                    "required": true
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "api"
+            ]
+        }
+    }
+}

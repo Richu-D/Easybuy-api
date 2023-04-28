@@ -13,7 +13,8 @@
             "SSD_DEFAULT_PORT": "server",
             "webAppMountpoint": "both",
             "CLOCK_TOLERANCE": "server",
-            "NGFORAGE_MOBILE_DRIVER": "client"
+            "NGFORAGE_MOBILE_DRIVER": "client",
+            "MONGO_URL": "server"
         }
     },
     "dev": {
@@ -30,7 +31,8 @@
             "SSD_DEFAULT_PORT": "8081",
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
-            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
+            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
+            "MONGO_URL": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority"
         }
     },
     "prod": {
@@ -47,7 +49,8 @@
             "SSD_DEFAULT_PORT": "8081",
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
-            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB"
+            "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
+            "MONGO_URL": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority"
         }
     }
 }
