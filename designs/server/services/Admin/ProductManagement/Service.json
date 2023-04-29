@@ -1,0 +1,511 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "type": "tab",
+        "createdDate": "2023-04-28T09:35:40.605Z",
+        "label": "Service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "Service",
+        "relativeParentPath": "Admin/ProductManagement"
+    },
+    {
+        "id": "sd_4OcMfGQynfBUHMXz",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "AddProductService",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "addProductService",
+        "category": "General",
+        "x": 25,
+        "y": 180,
+        "wires": [
+            [
+                "sd_Vs4oMMd7deQTLA9E"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "Service"
+    },
+    {
+        "id": "sd_RmeIALuASG6pVABr",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "AddProduct",
+        "databaseConfig": "sd_VKhZy0xYvcoOafEG",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "bh",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.input.body",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "addProduct",
+        "category": "Storage",
+        "x": 945,
+        "y": 320,
+        "wires": [
+            [
+                "sd_37pGKZXuaVat8POv"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "aggregate": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_7nNM2uxMLSdaXvBU",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.findQuery = {\"name\":bh.input.body.name}\nbh.local.collection = \"product\"\nbh.input.body.image = bh.input.files.image",
+        "functionName": "sd_7nNM2uxMLSdaXvBU",
+        "category": "Function",
+        "x": 545,
+        "y": 260,
+        "wires": [
+            [
+                "sd_Ss5b8vjNW6DQ6sZR"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_QYgfUBbT7g2AKl0p",
+        "type": "validate",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "validate",
+        "erd": "_DM_lxnlgodta",
+        "entityId": "_EN_o1grd7mckn",
+        "_UI_entityName": "entity_1",
+        "dbConfigId": "",
+        "validateObject": "bh.input.body",
+        "checkboxThrowError": true,
+        "resultMapping": "",
+        "functionName": "validate",
+        "category": "Data Model",
+        "x": 405,
+        "y": 260,
+        "wires": [
+            [
+                "sd_7nNM2uxMLSdaXvBU"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "validateObject": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {
+            "resultMapping": true
+        },
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_37pGKZXuaVat8POv",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "Barcode",
+        "script": "const qrcode = require('qrcode')\nbh.local.uniqueId=bh.local.result.insertedId.toString()\n\n\n  function generateQRCode(data) {\n  return new Promise((resolve, reject) => {\n    qrcode.toBuffer(data, (err, png) => {\n      if (err) {\n        reject(err);\n      } else {\n        resolve(png);\n      }\n    });\n  });\n}\n\n\n \n    bh.local.png = await generateQRCode(bh.local.uniqueId);\n    \n   \n  bh.local.response={\n    statusCode:200,\n    message:bh.local.png\n  }\n\n  \n    \n\n  \n\n\n",
+        "functionName": "barcode",
+        "category": "Function",
+        "x": 1045,
+        "y": 320,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_Ss5b8vjNW6DQ6sZR",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "findingTheSimilar",
+        "databaseConfig": "sd_VKhZy0xYvcoOafEG",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.duplicate",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "findingTheSimilar",
+        "category": "Storage",
+        "x": 685,
+        "y": 260,
+        "wires": [
+            [
+                "sd_HZlEbbU330jxFzaX"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "duplicate",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_HZlEbbU330jxFzaX",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "duplicate.length",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.duplicate.length",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_HZlEbbU330jxFzaX",
+        "category": "Function",
+        "x": 825,
+        "y": 260,
+        "wires": [
+            [
+                "sd_RmeIALuASG6pVABr"
+            ],
+            [
+                "sd_FpSK2LpYZAaG8ZIc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_FpSK2LpYZAaG8ZIc",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:{\n        data:\"its already added..\"\n    }\n}",
+        "functionName": "sd_FpSK2LpYZAaG8ZIc",
+        "category": "Function",
+        "x": 945,
+        "y": 180,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_l3MpBnGa23gSCyoc",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "BarCodeErrorHandling",
+        "selectedNodes": [
+            "sd_37pGKZXuaVat8POv"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "barCodeErrorHandling",
+        "category": "General",
+        "x": 1045,
+        "y": 440,
+        "wires": [
+            [
+                "sd_LXcEgNGJsIkUvixl"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "Service"
+    },
+    {
+        "id": "sd_LXcEgNGJsIkUvixl",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "BarCodeScript",
+        "script": "\nbh.local.response={\n    statusCode:400,\n    message:{ success: false, message: 'Error generating QR code' }\n}",
+        "functionName": "barCodeScript",
+        "category": "Function",
+        "x": 1045,
+        "y": 540,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_nwfOwnEq2QVpFKmx",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isImage",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isImage",
+        "rules": [
+            {
+                "t": "else"
+            },
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_nwfOwnEq2QVpFKmx",
+        "category": "Function",
+        "x": 265,
+        "y": 180,
+        "wires": [
+            [
+                "sd_YfZMTgymTlIXfoOL"
+            ],
+            [
+                "sd_QYgfUBbT7g2AKl0p"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_Vs4oMMd7deQTLA9E",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.files.image)\nbh.local.isImage = bh.input.files.image",
+        "functionName": "sd_Vs4oMMd7deQTLA9E",
+        "category": "Function",
+        "x": 125,
+        "y": 180,
+        "wires": [
+            [
+                "sd_nwfOwnEq2QVpFKmx"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_YfZMTgymTlIXfoOL",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.response={\n    statusCode : 400,\n    message : \"must need image\"\n}",
+        "functionName": "sd_YfZMTgymTlIXfoOL",
+        "category": "Function",
+        "x": 405,
+        "y": 80,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_jwp9fzjhQUp6BFO8",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.response={\n    statusCode : 400,\n    message : bh.error.error[0].message\n}",
+        "functionName": "sd_jwp9fzjhQUp6BFO8",
+        "category": "Function",
+        "x": 405,
+        "y": 480,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "Service",
+        "generated": true
+    },
+    {
+        "id": "sd_kkMb6tggyBhEFmeT",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "ErrorHandlingForValidateNode",
+        "selectedNodes": [
+            "sd_QYgfUBbT7g2AKl0p"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "errorHandlingForValidateNode",
+        "category": "General",
+        "x": 400,
+        "y": 380,
+        "wires": [
+            [
+                "sd_jwp9fzjhQUp6BFO8"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "Service"
+    }
+]

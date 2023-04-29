@@ -1,0 +1,158 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_g1OYRbwG7imi1S5d",
+        "type": "tab",
+        "createdDate": "2023-04-29T04:56:12.678Z",
+        "label": "test",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "test",
+        "relativeParentPath": "Admin"
+    },
+    {
+        "id": "sd_Z1ltmE4B98qriTmn",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_g1OYRbwG7imi1S5d",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/upload",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "memory",
+        "acceptFileUpload": true,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "uploadFileOptions": {
+            "type": "memory",
+            "fileOptions": [
+                {
+                    "name": "image",
+                    "maxCount": 1
+                }
+            ]
+        },
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "fileoptions": [
+                {
+                    "key": "image",
+                    "value": "1",
+                    "rowId": "sd_TrVX94Ko7PRP3DcM",
+                    "valid": true
+                }
+            ],
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "sd_lnqPdD55AkQMuu4M"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "test",
+        "functionName": "sd_Z1ltmE4B98qriTmn"
+    },
+    {
+        "id": "sd_hqja6E0Kg3jXC0v1",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_g1OYRbwG7imi1S5d",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.input",
+            "value": "files",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": 200,
+            "obj": "bh.input.files",
+            "send": "bh.input.files"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_hqja6E0Kg3jXC0v1",
+        "category": "HTTP",
+        "x": 445,
+        "y": 200,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "test",
+        "generated": true
+    },
+    {
+        "id": "sd_lnqPdD55AkQMuu4M",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_g1OYRbwG7imi1S5d",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input)\n",
+        "functionName": "sd_lnqPdD55AkQMuu4M",
+        "category": "Function",
+        "x": 285,
+        "y": 220,
+        "wires": [
+            [
+                "sd_hqja6E0Kg3jXC0v1"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "test",
+        "generated": true
+    }
+]

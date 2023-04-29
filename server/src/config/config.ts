@@ -6,8 +6,16 @@ export default {
     logFile: 'logs/console.log',
   },
   middlewares: {
-    pre: [{ __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' }],
+    pre: [
+      { __ssdGlobalMiddlewares__: 'mongodbConnect' },
+      { __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' },
+    ],
     post: [],
-    sequences: {},
+    sequences: {
+      sequence_2660262600: {
+        pre: [{ checkIsreqFiles: 'isReqFile' }],
+        post: [],
+      },
+    },
   },
 };
