@@ -324,7 +324,7 @@ export class login_service {
     try {
       bh.local.response = {
         statusCode: 200,
-        message: 'USER_LOGED_IN',
+        message: 'EMPLOYEE_LOGED_IN',
       };
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_Ib533CwWTtHEGvzK

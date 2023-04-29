@@ -127,7 +127,7 @@
         "autoremove": "native",
         "db": "sd_vsXSfiucndOZF9WI",
         "store": "db",
-        "autoremoveInterval": "",
+        "autoremoveInterval": "300000",
         "functionName": "sd_2hBZjlncSVhHsAYH",
         "category": "Global",
         "x": 225,
@@ -144,6 +144,80 @@
                 "constant": false
             }
         },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_VXay5uG3XQVsTEys",
+        "type": "RouteMiddlewareStart",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "employeeCheck",
+        "inputs": 0,
+        "outputs": 1,
+        "category": "Middleware",
+        "x": 105,
+        "y": 260,
+        "wires": [
+            [
+                "sd_wd4BOSa5ua3d0czf"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_p1T3gzaj0BXVqMlv",
+        "type": "Next",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "category": "Middleware",
+        "x": 485,
+        "y": 260,
+        "wires": [
+            [
+                "sd_6c1xTf22AHbFZCry"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_6c1xTf22AHbFZCry",
+        "type": "RouteMiddlewareEnd",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 0,
+        "category": "Middleware",
+        "x": 745,
+        "y": 260,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_wd4BOSa5ua3d0czf",
+        "type": "pre_middleware:employeeCheckMiddleware",
+        "z": "ssd_mw_ws",
+        "name": "pre_middleware:employeeCheckMiddleware",
+        "inputs": 1,
+        "outputs": 1,
+        "category": "Service",
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "sd_p1T3gzaj0BXVqMlv"
+            ]
+        ],
         "__n_excludedFromValidation__": {},
         "generateNext": true
     }

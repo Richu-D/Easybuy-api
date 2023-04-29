@@ -11,6 +11,11 @@ export default {
       { __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' },
     ],
     post: [],
-    sequences: {},
+    sequences: {
+      employeeCheck: {
+        pre: [{ pre_middleware: 'employeeCheckMiddleware' }],
+        post: [],
+      },
+    },
   },
 };
