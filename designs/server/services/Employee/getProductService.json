@@ -1,0 +1,293 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "type": "tab",
+        "createdDate": "2023-04-29T10:04:07.640Z",
+        "label": "getProductService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "getProductService",
+        "relativeParentPath": "Employee"
+    },
+    {
+        "id": "sd_kX1EIAakgLLK9PSm",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_kX1EIAakgLLK9PSm",
+        "category": "General",
+        "x": 200,
+        "y": 320,
+        "wires": [
+            [
+                "sd_u1NrzFsiathSPEDQ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "getProductService"
+    },
+    {
+        "id": "sd_u1NrzFsiathSPEDQ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const { ObjectId } = require('mongodb');\n\nif (ObjectId.isValid(bh.input.params.id)) {\n  bh.local.isValid = true\n} else {\n bh.local.isValid = false\n}",
+        "functionName": "sd_u1NrzFsiathSPEDQ",
+        "category": "Function",
+        "x": 305,
+        "y": 320,
+        "wires": [
+            [
+                "sd_9xTt1NjIhTx09qr0"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_9xTt1NjIhTx09qr0",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_9xTt1NjIhTx09qr0",
+        "category": "Function",
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "sd_GM7M6xWlvUSTOJ4l"
+            ],
+            [
+                "sd_T1aPMMGxPxIBYU5g"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_9BviOtWUinIENQt7",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": " \n const product = bh.local.result[0]\n const imageData = {\n    data: product.image[0].buffer.toString('base64'),\n    contentType: product.image[0].mimetype\n  };\n\n  const resp = {\n    id: product._id,\n    name: product.name,\n    price: product.price,\n    description: product.description,\n    image: imageData\n  }\n\nbh.local.response={\n    statusCode:200,\n    message:resp\n}",
+        "functionName": "sd_9BviOtWUinIENQt7",
+        "category": "Function",
+        "x": 865,
+        "y": 100,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_T1aPMMGxPxIBYU5g",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"its not valid\"\n}",
+        "functionName": "sd_T1aPMMGxPxIBYU5g",
+        "category": "Function",
+        "x": 565,
+        "y": 420,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_4FG4nCshBCVoLU8I",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_VKhZy0xYvcoOafEG",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_4FG4nCshBCVoLU8I",
+        "category": "Storage",
+        "x": 665,
+        "y": 200,
+        "wires": [
+            [
+                "sd_A9GPF6MhDTfbezon"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_GM7M6xWlvUSTOJ4l",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const { ObjectId } = require('mongodb');\n\nbh.local.findQuery = {_id:ObjectId(bh.input.params.id)}\nbh.local.collection = \"product\"",
+        "functionName": "sd_GM7M6xWlvUSTOJ4l",
+        "category": "Function",
+        "x": 565,
+        "y": 200,
+        "wires": [
+            [
+                "sd_4FG4nCshBCVoLU8I"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_A9GPF6MhDTfbezon",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "result.length",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.result.length",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_A9GPF6MhDTfbezon",
+        "category": "Function",
+        "x": 765,
+        "y": 200,
+        "wires": [
+            [
+                "sd_9BviOtWUinIENQt7"
+            ],
+            [
+                "sd_4daO9lKJdpRovY0u"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    },
+    {
+        "id": "sd_4daO9lKJdpRovY0u",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"no result found\"\n}",
+        "functionName": "sd_4daO9lKJdpRovY0u",
+        "category": "Function",
+        "x": 865,
+        "y": 280,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getProductService",
+        "generated": true
+    }
+]

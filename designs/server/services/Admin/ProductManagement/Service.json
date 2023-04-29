@@ -427,7 +427,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.files.image)\nbh.local.isImage = bh.input.files.image",
+        "script": "\nbh.local.isImage = bh.input.files.image",
         "functionName": "sd_Vs4oMMd7deQTLA9E",
         "category": "Function",
         "x": 125,

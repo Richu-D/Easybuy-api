@@ -129,7 +129,6 @@ export class Service {
       parentSpanInst
     );
     try {
-      console.log(bh.input.files.image);
       bh.local.isImage = bh.input.files.image;
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_nwfOwnEq2QVpFKmx(bh, parentSpanInst);
