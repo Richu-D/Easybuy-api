@@ -15,7 +15,7 @@ import * as settings from '../../config/config'; //_splitter_
 import log from '../../utils/Logger'; //_splitter_
 import { TracerService } from '../../services/TracerService'; //_splitter_
 //append_imports_end
-export class adminlogin_service {
+export class pre_middleware {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -31,7 +31,7 @@ export class adminlogin_service {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'adminlogin_service';
+    this.serviceName = 'pre_middleware';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -46,7 +46,7 @@ export class adminlogin_service {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new adminlogin_service(
+      instance = new pre_middleware(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -80,251 +80,187 @@ export class adminlogin_service {
 
   async mountTimers() {
     try {
-      //appendnew_flow_adminlogin_service_TimerStart
+      //appendnew_flow_pre_middleware_TimerStart
     } catch (e) {
       throw e;
     }
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: adminlogin_service');
+    log.debug('mounting all middlewares for service :: pre_middleware');
 
-    //appendnew_flow_adminlogin_service_MiddlewareStart
-  }
-  private mountAllPaths() {
-    log.debug('mounting all paths for service :: adminlogin_service');
-    //appendnew_flow_adminlogin_service_HttpIn
-  }
-  //   service flows_adminlogin_service
-
-  async loginAdminStart(parentSpanInst, bh) {
-    const spanInst = this.tracerService.createSpan(
-      'loginAdminStart',
-      parentSpanInst
-    );
-    try {
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_wLYaxslhDGyo4kYt(bh, parentSpanInst);
-      //appendnew_next_loginAdminStart
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_eZ2zF5Z7RYrx4W1c',
-        spanInst,
-        'loginAdminStart'
-      );
-    }
-  }
-
-  //appendnew_flow_adminlogin_service_start
-
-  async sd_wLYaxslhDGyo4kYt(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_wLYaxslhDGyo4kYt',
-      parentSpanInst
-    );
-    try {
-      bh.local.data = {
-        email: 'admin@gmail.com',
-        password: 'admin',
-      };
-
-      bh.local.isAdminLogin = false;
-
-      if (!bh.local.data?.email || !bh.local.data?.password) {
-        bh.local.isAdminLogin = '';
-      } else {
-        if (
-          bh.local.data.email === process.env.ADMIN_EMAIL &&
-          bh.local.data.password === process.env.ADMIN_PASSWORD
-        ) {
-          bh.local.isAdminLogin = true;
+    let mw_adminCheckMiddleware: Middleware = new Middleware(
+      this.serviceName,
+      'adminCheckMiddleware',
+      async (req, res, next) => {
+        let bh = {};
+        try {
+          bh = this.sdService.__constructDefault({ local: {} }, req, res, next);
+          let parentSpanInst = null;
+          bh = await this.sd_0Q8cqi1wIXbkxt0v(bh, parentSpanInst);
+          //appendnew_next_sd_yPn2LbEEWto5AeUz
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_yPn2LbEEWto5AeUz');
         }
       }
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_s28wD1cIVMflAqOa(bh, parentSpanInst);
-      //appendnew_next_sd_wLYaxslhDGyo4kYt
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_wLYaxslhDGyo4kYt',
-        spanInst,
-        'sd_wLYaxslhDGyo4kYt'
-      );
-    }
-  }
-
-  async sd_s28wD1cIVMflAqOa(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_s28wD1cIVMflAqOa',
-      parentSpanInst
     );
-    try {
-      if (
-        this.sdService.operators['true'](
-          bh.local.isAdminLogin,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_yCORVnFtBC5ey7YZ(bh, parentSpanInst);
-      } else if (
-        this.sdService.operators['false'](
-          bh.local.isAdminLogin,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_umRfnhi2sgBbtrig(bh, parentSpanInst);
-      } else if (
-        this.sdService.operators['empty'](
-          bh.local.isAdminLogin,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_tcmowRvvp2djIIqX(bh, parentSpanInst);
-      }
-      this.tracerService.sendData(spanInst, bh);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_s28wD1cIVMflAqOa',
-        spanInst,
-        'sd_s28wD1cIVMflAqOa'
-      );
-    }
+    this.generatedMiddlewares[this.serviceName]['adminCheckMiddleware'] =
+      mw_adminCheckMiddleware;
+    //appendnew_flow_pre_middleware_MiddlewareStart
   }
-
-  async sd_yCORVnFtBC5ey7YZ(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_yCORVnFtBC5ey7YZ',
-      parentSpanInst
-    );
-    try {
-      bh.local.admin = {
-        ...bh.local.data,
-        isAdmin: true,
-      };
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_tJZ6MV5fGXp7vOwm(bh, parentSpanInst);
-      //appendnew_next_sd_yCORVnFtBC5ey7YZ
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_yCORVnFtBC5ey7YZ',
-        spanInst,
-        'sd_yCORVnFtBC5ey7YZ'
-      );
-    }
+  private mountAllPaths() {
+    log.debug('mounting all paths for service :: pre_middleware');
+    //appendnew_flow_pre_middleware_HttpIn
   }
+  //   service flows_pre_middleware
 
-  async sd_tJZ6MV5fGXp7vOwm(bh, parentSpanInst) {
+  //appendnew_flow_pre_middleware_start
+
+  async sd_0Q8cqi1wIXbkxt0v(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_tJZ6MV5fGXp7vOwm',
+      'sd_0Q8cqi1wIXbkxt0v',
       parentSpanInst
     );
     try {
       let requestObject = bh.web.req;
       if (requestObject.session) {
-        requestObject.session.data = bh.local.admin;
+        bh.local.session = JSON.parse(JSON.stringify(requestObject.session));
       }
+
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_4cufU7tX7l6tsWpl(bh, parentSpanInst);
-      //appendnew_next_sd_tJZ6MV5fGXp7vOwm
+      bh = await this.sd_Mchv6n8UUyq1bKTX(bh, parentSpanInst);
+      //appendnew_next_sd_0Q8cqi1wIXbkxt0v
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_tJZ6MV5fGXp7vOwm',
+        'sd_0Q8cqi1wIXbkxt0v',
         spanInst,
-        'sd_tJZ6MV5fGXp7vOwm'
+        'sd_0Q8cqi1wIXbkxt0v'
       );
     }
   }
 
-  async sd_4cufU7tX7l6tsWpl(bh, parentSpanInst) {
+  async sd_Mchv6n8UUyq1bKTX(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_4cufU7tX7l6tsWpl',
+      'sd_Mchv6n8UUyq1bKTX',
       parentSpanInst
     );
     try {
-      bh.local.response = {
-        statusCode: 200,
-        message: 'ADMIN_LOG_IN',
-      };
+      bh.local.isAdminLoggedIn = false;
+
+      if (bh.local.session?.data?.email) {
+        bh.local.isAdminLoggedIn = true;
+      }
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_4cufU7tX7l6tsWpl
+      bh = await this.sd_yXs9fimeuFjtjuIC(bh, parentSpanInst);
+      //appendnew_next_sd_Mchv6n8UUyq1bKTX
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_4cufU7tX7l6tsWpl',
+        'sd_Mchv6n8UUyq1bKTX',
         spanInst,
-        'sd_4cufU7tX7l6tsWpl'
+        'sd_Mchv6n8UUyq1bKTX'
       );
     }
   }
 
-  async sd_umRfnhi2sgBbtrig(bh, parentSpanInst) {
+  async sd_yXs9fimeuFjtjuIC(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_umRfnhi2sgBbtrig',
+      'sd_yXs9fimeuFjtjuIC',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.local.isAdminLoggedIn,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_FHSycVsUM1mXhZEf(bh, parentSpanInst);
+      } else if (
+        this.sdService.operators['false'](
+          bh.local.isAdminLoggedIn,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_0BrUy5GcL6mR98Rt(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_yXs9fimeuFjtjuIC',
+        spanInst,
+        'sd_yXs9fimeuFjtjuIC'
+      );
+    }
+  }
+
+  async sd_FHSycVsUM1mXhZEf(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_FHSycVsUM1mXhZEf',
+      parentSpanInst
+    );
+    try {
+      bh.web.next();
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_FHSycVsUM1mXhZEf',
+        spanInst,
+        'sd_FHSycVsUM1mXhZEf'
+      );
+    }
+  }
+
+  async sd_0BrUy5GcL6mR98Rt(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_0BrUy5GcL6mR98Rt',
       parentSpanInst
     );
     try {
       bh.local.response = {
         statusCode: 401,
-        message: 'EMAIL_OR_PASSWORD_INCOREECT_OR_BOTH',
+        message: 'UNAUTHORISED',
       };
+
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_umRfnhi2sgBbtrig
+      await this.sd_lselnpXPdBv8lAiX(bh, parentSpanInst);
+      //appendnew_next_sd_0BrUy5GcL6mR98Rt
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_umRfnhi2sgBbtrig',
+        'sd_0BrUy5GcL6mR98Rt',
         spanInst,
-        'sd_umRfnhi2sgBbtrig'
+        'sd_0BrUy5GcL6mR98Rt'
       );
     }
   }
 
-  async sd_tcmowRvvp2djIIqX(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_tcmowRvvp2djIIqX',
-      parentSpanInst
-    );
+  async sd_lselnpXPdBv8lAiX(bh, parentSpanInst) {
     try {
-      bh.local.response = {
-        statusCode: 400,
-        message: 'EMAIL_AND_PASSWORD_REQUIRED',
-      };
-      this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_tcmowRvvp2djIIqX
+      bh.web.res.status(bh.local.response.statusCode).send(bh.local.response);
+
       return bh;
     } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_tcmowRvvp2djIIqX',
-        spanInst,
-        'sd_tcmowRvvp2djIIqX'
-      );
+      return await this.errorHandler(bh, e, 'sd_lselnpXPdBv8lAiX');
     }
   }
 
@@ -349,5 +285,5 @@ export class adminlogin_service {
       }
     }
   }
-  //appendnew_flow_adminlogin_service_Catch
+  //appendnew_flow_pre_middleware_Catch
 }

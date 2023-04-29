@@ -23,7 +23,7 @@
         "y": 100,
         "wires": [
             [
-                "sd_Tp9jNbUvUZ1kJnAn"
+                "sd_gjDViOtqknkKfAW0"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -76,10 +76,18 @@
         "editableListData": {
             "methods": [],
             "allowedHeaders": [],
-            "exposedHeaders": []
+            "exposedHeaders": [],
+            "origin": [
+                {
+                    "key": "http://localhost:4200",
+                    "rowId": "sd_q7eOSvvfVDmSjMIx",
+                    "valid": true,
+                    "type": "str"
+                }
+            ]
         },
-        "showOriginToggleButton": true,
-        "credentials": false,
+        "showOriginToggleButton": false,
+        "credentials": true,
         "maxAge": "",
         "preflightContinue": false,
         "optionsSuccessStatus": "",
@@ -90,6 +98,124 @@
         "wires": [
             [
                 "ssd_global_next_id"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_gjDViOtqknkKfAW0",
+        "type": "GlobalMongoSession",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "middleware",
+        "name": "",
+        "cookieDomain": "",
+        "cookieSecure": false,
+        "cookieExpires": "",
+        "cookieHttpOnly": true,
+        "cookieMaxAge": "3600000",
+        "cookiePath": "",
+        "cookieSameSite": "\"lax\"",
+        "proxy": false,
+        "resave": true,
+        "rolling": false,
+        "saveUninitialized": false,
+        "secret": "\"admin\"",
+        "dbConnectionName": "mongodb_0",
+        "unset": "keep",
+        "autoremove": "native",
+        "db": "sd_VRbulAroluyj85b8",
+        "store": "db",
+        "autoremoveInterval": "",
+        "functionName": "sd_gjDViOtqknkKfAW0",
+        "category": "Global",
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "sd_Tp9jNbUvUZ1kJnAn"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "secret": {
+                "type": "str",
+                "value": "admin",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_IGW00XxAWDuwEBHq",
+        "type": "RouteMiddlewareStart",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "employeeCheck",
+        "inputs": 0,
+        "outputs": 1,
+        "category": "Middleware",
+        "x": 125,
+        "y": 260,
+        "wires": [
+            [
+                "sd_MwDkpNQRC81E9hMq"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_6WR91U1oJDa0xqEO",
+        "type": "Next",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "category": "Middleware",
+        "x": 405,
+        "y": 260,
+        "wires": [
+            [
+                "sd_FYPw2HVMt2TYIr65"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_FYPw2HVMt2TYIr65",
+        "type": "RouteMiddlewareEnd",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 0,
+        "category": "Middleware",
+        "x": 705,
+        "y": 260,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_MwDkpNQRC81E9hMq",
+        "type": "pre_middleware:adminCheckMiddleware",
+        "z": "ssd_mw_ws",
+        "name": "pre_middleware:adminCheckMiddleware",
+        "inputs": 1,
+        "outputs": 1,
+        "category": "Service",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "sd_6WR91U1oJDa0xqEO"
             ]
         ],
         "__n_excludedFromValidation__": {},

@@ -1,0 +1,95 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_juY1oS6MqeJWXzjo",
+        "type": "tab",
+        "createdDate": "2023-04-29T08:45:53.269Z",
+        "label": "adminlogout_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "adminlogout_service",
+        "relativeParentPath": "logoutAdmin"
+    },
+    {
+        "id": "sd_E35jryHbCgGKYsGa",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_juY1oS6MqeJWXzjo",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "adminLogoutStart",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "adminLogoutStart",
+        "category": "General",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "sd_pGrL9Kmm2hpmSjxU"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "adminlogout_service"
+    },
+    {
+        "id": "sd_vVETlUz720PrdENY",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_juY1oS6MqeJWXzjo",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:'ADMIN_LOG_OUT'\n}",
+        "functionName": "sd_vVETlUz720PrdENY",
+        "category": "Function",
+        "x": 545,
+        "y": 160,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogout_service",
+        "generated": true
+    },
+    {
+        "id": "sd_pGrL9Kmm2hpmSjxU",
+        "type": "Session",
+        "z": "SSD_SERVICE_ID_sd_juY1oS6MqeJWXzjo",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "operationType": "destroy",
+        "data": "",
+        "resultMapping": "bh",
+        "dataMapping": "bh",
+        "functionName": "sd_pGrL9Kmm2hpmSjxU",
+        "category": "HTTP",
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "sd_vVETlUz720PrdENY"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "dataMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogout_service",
+        "generated": true
+    }
+]

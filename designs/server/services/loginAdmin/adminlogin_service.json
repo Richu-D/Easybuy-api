@@ -42,7 +42,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.data={\n    email:\"admin@gmail.com\",\n    // password:\"admin\"\n}\n\nbh.local.isAdminLogin=false\n\nif(!bh.local.data?.email || !bh.local.data?.password){\n   bh.local.isAdminLogin=''\n\n}else{\n    if(bh.local.data.email===process.env.ADMIN_EMAIL &&  bh.local.data.password===process.env.ADMIN_PASSWORD ){\n        bh.local.isAdminLogin=true\n\n    }\n}",
+        "script": "bh.local.data={\n    email:\"admin@gmail.com\",\n    password:\"admin\"\n}\n\nbh.local.isAdminLogin=false\n\nif(!bh.local.data?.email || !bh.local.data?.password){\n   bh.local.isAdminLogin=''\n\n}else{\n    if(bh.local.data.email===process.env.ADMIN_EMAIL &&  bh.local.data.password===process.env.ADMIN_PASSWORD ){\n        bh.local.isAdminLogin=true\n\n    }\n}",
         "functionName": "sd_wLYaxslhDGyo4kYt",
         "category": "Function",
         "x": 245,

@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_iCtuAX3w9gag6hBo",
+        "type": "tab",
+        "createdDate": "2023-04-29T08:45:36.046Z",
+        "label": "adminlogout_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "adminlogout_api",
+        "relativeParentPath": "logoutAdmin"
+    },
+    {
+        "id": "sd_pKvjLWUv8UTdPqDp",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_iCtuAX3w9gag6hBo",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/admin/logout",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 80,
+        "y": 320,
+        "wires": [
+            [
+                "sd_pvHZOfZ6Hwih2SKV"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "adminlogout_api",
+        "functionName": "sd_pKvjLWUv8UTdPqDp"
+    },
+    {
+        "id": "sd_pvHZOfZ6Hwih2SKV",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_iCtuAX3w9gag6hBo",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_juY1oS6MqeJWXzjo",
+            "type": "tab",
+            "createdDate": "2023-04-29T08:45:53.269Z",
+            "label": "adminlogout_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_E35jryHbCgGKYsGa",
+            "flowName": "adminLogoutStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./adminlogout_service",
+        "startName": "adminLogoutStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_pvHZOfZ6Hwih2SKV",
+        "category": "General",
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "sd_8Q65n4rN5QcdzaKM"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogout_api",
+        "generated": true
+    },
+    {
+        "id": "sd_8Q65n4rN5QcdzaKM",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_iCtuAX3w9gag6hBo",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_8Q65n4rN5QcdzaKM",
+        "category": "HTTP",
+        "x": 425,
+        "y": 320,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogout_api",
+        "generated": true
+    }
+]
