@@ -96,7 +96,7 @@ export class AddProduct {
     log.debug('mounting all paths for service :: AddProduct');
 
     this.app['post'](
-      `${this.serviceBasePath}/product`,
+      `${this.serviceBasePath}/admin/product`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         'sequence_2660262600',
