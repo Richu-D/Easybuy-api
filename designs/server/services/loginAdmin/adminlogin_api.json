@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_wtugQjf3NWqYQGPV",
+        "type": "tab",
+        "createdDate": "2023-04-29T05:24:17.109Z",
+        "label": "adminlogin_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "adminlogin_api",
+        "relativeParentPath": "loginAdmin"
+    },
+    {
+        "id": "sd_IXIonPB0nuoLqADz",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_wtugQjf3NWqYQGPV",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/admin/login",
+        "uploadpath": "",
+        "summary": "admin login",
+        "description": "admin login using credentials",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "sd_Czm9RVn0AA0HXb6j"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "adminlogin_api",
+        "functionName": "sd_IXIonPB0nuoLqADz"
+    },
+    {
+        "id": "sd_Czm9RVn0AA0HXb6j",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_wtugQjf3NWqYQGPV",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+            "type": "tab",
+            "createdDate": "2023-04-29T05:24:36.807Z",
+            "label": "adminlogin_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_eZ2zF5Z7RYrx4W1c",
+            "flowName": "loginAdminStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./adminlogin_service",
+        "startName": "loginAdminStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_Czm9RVn0AA0HXb6j",
+        "category": "General",
+        "x": 325,
+        "y": 140,
+        "wires": [
+            [
+                "sd_8hAAnaI4qFlenSuc"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_api",
+        "generated": true
+    },
+    {
+        "id": "sd_8hAAnaI4qFlenSuc",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_wtugQjf3NWqYQGPV",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_8hAAnaI4qFlenSuc",
+        "category": "HTTP",
+        "x": 520,
+        "y": 140,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_api",
+        "generated": true
+    }
+]

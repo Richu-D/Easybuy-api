@@ -1,0 +1,15 @@
+{
+    "/admin/login": {
+        "post": {
+            "summary": "admin login",
+            "description": "admin login using credentials",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "adminlogin_api"
+            ]
+        }
+    }
+}

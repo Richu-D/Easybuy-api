@@ -1,0 +1,223 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "type": "tab",
+        "createdDate": "2023-04-29T05:24:36.807Z",
+        "label": "adminlogin_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "adminlogin_service",
+        "relativeParentPath": "loginAdmin"
+    },
+    {
+        "id": "sd_eZ2zF5Z7RYrx4W1c",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "loginAdminStart",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "loginAdminStart",
+        "category": "General",
+        "x": 100,
+        "y": 160,
+        "wires": [
+            [
+                "sd_wLYaxslhDGyo4kYt"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "adminlogin_service"
+    },
+    {
+        "id": "sd_wLYaxslhDGyo4kYt",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.data={\n    email:\"admin@gmail.com\",\n    // password:\"admin\"\n}\n\nbh.local.isAdminLogin=false\n\nif(!bh.local.data?.email || !bh.local.data?.password){\n   bh.local.isAdminLogin=''\n\n}else{\n    if(bh.local.data.email===process.env.ADMIN_EMAIL &&  bh.local.data.password===process.env.ADMIN_PASSWORD ){\n        bh.local.isAdminLogin=true\n\n    }\n}",
+        "functionName": "sd_wLYaxslhDGyo4kYt",
+        "category": "Function",
+        "x": 245,
+        "y": 160,
+        "wires": [
+            [
+                "sd_s28wD1cIVMflAqOa"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_s28wD1cIVMflAqOa",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isAdminLogin",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isAdminLogin",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            },
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "functionName": "sd_s28wD1cIVMflAqOa",
+        "category": "Function",
+        "x": 380,
+        "y": 160,
+        "wires": [
+            [
+                "sd_yCORVnFtBC5ey7YZ"
+            ],
+            [
+                "sd_umRfnhi2sgBbtrig"
+            ],
+            [
+                "sd_tcmowRvvp2djIIqX"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_umRfnhi2sgBbtrig",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:401,\n    message:'EMAIL_OR_PASSWORD_INCOREECT_OR_BOTH'\n}",
+        "functionName": "sd_umRfnhi2sgBbtrig",
+        "category": "Function",
+        "x": 600,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_tcmowRvvp2djIIqX",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:'EMAIL_AND_PASSWORD_REQUIRED'\n}",
+        "functionName": "sd_tcmowRvvp2djIIqX",
+        "category": "Function",
+        "x": 620,
+        "y": 220,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_yCORVnFtBC5ey7YZ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.admin={\n    ...bh.local.data,\n    isAdmin:true\n}",
+        "functionName": "sd_yCORVnFtBC5ey7YZ",
+        "category": "Function",
+        "x": 405,
+        "y": 340,
+        "wires": [
+            [
+                "sd_tJZ6MV5fGXp7vOwm"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_tJZ6MV5fGXp7vOwm",
+        "type": "Session",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "operationType": "update",
+        "data": "",
+        "resultMapping": "bh",
+        "dataMapping": "bh.local.admin",
+        "functionName": "sd_tJZ6MV5fGXp7vOwm",
+        "category": "HTTP",
+        "x": 520,
+        "y": 340,
+        "wires": [
+            [
+                "sd_4cufU7tX7l6tsWpl"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "dataMapping": {
+                "type": "bh.local",
+                "value": "admin",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_4cufU7tX7l6tsWpl",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_kE8sBPGgod5uFXAp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:'ADMIN_LOG_IN'\n}",
+        "functionName": "sd_4cufU7tX7l6tsWpl",
+        "category": "Function",
+        "x": 660,
+        "y": 340,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminlogin_service",
+        "generated": true
+    }
+]
