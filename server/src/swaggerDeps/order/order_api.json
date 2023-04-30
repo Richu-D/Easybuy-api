@@ -1,0 +1,22 @@
+{
+    "/order": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "order",
+                    "description": "order details to db",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "order_api"
+            ]
+        }
+    }
+}
