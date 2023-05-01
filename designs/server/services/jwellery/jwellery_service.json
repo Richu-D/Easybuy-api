@@ -1,0 +1,200 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "type": "tab",
+        "createdDate": "2023-05-01T08:51:04.687Z",
+        "label": "jwellery_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "jwellery_service",
+        "relativeParentPath": "jwellery"
+    },
+    {
+        "id": "sd_IeLNNDldClNPSEql",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "jwelleryPriceStart",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "jwelleryPriceStart",
+        "category": "General",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "sd_PsmwwHBYnGVFBTvE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "jwellery_service"
+    },
+    {
+        "id": "sd_PsmwwHBYnGVFBTvE",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.url=process.env.JWELLERY_MATERIAL_API \n\n// console.log(\"url\",bh.local.url)",
+        "functionName": "sd_PsmwwHBYnGVFBTvE",
+        "category": "Function",
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "sd_v98ngEzUxuFcyxbC"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "jwellery_service",
+        "generated": true
+    },
+    {
+        "id": "sd_v98ngEzUxuFcyxbC",
+        "type": "ServerHttpRequest",
+        "z": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "method": "get",
+        "methodMappingObj": {},
+        "urlMapping": "bh.local.url",
+        "urlMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "url"
+        },
+        "ret": "json",
+        "retMappingObj": {},
+        "reqBodyObj": {
+            "mapVarType": "bh",
+            "mapVarValue": ""
+        },
+        "resultMapping": "bh.local.jwelleryPrices",
+        "resultMappingObj": {
+            "mapVarType": "bh.local",
+            "mapVarValue": "jwelleryPrices"
+        },
+        "headers": {},
+        "headersObj": [],
+        "headerMappingObj": {},
+        "params": {},
+        "paramsObj": [],
+        "paramMappingObj": {},
+        "useAuthTypeMappingObj": {},
+        "useAuthUsername": "",
+        "useAuthUsernameMappingObj": "",
+        "useAuthPassword": "",
+        "useAuthPasswordMappingObj": "",
+        "useAuthToken": "",
+        "useAuthTokenMappingObj": "",
+        "useQueryString": false,
+        "tls": "",
+        "followRedirect": true,
+        "paytoqs": false,
+        "useAuthentication": false,
+        "rejectUnauthorized": false,
+        "proxy": "",
+        "useProxy": false,
+        "usetls": false,
+        "cookiesMapObj": {},
+        "cookiesList": {},
+        "switchStates": {
+            "cookies": "Map"
+        },
+        "editableListData": {},
+        "timeout": {
+            "type": "num",
+            "value": ""
+        },
+        "functionName": "sd_v98ngEzUxuFcyxbC",
+        "category": "HTTP",
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "sd_vtXUgKX4WPk532uR"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "jwellery_service",
+        "generated": true
+    },
+    {
+        "id": "sd_vtXUgKX4WPk532uR",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    data:bh.local.jwelleryPrices\n}",
+        "functionName": "sd_vtXUgKX4WPk532uR",
+        "category": "Function",
+        "x": 540,
+        "y": 140,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "jwellery_service",
+        "generated": true
+    },
+    {
+        "id": "sd_PllCyuqsiuLfqceF",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "selectedNodes": [
+            "sd_IeLNNDldClNPSEql",
+            "sd_PsmwwHBYnGVFBTvE",
+            "sd_v98ngEzUxuFcyxbC",
+            "sd_vtXUgKX4WPk532uR"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "sd_PllCyuqsiuLfqceF",
+        "category": "General",
+        "x": 260,
+        "y": 280,
+        "wires": [
+            [
+                "sd_kyvY2SZYXs4efIbu"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "jwellery_service"
+    },
+    {
+        "id": "sd_kyvY2SZYXs4efIbu",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_ZMdAxEyzfK0APc76",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:500,\n    message:'SOMETHING_WENT_WRONG'\n}",
+        "functionName": "sd_kyvY2SZYXs4efIbu",
+        "category": "Function",
+        "x": 400,
+        "y": 280,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "jwellery_service",
+        "generated": true
+    }
+]

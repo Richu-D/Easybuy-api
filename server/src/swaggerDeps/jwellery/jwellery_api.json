@@ -1,0 +1,17 @@
+{
+    "/jwelleryprice": {
+        "get": {
+            "summary": "",
+            "description": "",
+            "consumes": [
+                "application/json"
+            ],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "jwellery_api"
+            ]
+        }
+    }
+}
