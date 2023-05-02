@@ -1,0 +1,182 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z",
+        "type": "tab",
+        "createdDate": "2023-05-02T12:06:26.799Z",
+        "label": "RegisterUser",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "RegisterUser",
+        "relativeParentPath": "user"
+    },
+    {
+        "id": "sd_C4s7NgYbqxbiI4aD",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "RegisterAUser",
+        "path": "/user",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "sd_4He5rZCdIkayESBg"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "RegisterUser",
+        "functionName": "sd_C4s7NgYbqxbiI4aD"
+    },
+    {
+        "id": "sd_4He5rZCdIkayESBg",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+            "type": "tab",
+            "createdDate": "2023-05-02T12:15:58.910Z",
+            "label": "RegisterUserService",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_IstEWMWXk9ViSga1",
+            "flowName": "sd_IstEWMWXk9ViSga1"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./RegisterUserService",
+        "startName": "sd_IstEWMWXk9ViSga1",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_4He5rZCdIkayESBg",
+        "category": "General",
+        "x": 280,
+        "y": 180,
+        "wires": [
+            [
+                "sd_NaSVjWw2FqvljvPH"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUser",
+        "generated": true
+    },
+    {
+        "id": "sd_NaSVjWw2FqvljvPH",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {
+            "'Content-Type'": "'image/png'",
+            "'Content-Length'": "bh.local.png.length"
+        },
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response.message",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response.message",
+            "send": "bh.local.response.message"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [
+                {
+                    "key": "'Content-Type'",
+                    "value": "'image/png'",
+                    "rowId": "sd_6yJ7DwJs77r6IPJX",
+                    "valid": true
+                },
+                {
+                    "key": "'Content-Length'",
+                    "value": "bh.local.png.length",
+                    "rowId": "sd_43BhvVCw6KjXZbzj",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_NaSVjWw2FqvljvPH",
+        "category": "HTTP",
+        "x": 425,
+        "y": 180,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUser",
+        "generated": true
+    }
+]

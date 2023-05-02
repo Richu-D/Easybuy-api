@@ -1,4 +1,12 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-getAUserSerive-SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx
+import { getAUserSerive as SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx } from './sd-services/user/getAUserSerive';
+//CORE_REFERENCE_IMPORT-RegisterUserService-SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp
+import { RegisterUserService as SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp } from './sd-services/user/RegisterUserService';
+//CORE_REFERENCE_IMPORT-getAUser-SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ
+import { getAUser as SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ } from './sd-services/user/getAUser';
+//CORE_REFERENCE_IMPORT-RegisterUser-SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z
+import { RegisterUser as SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z } from './sd-services/user/RegisterUser';
 //CORE_REFERENCE_IMPORT-getProductService-SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V
 import { getProductService as SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V } from './sd-services/Employee/getProductService';
 //CORE_REFERENCE_IMPORT-getAProduct-SSD_SERVICE_ID_sd_6SS84lGYyNjG1pWY
@@ -13,6 +21,14 @@ import { AddProduct as SSD_SERVICE_ID_sd_bX50JdjrHUoIQ2Fs } from './sd-services/
 export const UserRoutes = [
 
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-getAUserSerive-SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx
+SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-RegisterUserService-SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp
+SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-getAUser-SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ
+SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-RegisterUser-SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z
+SSD_SERVICE_ID_sd_7KkgdfPWD7X0vr6z,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-getProductService-SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V
 SSD_SERVICE_ID_sd_PMC4HUvlTDdZzH9V,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-getAProduct-SSD_SERVICE_ID_sd_6SS84lGYyNjG1pWY

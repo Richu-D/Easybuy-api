@@ -1,0 +1,567 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "type": "tab",
+        "createdDate": "2023-05-02T12:15:58.910Z",
+        "label": "RegisterUserService",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "RegisterUserService",
+        "relativeParentPath": "user"
+    },
+    {
+        "id": "sd_IstEWMWXk9ViSga1",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_IstEWMWXk9ViSga1",
+        "category": "General",
+        "x": 45,
+        "y": 200,
+        "wires": [
+            [
+                "sd_9Yh36tWoUB8ITOil"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "RegisterUserService"
+    },
+    {
+        "id": "sd_9Yh36tWoUB8ITOil",
+        "type": "validate",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "erd": "_DM_dtk1ffjys",
+        "entityId": "_EN_jwyo47vmky",
+        "_UI_entityName": "entity_2",
+        "dbConfigId": "",
+        "validateObject": "bh.input.body",
+        "checkboxThrowError": true,
+        "resultMapping": "",
+        "functionName": "sd_9Yh36tWoUB8ITOil",
+        "category": "Data Model",
+        "x": 145,
+        "y": 200,
+        "wires": [
+            [
+                "sd_Wxt8zrEKsOB6RQ6K"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "validateObject": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {
+            "resultMapping": true
+        },
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_LjOOKNSgPPr9kFme",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "ErrorHandlingForValidateNode",
+        "selectedNodes": [
+            "sd_9Yh36tWoUB8ITOil"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "errorHandlingForValidateNode",
+        "category": "General",
+        "x": 145,
+        "y": 320,
+        "wires": [
+            [
+                "sd_wLulqJZAYO1XIHPi"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "RegisterUserService"
+    },
+    {
+        "id": "sd_wLulqJZAYO1XIHPi",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.response={\n    statusCode : 400,\n    message : bh.error.error[0].message\n}",
+        "functionName": "sd_wLulqJZAYO1XIHPi",
+        "category": "Function",
+        "x": 145,
+        "y": 440,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_Wxt8zrEKsOB6RQ6K",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// const { ObjectId } = require('mongodb');\n\n// if (ObjectId.isValid(bh.input.params.id)) {\n//   bh.local.isValid = true\n// } else {\n//  bh.local.isValid = false\n// }\nconst regex = /^\\d{10}$/;\n\nif (regex.test(bh.input.body.mobile)) {\n  bh.local.isValid = true\n} else {\n  bh.local.isValid = false\n}",
+        "functionName": "sd_Wxt8zrEKsOB6RQ6K",
+        "category": "Function",
+        "x": 245,
+        "y": 200,
+        "wires": [
+            [
+                "sd_repNBr8i52epiVGz"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_repNBr8i52epiVGz",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_repNBr8i52epiVGz",
+        "category": "Function",
+        "x": 405,
+        "y": 200,
+        "wires": [
+            [
+                "sd_Rcx8gBIQOuhAmCyH"
+            ],
+            [
+                "sd_ToH0zI0QElzDFuBy"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_ToH0zI0QElzDFuBy",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"number is  not valid\"\n}",
+        "functionName": "sd_ToH0zI0QElzDFuBy",
+        "category": "Function",
+        "x": 545,
+        "y": 340,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_Rcx8gBIQOuhAmCyH",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.isValid=true\nif(!bh.input.body.name){\n    bh.local.isValid = false\n}",
+        "functionName": "sd_Rcx8gBIQOuhAmCyH",
+        "category": "Function",
+        "x": 625,
+        "y": 200,
+        "wires": [
+            [
+                "sd_JRlQIIm3zByRK36u"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_z3mJBGkJjChvebBY",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode : 400,\n    message : \"user already with name\" + bh.local.result[0].name +\"exists\"\n}",
+        "functionName": "sd_z3mJBGkJjChvebBY",
+        "category": "Function",
+        "x": 1150,
+        "y": 180,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_JRlQIIm3zByRK36u",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_JRlQIIm3zByRK36u",
+        "category": "Function",
+        "x": 725,
+        "y": 200,
+        "wires": [
+            [
+                "sd_wmS59vJEsS56cAPS"
+            ],
+            [
+                "sd_ie3csF8a5z0Eittw"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_ie3csF8a5z0Eittw",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": " bh.local.response={\n        statusCode:400,\n        message:\"must need name field\"\n    }",
+        "functionName": "sd_ie3csF8a5z0Eittw",
+        "category": "Function",
+        "x": 805,
+        "y": 100,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_QXXJDEQmhDbrZ0K0",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_VKhZy0xYvcoOafEG",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_QXXJDEQmhDbrZ0K0",
+        "category": "Storage",
+        "x": 930,
+        "y": 300,
+        "wires": [
+            [
+                "sd_y0DGqY4gUzUmzIrW"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_wmS59vJEsS56cAPS",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\n\nbh.local.findQuery = {mobile:bh.input.body.mobile}\nbh.local.collection = \"customer\"",
+        "functionName": "sd_wmS59vJEsS56cAPS",
+        "category": "Function",
+        "x": 810,
+        "y": 300,
+        "wires": [
+            [
+                "sd_QXXJDEQmhDbrZ0K0"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_y0DGqY4gUzUmzIrW",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "result.length",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.result.length",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_y0DGqY4gUzUmzIrW",
+        "category": "Function",
+        "x": 1070,
+        "y": 300,
+        "wires": [
+            [
+                "sd_z3mJBGkJjChvebBY"
+            ],
+            [
+                "sd_EoH7RrKGTugPqlFv"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_EoH7RrKGTugPqlFv",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.collection = \"customer\"\n\n",
+        "functionName": "sd_EoH7RrKGTugPqlFv",
+        "category": "Function",
+        "x": 1170,
+        "y": 400,
+        "wires": [
+            [
+                "sd_FniLbKfPea7eguQ5"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_FniLbKfPea7eguQ5",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "AddCustomer",
+        "databaseConfig": "sd_VKhZy0xYvcoOafEG",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "bh",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.input.body",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "addCustomer",
+        "category": "Storage",
+        "x": 1290,
+        "y": 400,
+        "wires": [
+            [
+                "sd_gbeVKyCLb09UtHOS"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "aggregate": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    },
+    {
+        "id": "sd_gbeVKyCLb09UtHOS",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:bh.local.result\n  }",
+        "functionName": "sd_gbeVKyCLb09UtHOS",
+        "category": "Function",
+        "x": 1410,
+        "y": 400,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "RegisterUserService",
+        "generated": true
+    }
+]
