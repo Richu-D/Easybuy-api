@@ -1,0 +1,293 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "type": "tab",
+        "createdDate": "2023-05-02T13:06:47.528Z",
+        "label": "getAUserSerive",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "getAUserSerive",
+        "relativeParentPath": "user"
+    },
+    {
+        "id": "sd_bvsaR8BV73PjDuSQ",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_bvsaR8BV73PjDuSQ",
+        "category": "General",
+        "x": 65,
+        "y": 340,
+        "wires": [
+            [
+                "sd_S1VNYIEuwrxoYYXO"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "getAUserSerive"
+    },
+    {
+        "id": "sd_S1VNYIEuwrxoYYXO",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// const { ObjectId } = require('mongodb');\n\n// if (ObjectId.isValid(bh.input.params.id)) {\n//   bh.local.isValid = true\n// } else {\n//  bh.local.isValid = false\n// }\nconst regex = /^\\d{10}$/;\n\nif (regex.test(bh.input.params.phone+\"\")) {\n  bh.local.isValid = true\n} else {\n  bh.local.isValid = false\n}",
+        "functionName": "sd_S1VNYIEuwrxoYYXO",
+        "category": "Function",
+        "x": 165,
+        "y": 340,
+        "wires": [
+            [
+                "sd_R4SC8i9tzYfdynfl"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_R4SC8i9tzYfdynfl",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_R4SC8i9tzYfdynfl",
+        "category": "Function",
+        "x": 425,
+        "y": 340,
+        "wires": [
+            [
+                "sd_aPzKgNBQiHrwnRJK"
+            ],
+            [
+                "sd_zMZuZd62enr2nVWe"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_qjYUfLSojRTBK3vm",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": " \n \n\nbh.local.response={\n    statusCode:200,\n    message:bh.local.result\n}",
+        "functionName": "sd_qjYUfLSojRTBK3vm",
+        "category": "Function",
+        "x": 850,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_zMZuZd62enr2nVWe",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"number is  not valid\"\n}",
+        "functionName": "sd_zMZuZd62enr2nVWe",
+        "category": "Function",
+        "x": 550,
+        "y": 440,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_YEmftyj2disragbz",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_VKhZy0xYvcoOafEG",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_YEmftyj2disragbz",
+        "category": "Storage",
+        "x": 650,
+        "y": 220,
+        "wires": [
+            [
+                "sd_tmQ3McPP5b1TkVwC"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_aPzKgNBQiHrwnRJK",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\n\nbh.local.findQuery = {mobile:bh.input.params.phone}\nbh.local.collection = \"customer\"\nconsole.log(bh.local.findQuery)",
+        "functionName": "sd_aPzKgNBQiHrwnRJK",
+        "category": "Function",
+        "x": 550,
+        "y": 220,
+        "wires": [
+            [
+                "sd_YEmftyj2disragbz"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_tmQ3McPP5b1TkVwC",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "result.length",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.result.length",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_tmQ3McPP5b1TkVwC",
+        "category": "Function",
+        "x": 750,
+        "y": 220,
+        "wires": [
+            [
+                "sd_qjYUfLSojRTBK3vm"
+            ],
+            [
+                "sd_qHY51TFSYSHelsKp"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    },
+    {
+        "id": "sd_qHY51TFSYSHelsKp",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"no result found\"\n}",
+        "functionName": "sd_qHY51TFSYSHelsKp",
+        "category": "Function",
+        "x": 850,
+        "y": 300,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUserSerive",
+        "generated": true
+    }
+]

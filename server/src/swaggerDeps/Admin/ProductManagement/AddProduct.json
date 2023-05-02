@@ -1,0 +1,15 @@
+{
+    "/admin/product": {
+        "post": {
+            "summary": "endpoint for adding product",
+            "description": "this endpoint is basically controlled by admin and he can add product with the details provided ",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "AddProduct"
+            ]
+        }
+    }
+}

@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ",
+        "type": "tab",
+        "createdDate": "2023-05-02T12:06:43.069Z",
+        "label": "getAUser",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "getAUser",
+        "relativeParentPath": "user"
+    },
+    {
+        "id": "sd_KLpVEMpZ7Xi7SxUd",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "getAUser",
+        "path": "user/:phone",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "get",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 240,
+        "y": 200,
+        "wires": [
+            [
+                "sd_gh9lf2sW8W9BdpPA"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "getAUser",
+        "functionName": "sd_KLpVEMpZ7Xi7SxUd"
+    },
+    {
+        "id": "sd_gcUgYCXofN8NWjuS",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response.message",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response.message",
+            "send": "bh.local.response.message"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_gcUgYCXofN8NWjuS",
+        "category": "HTTP",
+        "x": 640,
+        "y": 200,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser",
+        "generated": true
+    },
+    {
+        "id": "sd_gh9lf2sW8W9BdpPA",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_JoB0HVeuB01qYAdQ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx",
+            "type": "tab",
+            "createdDate": "2023-05-02T13:06:47.528Z",
+            "label": "getAUserSerive",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_bvsaR8BV73PjDuSQ",
+            "flowName": "sd_bvsaR8BV73PjDuSQ"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./getAUserSerive",
+        "startName": "sd_bvsaR8BV73PjDuSQ",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_gh9lf2sW8W9BdpPA",
+        "category": "General",
+        "x": 440,
+        "y": 200,
+        "wires": [
+            [
+                "sd_gcUgYCXofN8NWjuS"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser",
+        "generated": true
+    }
+]

@@ -1,14 +1,23 @@
 export default {
     "db-config": {
+<<<<<<< HEAD
         "sd_qYoT2PgM4f1tomGX": {
             "id": "sd_qYoT2PgM4f1tomGX",
+=======
+        "sd_VKhZy0xYvcoOafEG": {
+            "id": "sd_VKhZy0xYvcoOafEG",
+>>>>>>> addProductForAdmin-feature
             "type": "db-config",
             "viewType": "server",
             "nodeType": "flow",
             "dbOption": {
                 "name": "mongodb_0",
                 "type": "mongodb",
+<<<<<<< HEAD
                 "url": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority",
+=======
+                "url": process.env.mongo_url,
+>>>>>>> addProductForAdmin-feature
                 "options": ""
             },
             "disabledb": false,
@@ -49,7 +58,11 @@ export default {
             "oracle_synchronize": false,
             "mongodb_name": "mongodb_0",
             "mongodb_type": "mongodb",
+<<<<<<< HEAD
             "mongodb_url": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority",
+=======
+            "mongodb_url": process.env.mongo_url,
+>>>>>>> addProductForAdmin-feature
             "mongodb_options": "",
             "mysql_name": "mongodb_0",
             "mysql_type": "mongodb",
@@ -218,8 +231,13 @@ export default {
                     "value": false
                 },
                 "mongodb_url": {
+<<<<<<< HEAD
                     "type": "str",
                     "value": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority"
+=======
+                    "type": "server_env",
+                    "value": "mongo_url"
+>>>>>>> addProductForAdmin-feature
                 },
                 "mongodb_options": {
                     "type": "str",

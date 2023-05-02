@@ -11,6 +11,9 @@
     "middlewares": {
         "pre": [
             {
+                "__ssdGlobalMiddlewares__": "mongodbConnect"
+            },
+            {
                 "__ssdGlobalMiddlewares__": "sd_Tp9jNbUvUZ1kJnAn"
             }
         ],

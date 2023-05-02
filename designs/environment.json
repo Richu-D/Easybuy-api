@@ -14,7 +14,9 @@
             "webAppMountpoint": "both",
             "CLOCK_TOLERANCE": "server",
             "NGFORAGE_MOBILE_DRIVER": "client",
-            "MONGO_URL": "server"
+            "MONGO_URL": "server",
+            "mongo_url": "server",
+            "secret": "server"
         }
     },
     "dev": {

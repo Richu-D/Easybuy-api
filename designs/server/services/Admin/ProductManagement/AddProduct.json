@@ -1,0 +1,199 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_bX50JdjrHUoIQ2Fs",
+        "type": "tab",
+        "createdDate": "2023-04-28T09:25:28.633Z",
+        "label": "AddProduct",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "AddProduct",
+        "relativeParentPath": "Admin/ProductManagement"
+    },
+    {
+        "id": "sd_dffJFSTkn5SOtGcz",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_bX50JdjrHUoIQ2Fs",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "AdminProductAdding",
+        "path": "/admin/product",
+        "uploadpath": "os.tmpdir() + \"/uploads\"",
+        "summary": "endpoint for adding product",
+        "description": "this endpoint is basically controlled by admin and he can add product with the details provided ",
+        "method": "post",
+        "sequenceId": "sequence_2660262600",
+        "consumes": "",
+        "produces": "",
+        "filetype": "memory",
+        "acceptFileUpload": true,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "uploadFileOptions": {
+            "type": "memory",
+            "fileOptions": [
+                {
+                    "name": "image",
+                    "maxCount": 1
+                }
+            ]
+        },
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "fileoptions": [
+                {
+                    "key": "image",
+                    "value": "1",
+                    "rowId": "sd_NclDFuioJ1Z1gQDL",
+                    "valid": true
+                }
+            ],
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 85,
+        "y": 180,
+        "wires": [
+            [
+                "sd_KZ0ObT9g7hEkCf6z"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "tmpdir",
+                "value": "uploads",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false,
+                "_customGenerator": true
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "AddProduct",
+        "functionName": "sd_dffJFSTkn5SOtGcz"
+    },
+    {
+        "id": "sd_KZ0ObT9g7hEkCf6z",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_bX50JdjrHUoIQ2Fs",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_yfSJ4R2RTExGsqjD",
+            "type": "tab",
+            "createdDate": "2023-04-28T09:35:40.605Z",
+            "label": "Service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_4OcMfGQynfBUHMXz",
+            "flowName": "addProductService"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./Service",
+        "startName": "addProductService",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_KZ0ObT9g7hEkCf6z",
+        "category": "General",
+        "x": 285,
+        "y": 180,
+        "wires": [
+            [
+                "sd_jjg6zfSyEER8mA4U"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "AddProduct",
+        "generated": true
+    },
+    {
+        "id": "sd_jjg6zfSyEER8mA4U",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_bX50JdjrHUoIQ2Fs",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {
+            "'Content-Type'": "'image/png'",
+            "'Content-Length'": "bh.local.png.length"
+        },
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response.message",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response.message",
+            "send": "bh.local.response.message"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [
+                {
+                    "key": "'Content-Type'",
+                    "value": "'image/png'",
+                    "rowId": "sd_6yJ7DwJs77r6IPJX",
+                    "valid": true
+                },
+                {
+                    "key": "'Content-Length'",
+                    "value": "bh.local.png.length",
+                    "rowId": "sd_43BhvVCw6KjXZbzj",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_jjg6zfSyEER8mA4U",
+        "category": "HTTP",
+        "x": 500,
+        "y": 180,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "AddProduct",
+        "generated": true
+    }
+]
