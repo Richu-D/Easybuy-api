@@ -447,7 +447,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "\nbh.local.collection = \"customer\"\n\n",
+        "script": "\nbh.local.collection = \"customer\"\nbh.input.body.useCoupons=[]\n\n",
         "functionName": "sd_EoH7RrKGTugPqlFv",
         "category": "Function",
         "x": 1170,

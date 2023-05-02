@@ -408,6 +408,7 @@ export class RegisterUserService {
     );
     try {
       bh.local.collection = 'customer';
+      bh.input.body.useCoupons = [];
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.addCustomer(bh, parentSpanInst);
