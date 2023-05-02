@@ -69,8 +69,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "login_api",
-        "functionName": "sd_jOSUoMdlgQ5oDXnR",
-        "generated": false
+        "functionName": "sd_jOSUoMdlgQ5oDXnR"
     },
     {
         "id": "sd_XB4gT1Nj4ihzd9m0",
@@ -114,9 +113,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "login_api"
+        "serviceName": "login_api",
+        "generated": true
     },
     {
         "id": "sd_tvHvCmcbTXJEPpTT",
@@ -144,6 +143,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",

@@ -69,8 +69,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "employee_api",
-        "functionName": "sd_tMFzLA0l2dS7mluY",
-        "generated": false
+        "functionName": "sd_tMFzLA0l2dS7mluY"
     },
     {
         "id": "sd_C03CyuCIpQcBNI5m",
@@ -114,9 +113,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "employee_api"
+        "serviceName": "employee_api",
+        "generated": true
     },
     {
         "id": "sd_6MKcE5sy3zSkjmcu",
@@ -144,6 +143,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
