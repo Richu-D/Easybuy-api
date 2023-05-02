@@ -17,7 +17,11 @@ export let Middlewares = {
     return cors(corsOptions);
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   sd_gjDViOtqknkKfAW0: () => {
+=======
+  sd_2hBZjlncSVhHsAYH: () => {
+>>>>>>> employee
 =======
   sd_2hBZjlncSVhHsAYH: () => {
 >>>>>>> employee
@@ -38,7 +42,11 @@ export let Middlewares = {
       saveUninitialized: false,
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       secret: 'admin',
+=======
+      secret: 'employee',
+>>>>>>> employee
 =======
       secret: 'employee',
 >>>>>>> employee
@@ -48,7 +56,11 @@ export let Middlewares = {
       store: new (mongoconnector(expressSession))({
         client: MongoConnections.getInstance().getMongoInstance(
 <<<<<<< HEAD
+<<<<<<< HEAD
           'sd_VRbulAroluyj85b8'
+=======
+          'sd_vsXSfiucndOZF9WI'
+>>>>>>> employee
 =======
           'sd_vsXSfiucndOZF9WI'
 >>>>>>> employee

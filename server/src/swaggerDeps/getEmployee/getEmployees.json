@@ -1,6 +1,10 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "/admin/employee": {
+=======
+    "/admin/employees": {
+>>>>>>> employee
 =======
     "/admin/employees": {
 >>>>>>> employee

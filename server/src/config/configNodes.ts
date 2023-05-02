@@ -1,8 +1,13 @@
 export default {
     "db-config": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "sd_VRbulAroluyj85b8": {
             "id": "sd_VRbulAroluyj85b8",
+=======
+        "sd_vsXSfiucndOZF9WI": {
+            "id": "sd_vsXSfiucndOZF9WI",
+>>>>>>> employee
 =======
         "sd_vsXSfiucndOZF9WI": {
             "id": "sd_vsXSfiucndOZF9WI",
@@ -21,8 +26,13 @@ export default {
             "selectedOption": "mongodb",
             "dbCategory": "no-sql",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "mssql_name": "mssql_0",
             "mssql_type": "mssql",
+=======
+            "mssql_name": "mongodb_0",
+            "mssql_type": "mongodb",
+>>>>>>> employee
 =======
             "mssql_name": "mongodb_0",
             "mssql_type": "mongodb",
@@ -47,8 +57,13 @@ export default {
             "mssql_options.encrypt": true,
             "mssql_options.trustServerCertificate": true,
 <<<<<<< HEAD
+<<<<<<< HEAD
             "oracle_name": "oracle_0",
             "oracle_type": "oracle",
+=======
+            "oracle_name": "mongodb_0",
+            "oracle_type": "mongodb",
+>>>>>>> employee
 =======
             "oracle_name": "mongodb_0",
             "oracle_type": "mongodb",
@@ -67,8 +82,13 @@ export default {
             "mongodb_url": process.env.DB_URI,
             "mongodb_options": "",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "mysql_name": "mysql_0",
             "mysql_type": "mysql",
+=======
+            "mysql_name": "mongodb_0",
+            "mysql_type": "mongodb",
+>>>>>>> employee
 =======
             "mysql_name": "mongodb_0",
             "mysql_type": "mongodb",
@@ -93,8 +113,13 @@ export default {
             "mysql_multipleStatements": false,
             "mysql_flags": "flags",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "mariadb_name": "mariadb_0",
             "mariadb_type": "mariadb",
+=======
+            "mariadb_name": "mongodb_0",
+            "mariadb_type": "mongodb",
+>>>>>>> employee
 =======
             "mariadb_name": "mongodb_0",
             "mariadb_type": "mongodb",
@@ -119,8 +144,13 @@ export default {
             "mariadb_multipleStatements": false,
             "mariadb_flags": "flags",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "postgres_name": "postgres_0",
             "postgres_type": "postgres",
+=======
+            "postgres_name": "mongodb_0",
+            "postgres_type": "mongodb",
+>>>>>>> employee
 =======
             "postgres_name": "mongodb_0",
             "postgres_type": "mongodb",

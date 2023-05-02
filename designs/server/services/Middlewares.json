@@ -20,17 +20,23 @@
         "outputs": 1,
         "category": "Middleware",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 125,
         "y": 100,
         "wires": [
             [
                 "sd_gjDViOtqknkKfAW0"
 =======
+=======
+>>>>>>> employee
         "x": 105,
         "y": 100,
         "wires": [
             [
                 "sd_2hBZjlncSVhHsAYH"
+<<<<<<< HEAD
+>>>>>>> employee
+=======
 >>>>>>> employee
             ]
         ],
@@ -47,7 +53,11 @@
         "outputs": 1,
         "category": "Middleware",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 585,
+=======
+        "x": 485,
+>>>>>>> employee
 =======
         "x": 485,
 >>>>>>> employee
@@ -71,7 +81,11 @@
         "outputs": 0,
         "category": "Middleware",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 805,
+=======
+        "x": 645,
+>>>>>>> employee
 =======
         "x": 645,
 >>>>>>> employee
@@ -97,7 +111,11 @@
                 {
                     "key": "http://localhost:4200",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "rowId": "sd_q7eOSvvfVDmSjMIx",
+=======
+                    "rowId": "sd_qjRYan2CE0X2NiIP",
+>>>>>>> employee
 =======
                     "rowId": "sd_qjRYan2CE0X2NiIP",
 >>>>>>> employee
@@ -114,7 +132,11 @@
         "functionName": "sd_Tp9jNbUvUZ1kJnAn",
         "category": "Global",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 425,
+=======
+        "x": 345,
+>>>>>>> employee
 =======
         "x": 345,
 >>>>>>> employee
@@ -129,7 +151,11 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "id": "sd_gjDViOtqknkKfAW0",
+=======
+        "id": "sd_2hBZjlncSVhHsAYH",
+>>>>>>> employee
 =======
         "id": "sd_2hBZjlncSVhHsAYH",
 >>>>>>> employee
@@ -150,6 +176,7 @@
         "rolling": false,
         "saveUninitialized": false,
 <<<<<<< HEAD
+<<<<<<< HEAD
         "secret": "\"admin\"",
         "dbConnectionName": "mongodb_0",
         "unset": "keep",
@@ -161,6 +188,8 @@
         "category": "Global",
         "x": 260,
 =======
+=======
+>>>>>>> employee
         "secret": "\"employee\"",
         "dbConnectionName": "mongodb_0",
         "unset": "keep",
@@ -171,6 +200,9 @@
         "functionName": "sd_2hBZjlncSVhHsAYH",
         "category": "Global",
         "x": 225,
+<<<<<<< HEAD
+>>>>>>> employee
+=======
 >>>>>>> employee
         "y": 100,
         "wires": [
@@ -182,7 +214,11 @@
             "secret": {
                 "type": "str",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 "value": "admin",
+=======
+                "value": "employee",
+>>>>>>> employee
 =======
                 "value": "employee",
 >>>>>>> employee
@@ -194,7 +230,11 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "id": "sd_IGW00XxAWDuwEBHq",
+=======
+        "id": "sd_VXay5uG3XQVsTEys",
+>>>>>>> employee
 =======
         "id": "sd_VXay5uG3XQVsTEys",
 >>>>>>> employee
@@ -207,17 +247,23 @@
         "outputs": 1,
         "category": "Middleware",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 125,
         "y": 260,
         "wires": [
             [
                 "sd_MwDkpNQRC81E9hMq"
 =======
+=======
+>>>>>>> employee
         "x": 105,
         "y": 260,
         "wires": [
             [
                 "sd_wd4BOSa5ua3d0czf"
+<<<<<<< HEAD
+>>>>>>> employee
+=======
 >>>>>>> employee
             ]
         ],
@@ -226,7 +272,11 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "id": "sd_6WR91U1oJDa0xqEO",
+=======
+        "id": "sd_p1T3gzaj0BXVqMlv",
+>>>>>>> employee
 =======
         "id": "sd_p1T3gzaj0BXVqMlv",
 >>>>>>> employee
@@ -239,17 +289,23 @@
         "outputs": 1,
         "category": "Middleware",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 405,
         "y": 260,
         "wires": [
             [
                 "sd_FYPw2HVMt2TYIr65"
 =======
+=======
+>>>>>>> employee
         "x": 485,
         "y": 260,
         "wires": [
             [
                 "sd_6c1xTf22AHbFZCry"
+<<<<<<< HEAD
+>>>>>>> employee
+=======
 >>>>>>> employee
             ]
         ],
@@ -258,7 +314,11 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "id": "sd_FYPw2HVMt2TYIr65",
+=======
+        "id": "sd_6c1xTf22AHbFZCry",
+>>>>>>> employee
 =======
         "id": "sd_6c1xTf22AHbFZCry",
 >>>>>>> employee
@@ -271,7 +331,11 @@
         "outputs": 0,
         "category": "Middleware",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "x": 705,
+=======
+        "x": 745,
+>>>>>>> employee
 =======
         "x": 745,
 >>>>>>> employee
@@ -281,6 +345,7 @@
         "generateNext": true
     },
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
         "id": "sd_MwDkpNQRC81E9hMq",
         "type": "pre_middleware:adminCheckMiddleware",
@@ -295,6 +360,8 @@
             [
                 "sd_6WR91U1oJDa0xqEO"
 =======
+=======
+>>>>>>> employee
         "id": "sd_wd4BOSa5ua3d0czf",
         "type": "pre_middleware:employeeCheckMiddleware",
         "z": "ssd_mw_ws",
@@ -307,6 +374,9 @@
         "wires": [
             [
                 "sd_p1T3gzaj0BXVqMlv"
+<<<<<<< HEAD
+>>>>>>> employee
+=======
 >>>>>>> employee
             ]
         ],
