@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_rLmXkMPbNOwmVU5w",
+        "type": "tab",
+        "createdDate": "2023-04-29T08:11:16.934Z",
+        "label": "logout_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "logout_api",
+        "relativeParentPath": "logoutEmployee"
+    },
+    {
+        "id": "sd_rk6wshrkYT6gcuD5",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_rLmXkMPbNOwmVU5w",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/employee/logout",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "sd_CB9P5tdL3qXpBJNC"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "logout_api",
+        "functionName": "sd_rk6wshrkYT6gcuD5"
+    },
+    {
+        "id": "sd_oCkFqmkocOhIl5rR",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_rLmXkMPbNOwmVU5w",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_oCkFqmkocOhIl5rR",
+        "category": "HTTP",
+        "x": 465,
+        "y": 140,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "logout_api",
+        "generated": true
+    },
+    {
+        "id": "sd_CB9P5tdL3qXpBJNC",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_rLmXkMPbNOwmVU5w",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_OJpQiNnhQFB3SmI6",
+            "type": "tab",
+            "createdDate": "2023-04-29T08:11:29.255Z",
+            "label": "logout_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_fORybs776InzpFCq",
+            "flowName": "logoutEmployeeStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./logout_service",
+        "startName": "logoutEmployeeStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_CB9P5tdL3qXpBJNC",
+        "category": "General",
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "sd_oCkFqmkocOhIl5rR"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "logout_api",
+        "generated": true
+    }
+]

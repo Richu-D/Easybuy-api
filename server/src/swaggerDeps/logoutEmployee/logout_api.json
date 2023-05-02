@@ -1,10 +1,6 @@
 {
-<<<<<<< HEAD
-    "/admin/employee": {
-=======
-    "/admin/employees": {
->>>>>>> employee
-        "get": {
+    "/employee/logout": {
+        "post": {
             "summary": "",
             "description": "",
             "consumes": [],
@@ -12,7 +8,7 @@
             "parameters": [],
             "responses": {},
             "tags": [
-                "getEmployees"
+                "logout_api"
             ]
         }
     }

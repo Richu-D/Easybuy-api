@@ -7,13 +7,21 @@ export default {
   },
   middlewares: {
     pre: [
+<<<<<<< HEAD
       { __ssdGlobalMiddlewares__: 'sd_gjDViOtqknkKfAW0' },
+=======
+      { __ssdGlobalMiddlewares__: 'sd_2hBZjlncSVhHsAYH' },
+>>>>>>> employee
       { __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' },
     ],
     post: [],
     sequences: {
       employeeCheck: {
+<<<<<<< HEAD
         pre: [{ pre_middleware: 'adminCheckMiddleware' }],
+=======
+        pre: [{ pre_middleware: 'employeeCheckMiddleware' }],
+>>>>>>> employee
         post: [],
       },
     },

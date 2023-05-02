@@ -1,7 +1,12 @@
 export default {
     "db-config": {
+<<<<<<< HEAD
         "sd_VRbulAroluyj85b8": {
             "id": "sd_VRbulAroluyj85b8",
+=======
+        "sd_vsXSfiucndOZF9WI": {
+            "id": "sd_vsXSfiucndOZF9WI",
+>>>>>>> employee
             "type": "db-config",
             "viewType": "server",
             "nodeType": "flow",
@@ -15,8 +20,13 @@ export default {
             "selectedDB": "mongodb",
             "selectedOption": "mongodb",
             "dbCategory": "no-sql",
+<<<<<<< HEAD
             "mssql_name": "mssql_0",
             "mssql_type": "mssql",
+=======
+            "mssql_name": "mongodb_0",
+            "mssql_type": "mongodb",
+>>>>>>> employee
             "mssql_host": "localhost",
             "mssql_port": 1433,
             "mssql_username": "username",
@@ -36,8 +46,13 @@ export default {
             "mssql_options.readOnlyIntent": false,
             "mssql_options.encrypt": true,
             "mssql_options.trustServerCertificate": true,
+<<<<<<< HEAD
             "oracle_name": "oracle_0",
             "oracle_type": "oracle",
+=======
+            "oracle_name": "mongodb_0",
+            "oracle_type": "mongodb",
+>>>>>>> employee
             "oracle_connectString": "oracle",
             "oracle_host": "localhost",
             "oracle_port": 1521,
@@ -51,8 +66,13 @@ export default {
             "mongodb_type": "mongodb",
             "mongodb_url": process.env.DB_URI,
             "mongodb_options": "",
+<<<<<<< HEAD
             "mysql_name": "mysql_0",
             "mysql_type": "mysql",
+=======
+            "mysql_name": "mongodb_0",
+            "mysql_type": "mongodb",
+>>>>>>> employee
             "mysql_host": "localhost",
             "mysql_port": 3306,
             "mysql_username": "username",
@@ -72,8 +92,13 @@ export default {
             "mysql_trace": true,
             "mysql_multipleStatements": false,
             "mysql_flags": "flags",
+<<<<<<< HEAD
             "mariadb_name": "mariadb_0",
             "mariadb_type": "mariadb",
+=======
+            "mariadb_name": "mongodb_0",
+            "mariadb_type": "mongodb",
+>>>>>>> employee
             "mariadb_host": "localhost",
             "mariadb_port": 3306,
             "mariadb_username": "username",
@@ -93,8 +118,13 @@ export default {
             "mariadb_trace": true,
             "mariadb_multipleStatements": false,
             "mariadb_flags": "flags",
+<<<<<<< HEAD
             "postgres_name": "postgres_0",
             "postgres_type": "postgres",
+=======
+            "postgres_name": "mongodb_0",
+            "postgres_type": "mongodb",
+>>>>>>> employee
             "postgres_host": "localhost",
             "postgres_port": 5432,
             "postgres_username": "username",

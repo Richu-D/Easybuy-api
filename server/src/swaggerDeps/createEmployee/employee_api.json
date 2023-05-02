@@ -1,18 +1,16 @@
 {
-<<<<<<< HEAD
     "/admin/employee": {
-=======
-    "/admin/employees": {
->>>>>>> employee
-        "get": {
+        "post": {
             "summary": "",
             "description": "",
-            "consumes": [],
+            "consumes": [
+                "application/json"
+            ],
             "produces": [],
             "parameters": [],
             "responses": {},
             "tags": [
-                "getEmployees"
+                "employee_api"
             ]
         }
     }

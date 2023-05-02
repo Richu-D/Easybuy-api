@@ -97,7 +97,11 @@ export class getEmployees {
     log.debug('mounting all paths for service :: getEmployees');
 
     this.app['get'](
+<<<<<<< HEAD
       `${this.serviceBasePath}/admin/employee`,
+=======
+      `${this.serviceBasePath}/admin/employees`,
+>>>>>>> employee
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         'employeeCheck',
@@ -115,10 +119,17 @@ export class getEmployees {
             next
           );
           let parentSpanInst = null;
+<<<<<<< HEAD
           bh = await this.sd_ZtnxADNfrg5o2bJp(bh, parentSpanInst);
           //appendnew_next_sd_Z6qa8pWV6fxUt59c
         } catch (e) {
           return await this.errorHandler(bh, e, 'sd_Z6qa8pWV6fxUt59c');
+=======
+          bh = await this.sd_0uAckIrPQC3pDXEy(bh, parentSpanInst);
+          //appendnew_next_sd_qbNR8yUZWCeyywkV
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_qbNR8yUZWCeyywkV');
+>>>>>>> employee
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
@@ -133,58 +144,102 @@ export class getEmployees {
 
   //appendnew_flow_getEmployees_start
 
+<<<<<<< HEAD
   async sd_ZtnxADNfrg5o2bJp(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_ZtnxADNfrg5o2bJp',
+=======
+  async sd_0uAckIrPQC3pDXEy(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_0uAckIrPQC3pDXEy',
+>>>>>>> employee
       parentSpanInst
     );
     try {
       bh.local.query = {};
       this.tracerService.sendData(spanInst, bh);
+<<<<<<< HEAD
       bh = await this.sd_26Ko7MIJJeesFReg(bh, parentSpanInst);
       //appendnew_next_sd_ZtnxADNfrg5o2bJp
+=======
+      bh = await this.sd_bsTXOuodzDZrrjEi(bh, parentSpanInst);
+      //appendnew_next_sd_0uAckIrPQC3pDXEy
+>>>>>>> employee
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
+<<<<<<< HEAD
         'sd_ZtnxADNfrg5o2bJp',
         spanInst,
         'sd_ZtnxADNfrg5o2bJp'
+=======
+        'sd_0uAckIrPQC3pDXEy',
+        spanInst,
+        'sd_0uAckIrPQC3pDXEy'
+>>>>>>> employee
       );
     }
   }
 
+<<<<<<< HEAD
   async sd_26Ko7MIJJeesFReg(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_26Ko7MIJJeesFReg',
+=======
+  async sd_bsTXOuodzDZrrjEi(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_bsTXOuodzDZrrjEi',
+>>>>>>> employee
       parentSpanInst
     );
     try {
       bh.local.result = await MongoPersistance.getInstance().find(
+<<<<<<< HEAD
         'sd_VRbulAroluyj85b8',
+=======
+        'sd_vsXSfiucndOZF9WI',
+>>>>>>> employee
         process.env.DB_COLLECTION,
         bh.local.query,
         {}
       );
       this.tracerService.sendData(spanInst, bh);
+<<<<<<< HEAD
       bh = await this.sd_QtrAESZVPDdsEf8G(bh, parentSpanInst);
       //appendnew_next_sd_26Ko7MIJJeesFReg
+=======
+      bh = await this.sd_XF6O2jOBzvqtDIU4(bh, parentSpanInst);
+      //appendnew_next_sd_bsTXOuodzDZrrjEi
+>>>>>>> employee
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
+<<<<<<< HEAD
         'sd_26Ko7MIJJeesFReg',
         spanInst,
         'sd_26Ko7MIJJeesFReg'
+=======
+        'sd_bsTXOuodzDZrrjEi',
+        spanInst,
+        'sd_bsTXOuodzDZrrjEi'
+>>>>>>> employee
       );
     }
   }
 
+<<<<<<< HEAD
   async sd_QtrAESZVPDdsEf8G(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_QtrAESZVPDdsEf8G',
+=======
+  async sd_XF6O2jOBzvqtDIU4(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_XF6O2jOBzvqtDIU4',
+>>>>>>> employee
       parentSpanInst
     );
     try {
@@ -192,28 +247,49 @@ export class getEmployees {
         statusCode: 200,
         data: bh.local.result,
       };
+<<<<<<< HEAD
       this.tracerService.sendData(spanInst, bh);
       await this.sd_AXJ6XDBeV8dtSWeW(bh, parentSpanInst);
       //appendnew_next_sd_QtrAESZVPDdsEf8G
+=======
+
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_ZThD77KUeRA7EVJu(bh, parentSpanInst);
+      //appendnew_next_sd_XF6O2jOBzvqtDIU4
+>>>>>>> employee
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
+<<<<<<< HEAD
         'sd_QtrAESZVPDdsEf8G',
         spanInst,
         'sd_QtrAESZVPDdsEf8G'
+=======
+        'sd_XF6O2jOBzvqtDIU4',
+        spanInst,
+        'sd_XF6O2jOBzvqtDIU4'
+>>>>>>> employee
       );
     }
   }
 
+<<<<<<< HEAD
   async sd_AXJ6XDBeV8dtSWeW(bh, parentSpanInst) {
+=======
+  async sd_ZThD77KUeRA7EVJu(bh, parentSpanInst) {
+>>>>>>> employee
     try {
       bh.web.res.status(bh.local.response.statusCode).send(bh.local.response);
 
       return bh;
     } catch (e) {
+<<<<<<< HEAD
       return await this.errorHandler(bh, e, 'sd_AXJ6XDBeV8dtSWeW');
+=======
+      return await this.errorHandler(bh, e, 'sd_ZThD77KUeRA7EVJu');
+>>>>>>> employee
     }
   }
 

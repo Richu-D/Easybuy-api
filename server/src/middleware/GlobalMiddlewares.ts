@@ -16,7 +16,11 @@ export let Middlewares = {
     };
     return cors(corsOptions);
   },
+<<<<<<< HEAD
   sd_gjDViOtqknkKfAW0: () => {
+=======
+  sd_2hBZjlncSVhHsAYH: () => {
+>>>>>>> employee
     let sess: expressSession.SessionOptions = {
       cookie: {
         secure: false,
@@ -33,13 +37,21 @@ export let Middlewares = {
 
       saveUninitialized: false,
 
+<<<<<<< HEAD
       secret: 'admin',
+=======
+      secret: 'employee',
+>>>>>>> employee
 
       unset: 'keep',
 
       store: new (mongoconnector(expressSession))({
         client: MongoConnections.getInstance().getMongoInstance(
+<<<<<<< HEAD
           'sd_VRbulAroluyj85b8'
+=======
+          'sd_vsXSfiucndOZF9WI'
+>>>>>>> employee
         ),
         autoRemove: 'native',
       }),

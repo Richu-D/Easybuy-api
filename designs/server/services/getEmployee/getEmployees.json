@@ -1,8 +1,14 @@
 [
     {
+<<<<<<< HEAD
         "id": "SSD_SERVICE_ID_sd_Dtowk1XP7ZlFbL53",
         "type": "tab",
         "createdDate": "2023-04-29T08:52:53.138Z",
+=======
+        "id": "SSD_SERVICE_ID_sd_4fFTS6PEOZph7vVy",
+        "type": "tab",
+        "createdDate": "2023-04-29T07:40:05.082Z",
+>>>>>>> employee
         "label": "getEmployees",
         "disabled": false,
         "info": "",
@@ -12,6 +18,7 @@
         "relativeParentPath": "getEmployee"
     },
     {
+<<<<<<< HEAD
         "id": "sd_Z6qa8pWV6fxUt59c",
         "type": "HttpIn",
         "z": "SSD_SERVICE_ID_sd_Dtowk1XP7ZlFbL53",
@@ -19,6 +26,15 @@
         "nodeType": "start",
         "name": "",
         "path": "/admin/employee",
+=======
+        "id": "sd_qbNR8yUZWCeyywkV",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_4fFTS6PEOZph7vVy",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/admin/employees",
+>>>>>>> employee
         "uploadpath": "",
         "summary": "",
         "description": "",
@@ -44,11 +60,19 @@
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
+<<<<<<< HEAD
         "x": 185,
         "y": 180,
         "wires": [
             [
                 "sd_ZtnxADNfrg5o2bJp"
+=======
+        "x": 125,
+        "y": 180,
+        "wires": [
+            [
+                "sd_0uAckIrPQC3pDXEy"
+>>>>>>> employee
             ]
         ],
         "__ssdTypeInputs__": {
@@ -63,6 +87,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "getEmployees",
+<<<<<<< HEAD
         "functionName": "sd_Z6qa8pWV6fxUt59c"
     },
     {
@@ -80,6 +105,25 @@
         "wires": [
             [
                 "sd_26Ko7MIJJeesFReg"
+=======
+        "functionName": "sd_qbNR8yUZWCeyywkV"
+    },
+    {
+        "id": "sd_XF6O2jOBzvqtDIU4",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_4fFTS6PEOZph7vVy",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n   statusCode:200,\n   data:bh.local.result\n}\n",
+        "functionName": "sd_XF6O2jOBzvqtDIU4",
+        "category": "Function",
+        "x": 625,
+        "y": 180,
+        "wires": [
+            [
+                "sd_ZThD77KUeRA7EVJu"
+>>>>>>> employee
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -88,6 +132,7 @@
         "generated": true
     },
     {
+<<<<<<< HEAD
         "id": "sd_26Ko7MIJJeesFReg",
         "type": "Mongodb",
         "z": "SSD_SERVICE_ID_sd_Dtowk1XP7ZlFbL53",
@@ -95,6 +140,15 @@
         "nodeType": "flow",
         "name": "",
         "databaseConfig": "sd_VRbulAroluyj85b8",
+=======
+        "id": "sd_bsTXOuodzDZrrjEi",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_4fFTS6PEOZph7vVy",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_vsXSfiucndOZF9WI",
+>>>>>>> employee
         "collection": "__ssd__env__process.env.DB_COLLECTION__ssd__env__end",
         "options": "",
         "resultMapping": "bh.local.result",
@@ -122,6 +176,7 @@
         "filePath": "",
         "fileName": "",
         "pipeline": "",
+<<<<<<< HEAD
         "functionName": "sd_26Ko7MIJJeesFReg",
         "category": "Storage",
         "x": 460,
@@ -129,6 +184,15 @@
         "wires": [
             [
                 "sd_QtrAESZVPDdsEf8G"
+=======
+        "functionName": "sd_bsTXOuodzDZrrjEi",
+        "category": "Storage",
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "sd_XF6O2jOBzvqtDIU4"
+>>>>>>> employee
             ]
         ],
         "__ssdTypeInputs__": {
@@ -160,6 +224,7 @@
         "generated": true
     },
     {
+<<<<<<< HEAD
         "id": "sd_QtrAESZVPDdsEf8G",
         "type": "Script",
         "z": "SSD_SERVICE_ID_sd_Dtowk1XP7ZlFbL53",
@@ -174,6 +239,22 @@
         "wires": [
             [
                 "sd_AXJ6XDBeV8dtSWeW"
+=======
+        "id": "sd_0uAckIrPQC3pDXEy",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_4fFTS6PEOZph7vVy",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.query={}",
+        "functionName": "sd_0uAckIrPQC3pDXEy",
+        "category": "Function",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "sd_bsTXOuodzDZrrjEi"
+>>>>>>> employee
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -182,9 +263,15 @@
         "generated": true
     },
     {
+<<<<<<< HEAD
         "id": "sd_AXJ6XDBeV8dtSWeW",
         "type": "HttpOut",
         "z": "SSD_SERVICE_ID_sd_Dtowk1XP7ZlFbL53",
+=======
+        "id": "sd_ZThD77KUeRA7EVJu",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_4fFTS6PEOZph7vVy",
+>>>>>>> employee
         "viewType": "server",
         "nodeType": "flow",
         "name": "",
@@ -207,7 +294,10 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+<<<<<<< HEAD
         "cookies": [],
+=======
+>>>>>>> employee
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -223,9 +313,15 @@
             "headers": "Map",
             "cookies": "Map"
         },
+<<<<<<< HEAD
         "functionName": "sd_AXJ6XDBeV8dtSWeW",
         "category": "HTTP",
         "x": 765,
+=======
+        "functionName": "sd_ZThD77KUeRA7EVJu",
+        "category": "HTTP",
+        "x": 805,
+>>>>>>> employee
         "y": 180,
         "wires": [],
         "__n_excludedFromValidation__": {},

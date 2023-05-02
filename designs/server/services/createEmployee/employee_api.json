@@ -1,0 +1,172 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_FgFevLbYZwHcUEPc",
+        "type": "tab",
+        "createdDate": "2023-04-28T11:09:54.160Z",
+        "label": "employee_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "employee_api",
+        "relativeParentPath": "createEmployee"
+    },
+    {
+        "id": "sd_tMFzLA0l2dS7mluY",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_FgFevLbYZwHcUEPc",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "createEmployee",
+        "path": "/admin/employee",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": [
+                {
+                    "key": "application/json",
+                    "rowId": "sd_AvHIilzrMEgiyabv",
+                    "valid": true
+                }
+            ]
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 105,
+        "y": 100,
+        "wires": [
+            [
+                "sd_C03CyuCIpQcBNI5m"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "employee_api",
+        "functionName": "sd_tMFzLA0l2dS7mluY"
+    },
+    {
+        "id": "sd_C03CyuCIpQcBNI5m",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_FgFevLbYZwHcUEPc",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_Gyav1X4P61IDnDgD",
+            "type": "tab",
+            "createdDate": "2023-04-28T11:10:13.529Z",
+            "label": "employee_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_7elixkgvExQAAml8",
+            "flowName": "createEmployeeStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./employee_service",
+        "startName": "createEmployeeStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_C03CyuCIpQcBNI5m",
+        "category": "General",
+        "x": 345,
+        "y": 100,
+        "wires": [
+            [
+                "sd_6MKcE5sy3zSkjmcu"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employee_api",
+        "generated": true
+    },
+    {
+        "id": "sd_6MKcE5sy3zSkjmcu",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_FgFevLbYZwHcUEPc",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_6MKcE5sy3zSkjmcu",
+        "category": "HTTP",
+        "x": 625,
+        "y": 100,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employee_api",
+        "generated": true
+    }
+]
