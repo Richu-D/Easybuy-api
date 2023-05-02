@@ -11,11 +11,6 @@ export default {
       { __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' },
     ],
     post: [],
-    sequences: {
-      sequence_2660262600: {
-        pre: [{ checkIsreqFiles: 'isReqFile' }],
-        post: [],
-      },
-    },
+    sequences: {},
   },
 };

@@ -29,8 +29,8 @@
                 "nullable": false
             }
         },
-        "price": {
-            "name": "price",
+        "gram": {
+            "name": "gram",
             "format": "",
             "type": "string",
             "description": "",
@@ -38,7 +38,8 @@
             "__n__metadata__": {
                 "id": "_Att_4v7wewqkmr",
                 "nullable": false
-            }
+            },
+            "minLength": 1
         },
         "description": {
             "name": "description",
@@ -51,12 +52,25 @@
                 "subCategoryType": null,
                 "nullable": false
             }
+        },
+        "category": {
+            "name": "category",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_tixcr37zyv",
+                "subCategoryType": null,
+                "nullable": false
+            }
         }
     },
     "required": [
         "name",
-        "price",
-        "description"
+        "description",
+        "gram",
+        "category"
     ],
     "value": "",
     "x": 86,

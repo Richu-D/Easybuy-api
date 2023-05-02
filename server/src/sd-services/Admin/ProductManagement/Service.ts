@@ -130,6 +130,7 @@ export class Service {
     );
     try {
       bh.local.isImage = bh.input.files.image;
+
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_nwfOwnEq2QVpFKmx(bh, parentSpanInst);
       //appendnew_next_sd_Vs4oMMd7deQTLA9E
@@ -218,110 +219,133 @@ export class Service {
       validateNode('_EN_o1grd7mckn', bh.input.body, true);
 
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_7nNM2uxMLSdaXvBU(bh, parentSpanInst);
+      bh = await this.sd_ex9FrSgL412ZGsJp(bh, parentSpanInst);
       //appendnew_next_validate
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_QYgfUBbT7g2AKl0p',
+        'sd_BFZRsHqeZH7OFlty',
         spanInst,
         'validate'
       );
     }
   }
 
-  async sd_7nNM2uxMLSdaXvBU(bh, parentSpanInst) {
+  async sd_ex9FrSgL412ZGsJp(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_7nNM2uxMLSdaXvBU',
+      'sd_ex9FrSgL412ZGsJp',
       parentSpanInst
     );
     try {
+      bh.local.isValid = true;
+      if (!bh.input.body.name) {
+        bh.local.isValid = false;
+        bh.local.message = 'empty field name';
+      } else if (!bh.input.body.gram) {
+        bh.local.isValid = false;
+        bh.local.message = 'empty field price';
+      } else if (!bh.input.body.description) {
+        bh.local.isValid = false;
+        bh.local.message = 'empty field description';
+      } else if (!bh.input.body.category) {
+        bh.local.isValid = false;
+        bh.local.message = 'empty field category';
+      }
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_hei03P4cMV3qCZ6O(bh, parentSpanInst);
+      //appendnew_next_sd_ex9FrSgL412ZGsJp
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_ex9FrSgL412ZGsJp',
+        spanInst,
+        'sd_ex9FrSgL412ZGsJp'
+      );
+    }
+  }
+
+  async sd_hei03P4cMV3qCZ6O(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_hei03P4cMV3qCZ6O',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.local.isValid,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_5I9xGGU9SGpmrTZe(bh, parentSpanInst);
+      } else if (
+        this.sdService.operators['false'](
+          bh.local.isValid,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_MOnTfoRh6qSeEHKm(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_hei03P4cMV3qCZ6O',
+        spanInst,
+        'sd_hei03P4cMV3qCZ6O'
+      );
+    }
+  }
+
+  async sd_5I9xGGU9SGpmrTZe(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_5I9xGGU9SGpmrTZe',
+      parentSpanInst
+    );
+    try {
+      const axios = require('axios');
+
       bh.local.findQuery = { name: bh.input.body.name };
+      const key = bh.input.body.category;
       bh.local.collection = 'product';
       bh.input.body.image = bh.input.files.image;
+      const api = 'https://api.exchangerate-api.com/v4/latest/USD';
+      const metalpriceapi = 'https://api.metals.live/v1/spot';
+
+      let metalprice = await axios.get(metalpriceapi);
+
+      let currency = await axios.get(api);
+
+      const result = metalprice.data.find((obj) => obj.hasOwnProperty(key));
+      const price = result[key];
+      let fromRate = currency.data.rates.USD;
+      let toRate = currency.data.rates.INR;
+      let convertedPrice = ((toRate / fromRate) * price).toFixed(2) / 31.1035;
+      bh.input.body.price = convertedPrice * bh.input.body.gram;
+
+      console.log(bh.input.body);
+
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.findingTheSimilar(bh, parentSpanInst);
-      //appendnew_next_sd_7nNM2uxMLSdaXvBU
+      bh = await this.addProduct(bh, parentSpanInst);
+      //appendnew_next_sd_5I9xGGU9SGpmrTZe
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_7nNM2uxMLSdaXvBU',
+        'sd_5I9xGGU9SGpmrTZe',
         spanInst,
-        'sd_7nNM2uxMLSdaXvBU'
-      );
-    }
-  }
-
-  async findingTheSimilar(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'findingTheSimilar',
-      parentSpanInst
-    );
-    try {
-      bh.local.duplicate = await MongoPersistance.getInstance().find(
-        'sd_VKhZy0xYvcoOafEG',
-        bh.local.collection,
-        bh.local.findQuery,
-        {}
-      );
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_HZlEbbU330jxFzaX(bh, parentSpanInst);
-      //appendnew_next_findingTheSimilar
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_Ss5b8vjNW6DQ6sZR',
-        spanInst,
-        'findingTheSimilar'
-      );
-    }
-  }
-
-  async sd_HZlEbbU330jxFzaX(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_HZlEbbU330jxFzaX',
-      parentSpanInst
-    );
-    try {
-      let otherwiseFlag = true;
-      if (
-        this.sdService.operators['eq'](
-          bh.local.duplicate.length,
-          '0',
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.addProduct(bh, parentSpanInst);
-        otherwiseFlag = false;
-      }
-      if (
-        this.sdService.operators['else'](
-          otherwiseFlag,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_FpSK2LpYZAaG8ZIc(bh, parentSpanInst);
-        otherwiseFlag = false;
-      }
-      this.tracerService.sendData(spanInst, bh);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_HZlEbbU330jxFzaX',
-        spanInst,
-        'sd_HZlEbbU330jxFzaX'
+        'sd_5I9xGGU9SGpmrTZe'
       );
     }
   }
@@ -339,81 +363,64 @@ export class Service {
         {}
       );
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.barcode(bh, parentSpanInst);
+      bh = await this.sd_L8uhEDl0U0BE4hEM(bh, parentSpanInst);
       //appendnew_next_addProduct
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_RmeIALuASG6pVABr',
+        'sd_RJPTDGnIHPRWCi5q',
         spanInst,
         'addProduct'
       );
     }
   }
 
-  async barcode(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan('barcode', parentSpanInst);
+  async sd_L8uhEDl0U0BE4hEM(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_L8uhEDl0U0BE4hEM',
+      parentSpanInst
+    );
     try {
-      const qrcode = require('qrcode');
-      bh.local.uniqueId = bh.local.result.insertedId.toString();
-
-      function generateQRCode(data) {
-        return new Promise((resolve, reject) => {
-          qrcode.toBuffer(data, (err, png) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(png);
-            }
-          });
-        });
-      }
-
-      bh.local.png = await generateQRCode(bh.local.uniqueId);
-
       bh.local.response = {
         statusCode: 200,
-        message: bh.local.png,
+        message: bh.local.result,
       };
-
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_barcode
+      //appendnew_next_sd_L8uhEDl0U0BE4hEM
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_37pGKZXuaVat8POv',
+        'sd_L8uhEDl0U0BE4hEM',
         spanInst,
-        'barcode'
+        'sd_L8uhEDl0U0BE4hEM'
       );
     }
   }
 
-  async sd_FpSK2LpYZAaG8ZIc(bh, parentSpanInst) {
+  async sd_MOnTfoRh6qSeEHKm(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_FpSK2LpYZAaG8ZIc',
+      'sd_MOnTfoRh6qSeEHKm',
       parentSpanInst
     );
     try {
       bh.local.response = {
         statusCode: 400,
-        message: {
-          data: 'its already added..',
-        },
+        message: bh.local.message,
       };
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_FpSK2LpYZAaG8ZIc
+      //appendnew_next_sd_MOnTfoRh6qSeEHKm
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_FpSK2LpYZAaG8ZIc',
+        'sd_MOnTfoRh6qSeEHKm',
         spanInst,
-        'sd_FpSK2LpYZAaG8ZIc'
+        'sd_MOnTfoRh6qSeEHKm'
       );
     }
   }
@@ -435,16 +442,16 @@ export class Service {
       return await this.errorHandler(
         bh,
         e,
-        'sd_LXcEgNGJsIkUvixl',
+        'sd_8J43VVks7D0SoDWg',
         spanInst,
         'barCodeScript'
       );
     }
   }
 
-  async sd_jwp9fzjhQUp6BFO8(bh, parentSpanInst) {
+  async sd_ZxJNmLiMde9QkcH7(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_jwp9fzjhQUp6BFO8',
+      'sd_ZxJNmLiMde9QkcH7',
       parentSpanInst
     );
     try {
@@ -453,15 +460,15 @@ export class Service {
         message: bh.error.error[0].message,
       };
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_jwp9fzjhQUp6BFO8
+      //appendnew_next_sd_ZxJNmLiMde9QkcH7
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_jwp9fzjhQUp6BFO8',
+        'sd_ZxJNmLiMde9QkcH7',
         spanInst,
-        'sd_jwp9fzjhQUp6BFO8'
+        'sd_ZxJNmLiMde9QkcH7'
       );
     }
   }
@@ -499,9 +506,9 @@ export class Service {
     return false;
   }
   async errorHandlingForValidateNode(bh, parentSpanInst) {
-    const nodes = ['sd_QYgfUBbT7g2AKl0p'];
+    const nodes = ['sd_BFZRsHqeZH7OFlty'];
     if (nodes.includes(bh.errorSource)) {
-      bh = await this.sd_jwp9fzjhQUp6BFO8(bh, parentSpanInst);
+      bh = await this.sd_ZxJNmLiMde9QkcH7(bh, parentSpanInst);
       //appendnew_next_errorHandlingForValidateNode
       return true;
     }
