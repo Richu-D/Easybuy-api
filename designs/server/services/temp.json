@@ -1,0 +1,56 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5",
+        "type": "tab",
+        "createdDate": "2023-05-02T16:10:04.005Z",
+        "label": "temp",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "temp",
+        "relativeParentPath": ""
+    },
+    {
+        "id": "sd_XUY3621lDlGwvMBd",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "accept_bh": "",
+        "functionName": "sd_XUY3621lDlGwvMBd",
+        "category": "General",
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "sd_IzgUkKgQ809erp3J"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "temp"
+    },
+    {
+        "id": "sd_IzgUkKgQ809erp3J",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(\"shinas\")",
+        "functionName": "sd_IzgUkKgQ809erp3J",
+        "category": "Function",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "temp",
+        "generated": true
+    }
+]

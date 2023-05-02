@@ -1,4 +1,6 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-temp-SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5
+import { temp as SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5 } from './sd-services/temp';
 //CORE_REFERENCE_IMPORT-getAUserSerive-SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx
 import { getAUserSerive as SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx } from './sd-services/user/getAUserSerive';
 //CORE_REFERENCE_IMPORT-RegisterUserService-SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp
@@ -21,6 +23,8 @@ import { AddProduct as SSD_SERVICE_ID_sd_bX50JdjrHUoIQ2Fs } from './sd-services/
 export const UserRoutes = [
 
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-temp-SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5
+SSD_SERVICE_ID_sd_NDUhK7HwlSQfD4T5,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-getAUserSerive-SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx
 SSD_SERVICE_ID_sd_seUnVBxJEZr9CTHx,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-RegisterUserService-SSD_SERVICE_ID_sd_DVm1WCxwMwzLZYZp
