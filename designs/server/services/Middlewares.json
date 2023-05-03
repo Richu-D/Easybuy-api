@@ -5,38 +5,64 @@
         "createdDate": "createdDate",
         "label": "Middlewares",
         "disabled": false,
-        "info": ""
+        "info": "",
+        "generateNext": true,
+        "serviceName": "Middlewares",
+        "relativeParentPath": ""
     },
     {
         "id": "ssd_global_middleware_start_id",
         "type": "GlobalMiddlewareStart",
         "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
         "inputs": 0,
         "outputs": 1,
-        "x": 141,
-        "y": 102.8125,
-        "wires": [["sd_Tp9jNbUvUZ1kJnAn"]]
+        "category": "Middleware",
+        "x": 65,
+        "y": 100,
+        "wires": [
+            [
+                "sd_Q1qrnpK4gblwWpG8"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     },
     {
         "id": "ssd_global_next_id",
         "type": "GlobalNext",
         "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
         "inputs": 1,
         "outputs": 1,
-        "x": 474.1875,
-        "y": 103.90625,
-        "wires": [["ssd_global_middleware_end_id"]]
+        "category": "Middleware",
+        "x": 625,
+        "y": 100,
+        "wires": [
+            [
+                "ssd_global_middleware_end_id"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     },
     {
         "id": "ssd_global_middleware_end_id",
         "type": "GlobalMiddlewareEnd",
         "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
         "name": "",
         "inputs": 1,
         "outputs": 0,
-        "x": 657.84375,
-        "y": 102.8125,
-        "wires": []
+        "category": "Middleware",
+        "x": 825,
+        "y": 100,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     },
     {
         "id": "sd_Tp9jNbUvUZ1kJnAn",
@@ -44,21 +70,155 @@
         "z": "ssd_mw_ws",
         "viewType": "server",
         "nodeType": "middleware",
+        "name": "",
         "methods": [],
         "origin": true,
         "editableListData": {
             "methods": [],
             "allowedHeaders": [],
-            "exposedHeaders": []
+            "exposedHeaders": [],
+            "origin": [
+                {
+                    "key": "http://localhost:4200",
+                    "rowId": "sd_XX4WLGsZucLB2P5v",
+                    "valid": true,
+                    "type": "str"
+                }
+            ]
         },
-        "showOriginToggleButton": true,
-        "credentials": false,
+        "showOriginToggleButton": false,
+        "credentials": true,
         "maxAge": "",
         "preflightContinue": false,
         "optionsSuccessStatus": "",
+        "functionName": "sd_Tp9jNbUvUZ1kJnAn",
         "category": "Global",
-        "x": 308.890625,
-        "y": 103.78125,
-        "wires": [["ssd_global_next_id"]]
+        "x": 465,
+        "y": 100,
+        "wires": [
+            [
+                "ssd_global_next_id"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_7BRkqboZYJlJ3UQW",
+        "type": "RouteMiddlewareStart",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "employeeCheck",
+        "inputs": 0,
+        "outputs": 1,
+        "category": "Middleware",
+        "x": 65,
+        "y": 260,
+        "wires": [
+            [
+                "sd_8M4RkHr9UEHCmMmq"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_MSC2jL5fDwP5pUeO",
+        "type": "Next",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "category": "Middleware",
+        "x": 525,
+        "y": 260,
+        "wires": [
+            [
+                "sd_tYiPBp4FTee0j4d5"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_tYiPBp4FTee0j4d5",
+        "type": "RouteMiddlewareEnd",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "inputs": 1,
+        "outputs": 0,
+        "category": "Middleware",
+        "x": 805,
+        "y": 260,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_8M4RkHr9UEHCmMmq",
+        "type": "employee_pre_middleware:employeeCheckMiddleware",
+        "z": "ssd_mw_ws",
+        "name": "employee_pre_middleware:employeeCheckMiddleware",
+        "inputs": 1,
+        "outputs": 1,
+        "category": "Service",
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "sd_MSC2jL5fDwP5pUeO"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
+    },
+    {
+        "id": "sd_Q1qrnpK4gblwWpG8",
+        "type": "GlobalMongoSession",
+        "z": "ssd_mw_ws",
+        "viewType": "server",
+        "nodeType": "middleware",
+        "name": "",
+        "cookieDomain": "",
+        "cookieSecure": false,
+        "cookieExpires": "",
+        "cookieHttpOnly": true,
+        "cookieMaxAge": "3600000",
+        "cookiePath": "",
+        "cookieSameSite": "\"lax\"",
+        "proxy": false,
+        "resave": true,
+        "rolling": false,
+        "saveUninitialized": false,
+        "secret": "\"secret\"",
+        "dbConnectionName": "mongodb_0",
+        "unset": "keep",
+        "autoremove": "native",
+        "db": "sd_qYoT2PgM4f1tomGX",
+        "store": "db",
+        "autoremoveInterval": "",
+        "functionName": "sd_Q1qrnpK4gblwWpG8",
+        "category": "Global",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "sd_Tp9jNbUvUZ1kJnAn"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "secret": {
+                "type": "str",
+                "value": "secret",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true
     }
 ]

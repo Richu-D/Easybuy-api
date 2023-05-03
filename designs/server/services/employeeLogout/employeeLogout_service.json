@@ -1,0 +1,95 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_lAeWa0tygE9cdTuP",
+        "type": "tab",
+        "createdDate": "2023-05-03T08:04:13.898Z",
+        "label": "employeeLogout_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "employeeLogout_service",
+        "relativeParentPath": "employeeLogout"
+    },
+    {
+        "id": "sd_dLgBsYlsMCALI8Ve",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_lAeWa0tygE9cdTuP",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "employeeLogoutStart",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "employeeLogoutStart",
+        "category": "General",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "sd_dYtp1MbFDeJflxYE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "employeeLogout_service"
+    },
+    {
+        "id": "sd_qXsHbqZONWSIIofC",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_lAeWa0tygE9cdTuP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n   statusCode:200,\n   message:'EMPLOYEE_LOG_OUT'\n}\n",
+        "functionName": "sd_qXsHbqZONWSIIofC",
+        "category": "Function",
+        "x": 525,
+        "y": 140,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogout_service",
+        "generated": true
+    },
+    {
+        "id": "sd_dYtp1MbFDeJflxYE",
+        "type": "Session",
+        "z": "SSD_SERVICE_ID_sd_lAeWa0tygE9cdTuP",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "operationType": "destroy",
+        "data": "",
+        "resultMapping": "bh",
+        "dataMapping": "bh",
+        "functionName": "sd_dYtp1MbFDeJflxYE",
+        "category": "HTTP",
+        "x": 300,
+        "y": 140,
+        "wires": [
+            [
+                "sd_qXsHbqZONWSIIofC"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "dataMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogout_service",
+        "generated": true
+    }
+]

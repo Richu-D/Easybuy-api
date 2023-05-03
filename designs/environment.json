@@ -14,7 +14,9 @@
             "webAppMountpoint": "both",
             "CLOCK_TOLERANCE": "server",
             "NGFORAGE_MOBILE_DRIVER": "client",
-            "MONGO_URL": "server"
+            "MONGO_URL": "server",
+            "ADMIN_EMAIL": "server",
+            "ADMIN_PASSWORD": "server"
         }
     },
     "dev": {
@@ -32,7 +34,9 @@
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
-            "MONGO_URL": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority"
+            "MONGO_URL": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority",
+            "ADMIN_EMAIL": "admin@gmail.com",
+            "ADMIN_PASSWORD": "admin"
         }
     },
     "prod": {
@@ -50,7 +54,9 @@
             "webAppMountpoint": "web",
             "CLOCK_TOLERANCE": "5",
             "NGFORAGE_MOBILE_DRIVER": "INDEXED_DB",
-            "MONGO_URL": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority"
+            "MONGO_URL": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority",
+            "ADMIN_EMAIL": "admin@gmail.com",
+            "ADMIN_PASSWORD": "admin"
         }
     }
 }

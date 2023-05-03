@@ -6,8 +6,16 @@ export default {
     logFile: 'logs/console.log',
   },
   middlewares: {
-    pre: [{ __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' }],
+    pre: [
+      { __ssdGlobalMiddlewares__: 'sd_Q1qrnpK4gblwWpG8' },
+      { __ssdGlobalMiddlewares__: 'sd_Tp9jNbUvUZ1kJnAn' },
+    ],
     post: [],
-    sequences: {},
+    sequences: {
+      employeeCheck: {
+        pre: [{ employee_pre_middleware: 'employeeCheckMiddleware' }],
+        post: [],
+      },
+    },
   },
 };
