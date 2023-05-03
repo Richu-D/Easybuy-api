@@ -17,7 +17,7 @@ import { TracerService } from '../../services/TracerService'; //_splitter_
 import { MongoPersistance } from '../../utils/ndefault-mongodb/Mongodb/MongoPersistance'; //_splitter_
 import * as mongodb from 'mongodb'; //_splitter_
 //append_imports_end
-export class employeeLogin_service {
+export class getAUser_service {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -33,7 +33,7 @@ export class employeeLogin_service {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'employeeLogin_service';
+    this.serviceName = 'getAUser_service';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -48,7 +48,7 @@ export class employeeLogin_service {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new employeeLogin_service(
+      instance = new getAUser_service(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -82,174 +82,100 @@ export class employeeLogin_service {
 
   async mountTimers() {
     try {
-      //appendnew_flow_employeeLogin_service_TimerStart
+      //appendnew_flow_getAUser_service_TimerStart
     } catch (e) {
       throw e;
     }
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: employeeLogin_service');
+    log.debug('mounting all middlewares for service :: getAUser_service');
 
-    //appendnew_flow_employeeLogin_service_MiddlewareStart
+    //appendnew_flow_getAUser_service_MiddlewareStart
   }
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: employeeLogin_service');
-    //appendnew_flow_employeeLogin_service_HttpIn
+    log.debug('mounting all paths for service :: getAUser_service');
+    //appendnew_flow_getAUser_service_HttpIn
   }
-  //   service flows_employeeLogin_service
+  //   service flows_getAUser_service
 
-  async employeeLoginStart(parentSpanInst, bh) {
+  async sd_uc90oALL4XbIi13s(parentSpanInst, bh) {
     const spanInst = this.tracerService.createSpan(
-      'employeeLoginStart',
+      'sd_uc90oALL4XbIi13s',
       parentSpanInst
     );
     try {
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_rTxx2jEntbU5XTud(bh, parentSpanInst);
-      //appendnew_next_employeeLoginStart
+      bh = await this.sd_MgyPeqnGfpiWXMpD(bh, parentSpanInst);
+      //appendnew_next_sd_uc90oALL4XbIi13s
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_6WucQmrOLZVw2f4R',
+        'sd_uc90oALL4XbIi13s',
         spanInst,
-        'employeeLoginStart'
+        'sd_uc90oALL4XbIi13s'
       );
     }
   }
 
-  //appendnew_flow_employeeLogin_service_start
+  //appendnew_flow_getAUser_service_start
 
-  async sd_rTxx2jEntbU5XTud(bh, parentSpanInst) {
+  async sd_MgyPeqnGfpiWXMpD(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_rTxx2jEntbU5XTud',
+      'sd_MgyPeqnGfpiWXMpD',
       parentSpanInst
     );
     try {
-      // bh.local.data={
-      //     employeeid:"easybuy007",
-      //     password:"1234"
-      // }
-      bh.local.pipeline = [
-        { $match: { employeeid: bh.input.body.employeeid } },
-      ];
+      const regex = /^\d{10}$/;
 
-      bh.local.collection = 'employees';
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_zm3c984Vx4sXY9P3(bh, parentSpanInst);
-      //appendnew_next_sd_rTxx2jEntbU5XTud
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_rTxx2jEntbU5XTud',
-        spanInst,
-        'sd_rTxx2jEntbU5XTud'
-      );
-    }
-  }
-
-  async sd_zm3c984Vx4sXY9P3(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_zm3c984Vx4sXY9P3',
-      parentSpanInst
-    );
-    try {
-      bh.local.result = await MongoPersistance.getInstance().aggregate(
-        'sd_qYoT2PgM4f1tomGX',
-        bh.local.collection,
-        bh.local.pipeline,
-        {}
-      );
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_uJjBivHwJx72wg33(bh, parentSpanInst);
-      //appendnew_next_sd_zm3c984Vx4sXY9P3
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_zm3c984Vx4sXY9P3',
-        spanInst,
-        'sd_zm3c984Vx4sXY9P3'
-      );
-    }
-  }
-
-  async sd_uJjBivHwJx72wg33(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_uJjBivHwJx72wg33',
-      parentSpanInst
-    );
-    try {
-      // console.log("res",bh.local.result[0])
-      const bcrypt = require('bcryptjs');
-
-      bh.local.isEmployee = false;
-
-      if (bh.local.result[0] === undefined) {
-        bh.local.isEmployee = '';
+      if (regex.test(bh.input.params.phone + '')) {
+        bh.local.isValid = true;
       } else {
-        if (
-          await bcrypt.compare(
-            bh.input.body.password,
-            bh.local.result[0].password
-          )
-        ) {
-          bh.local.isEmployee = true;
-        }
+        bh.local.isValid = false;
       }
+
+      console.log('shinas');
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_MqS7oTSiLUVlo4dN(bh, parentSpanInst);
-      //appendnew_next_sd_uJjBivHwJx72wg33
+      bh = await this.sd_xIZ9s71EhQTNBMaC(bh, parentSpanInst);
+      //appendnew_next_sd_MgyPeqnGfpiWXMpD
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_uJjBivHwJx72wg33',
+        'sd_MgyPeqnGfpiWXMpD',
         spanInst,
-        'sd_uJjBivHwJx72wg33'
+        'sd_MgyPeqnGfpiWXMpD'
       );
     }
   }
 
-  async sd_MqS7oTSiLUVlo4dN(bh, parentSpanInst) {
+  async sd_xIZ9s71EhQTNBMaC(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_MqS7oTSiLUVlo4dN',
+      'sd_xIZ9s71EhQTNBMaC',
       parentSpanInst
     );
     try {
       if (
         this.sdService.operators['true'](
-          bh.local.isEmployee,
+          bh.local.isValid,
           undefined,
           undefined,
           undefined
         )
       ) {
-        bh = await this.sd_ELnSjBc2E9WIyOhP(bh, parentSpanInst);
+        bh = await this.sd_xyPhDeFs5sldGnfH(bh, parentSpanInst);
       } else if (
         this.sdService.operators['false'](
-          bh.local.isEmployee,
+          bh.local.isValid,
           undefined,
           undefined,
           undefined
         )
       ) {
-        bh = await this.sd_H81lTqJRhKcMjeer(bh, parentSpanInst);
-      } else if (
-        this.sdService.operators['empty'](
-          bh.local.isEmployee,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_OrE7FtQuqwst1P0Z(bh, parentSpanInst);
+        bh = await this.sd_rfR7Qw5jyTbGJFtG(bh, parentSpanInst);
       }
       this.tracerService.sendData(spanInst, bh);
 
@@ -258,135 +184,175 @@ export class employeeLogin_service {
       return await this.errorHandler(
         bh,
         e,
-        'sd_MqS7oTSiLUVlo4dN',
+        'sd_xIZ9s71EhQTNBMaC',
         spanInst,
-        'sd_MqS7oTSiLUVlo4dN'
+        'sd_xIZ9s71EhQTNBMaC'
       );
     }
   }
 
-  async sd_ELnSjBc2E9WIyOhP(bh, parentSpanInst) {
+  async sd_xyPhDeFs5sldGnfH(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_ELnSjBc2E9WIyOhP',
+      'sd_xyPhDeFs5sldGnfH',
       parentSpanInst
     );
     try {
-      bh.local.employee = {
-        ...bh.input.body,
-      };
-
-      // console.log("session data",bh.local.employee)
+      bh.local.findQuery = { mobile: bh.input.params.phone };
+      bh.local.collection = 'customer';
+      console.log(bh.local.findQuery);
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_Ztsz0UI767ZGJmXa(bh, parentSpanInst);
-      //appendnew_next_sd_ELnSjBc2E9WIyOhP
+      bh = await this.sd_SoccYjm5xLwOd7Ab(bh, parentSpanInst);
+      //appendnew_next_sd_xyPhDeFs5sldGnfH
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_ELnSjBc2E9WIyOhP',
+        'sd_xyPhDeFs5sldGnfH',
         spanInst,
-        'sd_ELnSjBc2E9WIyOhP'
+        'sd_xyPhDeFs5sldGnfH'
       );
     }
   }
 
-  async sd_Ztsz0UI767ZGJmXa(bh, parentSpanInst) {
+  async sd_SoccYjm5xLwOd7Ab(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_Ztsz0UI767ZGJmXa',
+      'sd_SoccYjm5xLwOd7Ab',
       parentSpanInst
     );
     try {
-      let requestObject = bh.web.req;
-      if (requestObject.session) {
-        requestObject.session.data = bh.local.employee;
+      bh.local.result = await MongoPersistance.getInstance().find(
+        'sd_qYoT2PgM4f1tomGX',
+        bh.local.collection,
+        bh.local.findQuery,
+        {}
+      );
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_9feZyjuluseTpBG4(bh, parentSpanInst);
+      //appendnew_next_sd_SoccYjm5xLwOd7Ab
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_SoccYjm5xLwOd7Ab',
+        spanInst,
+        'sd_SoccYjm5xLwOd7Ab'
+      );
+    }
+  }
+
+  async sd_9feZyjuluseTpBG4(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_9feZyjuluseTpBG4',
+      parentSpanInst
+    );
+    try {
+      let otherwiseFlag = true;
+      if (
+        this.sdService.operators['gt'](
+          bh.local.result,
+          '0',
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_wAksi2odnymCmFw8(bh, parentSpanInst);
+        otherwiseFlag = false;
+      }
+      if (
+        this.sdService.operators['else'](
+          otherwiseFlag,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_CpHaFMjv5E1NzdwZ(bh, parentSpanInst);
+        otherwiseFlag = false;
       }
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_5F0HOY5oGC4RlE7j(bh, parentSpanInst);
-      //appendnew_next_sd_Ztsz0UI767ZGJmXa
+
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_Ztsz0UI767ZGJmXa',
+        'sd_9feZyjuluseTpBG4',
         spanInst,
-        'sd_Ztsz0UI767ZGJmXa'
+        'sd_9feZyjuluseTpBG4'
       );
     }
   }
 
-  async sd_5F0HOY5oGC4RlE7j(bh, parentSpanInst) {
+  async sd_wAksi2odnymCmFw8(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_5F0HOY5oGC4RlE7j',
+      'sd_wAksi2odnymCmFw8',
       parentSpanInst
     );
     try {
-      let { password, ...data } = bh.local.result[0];
-
       bh.local.response = {
         statusCode: 200,
-        message: 'EMPLOYEE_LOGED_IN',
-        data,
+        message: bh.local.result,
       };
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_5F0HOY5oGC4RlE7j
+      //appendnew_next_sd_wAksi2odnymCmFw8
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_5F0HOY5oGC4RlE7j',
+        'sd_wAksi2odnymCmFw8',
         spanInst,
-        'sd_5F0HOY5oGC4RlE7j'
+        'sd_wAksi2odnymCmFw8'
       );
     }
   }
 
-  async sd_H81lTqJRhKcMjeer(bh, parentSpanInst) {
+  async sd_CpHaFMjv5E1NzdwZ(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_H81lTqJRhKcMjeer',
+      'sd_CpHaFMjv5E1NzdwZ',
       parentSpanInst
     );
     try {
       bh.local.response = {
-        statusCode: 401,
-        message: 'INCORRECT_PASSWORD',
+        statusCode: 400,
+        message: 'no result found',
       };
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_H81lTqJRhKcMjeer
+      //appendnew_next_sd_CpHaFMjv5E1NzdwZ
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_H81lTqJRhKcMjeer',
+        'sd_CpHaFMjv5E1NzdwZ',
         spanInst,
-        'sd_H81lTqJRhKcMjeer'
+        'sd_CpHaFMjv5E1NzdwZ'
       );
     }
   }
 
-  async sd_OrE7FtQuqwst1P0Z(bh, parentSpanInst) {
+  async sd_rfR7Qw5jyTbGJFtG(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_OrE7FtQuqwst1P0Z',
+      'sd_rfR7Qw5jyTbGJFtG',
       parentSpanInst
     );
     try {
       bh.local.response = {
-        statusCode: 404,
-        message: 'EMPLOYEE_NOT_FOUND',
+        statusCode: 400,
+        message: 'number is  not valid',
       };
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_OrE7FtQuqwst1P0Z
+      //appendnew_next_sd_rfR7Qw5jyTbGJFtG
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_OrE7FtQuqwst1P0Z',
+        'sd_rfR7Qw5jyTbGJFtG',
         spanInst,
-        'sd_OrE7FtQuqwst1P0Z'
+        'sd_rfR7Qw5jyTbGJFtG'
       );
     }
   }
@@ -412,5 +378,5 @@ export class employeeLogin_service {
       }
     }
   }
-  //appendnew_flow_employeeLogin_service_Catch
+  //appendnew_flow_getAUser_service_Catch
 }

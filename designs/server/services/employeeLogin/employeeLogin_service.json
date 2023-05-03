@@ -203,7 +203,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.response={\n    statusCode:200,\n    message:'EMPLOYEE_LOGED_IN'\n}",
+        "script": "let  {password,...data}=bh.local.result[0]\n    \n\nbh.local.response={\n    statusCode:200,\n    message:'EMPLOYEE_LOGED_IN',\n    data\n}",
         "functionName": "sd_5F0HOY5oGC4RlE7j",
         "category": "Function",
         "x": 825,
