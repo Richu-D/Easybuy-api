@@ -292,7 +292,7 @@ export class api {
           customer: {
             name: 'Gaurav Kumar',
             email: 'muhammedrishal025@gmail.com',
-            contact: '+919353883653',
+            contact: '+918590265058',
           },
           notify: {
             sms: true,
