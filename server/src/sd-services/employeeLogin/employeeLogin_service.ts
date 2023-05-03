@@ -322,9 +322,12 @@ export class employeeLogin_service {
       parentSpanInst
     );
     try {
+      let { password, ...data } = bh.local.result;
+
       bh.local.response = {
         statusCode: 200,
         message: 'EMPLOYEE_LOGED_IN',
+        data,
       };
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_5F0HOY5oGC4RlE7j
