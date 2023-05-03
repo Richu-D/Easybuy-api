@@ -1,0 +1,14 @@
+[
+    {
+        "type": "tab",
+        "id": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "disabled": false,
+        "info": "",
+        "label": "addProduct_service",
+        "createdDate": "2023-05-03T09:46:27.238Z",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "addProduct_service",
+        "relativeParentPath": "adminAddProduct"
+    }
+]
