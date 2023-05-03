@@ -322,7 +322,7 @@ export class employeeLogin_service {
       parentSpanInst
     );
     try {
-      let { password, ...data } = bh.local.result;
+      let { password, ...data } = bh.local.result[0];
 
       bh.local.response = {
         statusCode: 200,

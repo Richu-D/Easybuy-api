@@ -303,11 +303,13 @@ export class getAProduct_service {
         price: product.price,
         description: product.description,
         image: imageData,
+        weight: product.gram,
+        category: product.category,
       };
 
       bh.local.response = {
         statusCode: 200,
-        message: resp,
+        result: resp,
       };
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_ofD4dHIVyaDDqQAY

@@ -257,7 +257,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "const product = bh.local.result[0]\n const imageData = {\n    data: product.image[0].buffer.toString('base64'),\n    contentType: product.image[0].mimetype\n  };\n\n  const resp = {\n    id: product._id,\n    name: product.name,\n    price: product.price,\n    description: product.description,\n    image: imageData\n  }\n\nbh.local.response={\n    statusCode:200,\n    message:resp\n}",
+        "script": "const product = bh.local.result[0]\n const imageData = {\n    data: product.image[0].buffer.toString('base64'),\n    contentType: product.image[0].mimetype\n  };\n\n  const resp = {\n    id: product._id,\n    name: product.name,\n    price: product.price,\n    description: product.description,\n    image: imageData,\n    weight:product.gram,\n    category:product.category\n  }\n\nbh.local.response={\n    statusCode:200,\n    result:resp\n}",
         "functionName": "sd_ofD4dHIVyaDDqQAY",
         "category": "Function",
         "x": 940,
