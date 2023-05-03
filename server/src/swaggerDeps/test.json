@@ -1,0 +1,15 @@
+{
+    "/admin/product": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "test"
+            ]
+        }
+    }
+}

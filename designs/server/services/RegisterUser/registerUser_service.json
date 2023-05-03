@@ -1,0 +1,562 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "type": "tab",
+        "createdDate": "2023-05-03T12:58:03.112Z",
+        "label": "registerUser_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "registerUser_service",
+        "relativeParentPath": "RegisterUser"
+    },
+    {
+        "id": "sd_K9vqfyJYHSVf6Ivy",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_K9vqfyJYHSVf6Ivy",
+        "category": "General",
+        "x": 45,
+        "y": 240,
+        "wires": [
+            [
+                "sd_2Kdr5DgnV17YNSYW"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "registerUser_service"
+    },
+    {
+        "id": "sd_2Kdr5DgnV17YNSYW",
+        "type": "validate",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "erd": "_DM_lb8x2n0cj",
+        "entityId": "_EN_9qz5m7dj92",
+        "_UI_entityName": "entity_1",
+        "dbConfigId": "",
+        "validateObject": "bh.input.body",
+        "checkboxThrowError": true,
+        "resultMapping": "",
+        "functionName": "sd_2Kdr5DgnV17YNSYW",
+        "category": "Data Model",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "sd_SDJhsohmonY1V2u3"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "validateObject": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {
+            "resultMapping": true
+        },
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_xw4WW26TkPcxCrF1",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "selectedNodes": [
+            "sd_2Kdr5DgnV17YNSYW"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "sd_xw4WW26TkPcxCrF1",
+        "category": "General",
+        "x": 240,
+        "y": 360,
+        "wires": [
+            [
+                "sd_GmO6d6Amt0m1Ws4I"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "registerUser_service"
+    },
+    {
+        "id": "sd_GmO6d6Amt0m1Ws4I",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(\"[[[[[[[[]]]]]]]]]]]]\")\nbh.local.response={\n    statusCode : 400,\n    message : bh.error.error[0].message\n}",
+        "functionName": "sd_GmO6d6Amt0m1Ws4I",
+        "category": "Function",
+        "x": 240,
+        "y": 480,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_SDJhsohmonY1V2u3",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const regex = /^\\d{10}$/;\n\nif (regex.test(bh.input.body.mobile)) {\n  bh.local.isValid = true\n} else {\n  bh.local.isValid = false\n}\n\nconsole.log(\"[[[[[[[[]]]]]]]]]]]]\")",
+        "functionName": "sd_SDJhsohmonY1V2u3",
+        "category": "Function",
+        "x": 380,
+        "y": 240,
+        "wires": [
+            [
+                "sd_lJVSLL1f5FRZkTBm"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_lJVSLL1f5FRZkTBm",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_lJVSLL1f5FRZkTBm",
+        "category": "Function",
+        "x": 480,
+        "y": 240,
+        "wires": [
+            [
+                "sd_cSTxACH88fN05zvO"
+            ],
+            [
+                "sd_VIqTsYOXdHQtaSVO"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_VIqTsYOXdHQtaSVO",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"number is  not valid\"\n}",
+        "functionName": "sd_VIqTsYOXdHQtaSVO",
+        "category": "Function",
+        "x": 600,
+        "y": 320,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_cSTxACH88fN05zvO",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.isValid=true\nif(!bh.input.body.name){\n    bh.local.isValid = false\n}",
+        "functionName": "sd_cSTxACH88fN05zvO",
+        "category": "Function",
+        "x": 600,
+        "y": 140,
+        "wires": [
+            [
+                "sd_qhsYYIje6J8mX3ya"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_qhsYYIje6J8mX3ya",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_qhsYYIje6J8mX3ya",
+        "category": "Function",
+        "x": 725,
+        "y": 140,
+        "wires": [
+            [
+                "sd_sbplKljsB7649gGx"
+            ],
+            [
+                "sd_P5nEoVHLNCg3D6yU"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_P5nEoVHLNCg3D6yU",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": " bh.local.response={\n        statusCode:400,\n        message:\"must need name field\"\n    }",
+        "functionName": "sd_P5nEoVHLNCg3D6yU",
+        "category": "Function",
+        "x": 840,
+        "y": 60,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_sbplKljsB7649gGx",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.findQuery = {mobile:bh.input.body.mobile}\nbh.local.collection = \"customer\"",
+        "functionName": "sd_sbplKljsB7649gGx",
+        "category": "Function",
+        "x": 845,
+        "y": 220,
+        "wires": [
+            [
+                "sd_jOapHpGpHFy6sayd"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_jOapHpGpHFy6sayd",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_jOapHpGpHFy6sayd",
+        "category": "Storage",
+        "x": 985,
+        "y": 220,
+        "wires": [
+            [
+                "sd_hTvZaV8PYFaOHNTF"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_hTvZaV8PYFaOHNTF",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "result.length",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.result.length",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_hTvZaV8PYFaOHNTF",
+        "category": "Function",
+        "x": 1140,
+        "y": 220,
+        "wires": [
+            [
+                "sd_gtRHBFqnyUMj4WtR"
+            ],
+            [
+                "sd_5xptnClI1g6YGbw1"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_gtRHBFqnyUMj4WtR",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode : 400,\n    message : \"user already with name\" + bh.local.result[0].name +\"exists\"\n}",
+        "functionName": "sd_gtRHBFqnyUMj4WtR",
+        "category": "Function",
+        "x": 1260,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_5xptnClI1g6YGbw1",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.collection = \"customer\"\nbh.input.body.useCoupons=[]\n\n",
+        "functionName": "sd_5xptnClI1g6YGbw1",
+        "category": "Function",
+        "x": 1265,
+        "y": 300,
+        "wires": [
+            [
+                "sd_JmeMff8dRAdDRyXY"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_P1EQMHpWKx8wQcaZ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:bh.local.result\n  }",
+        "functionName": "sd_P1EQMHpWKx8wQcaZ",
+        "category": "Function",
+        "x": 1440,
+        "y": 300,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_JmeMff8dRAdDRyXY",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.input.body",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_JmeMff8dRAdDRyXY",
+        "category": "Storage",
+        "x": 1360,
+        "y": 300,
+        "wires": [
+            [
+                "sd_P1EQMHpWKx8wQcaZ"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "registerUser_service",
+        "generated": true
+    }
+]

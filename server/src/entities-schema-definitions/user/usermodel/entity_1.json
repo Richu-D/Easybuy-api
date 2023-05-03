@@ -1,0 +1,43 @@
+{
+    "name": "entity_1",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "id": "_EN_9qz5m7dj92",
+    "y": 103,
+    "properties": {
+        "name": {
+            "name": "name",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_xmbz84w8g5",
+                "nullable": false
+            }
+        },
+        "mobile": {
+            "name": "mobile",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_uq7w2vtq2h",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        }
+    },
+    "required": [
+        "mobile"
+    ],
+    "value": "",
+    "x": 157,
+    "userList": {
+        "SSD_SERVICE_ID_sd_bZU7Vj7Ltc7cfnhY": [
+            "sd_2Kdr5DgnV17YNSYW"
+        ]
+    }
+}

@@ -1,14 +1,407 @@
 [
     {
-        "type": "tab",
         "id": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "type": "tab",
+        "createdDate": "2023-05-03T09:46:27.238Z",
+        "label": "addProduct_service",
         "disabled": false,
         "info": "",
-        "label": "addProduct_service",
-        "createdDate": "2023-05-03T09:46:27.238Z",
         "functionSeq": 0,
         "generateNext": true,
         "serviceName": "addProduct_service",
         "relativeParentPath": "adminAddProduct"
+    },
+    {
+        "id": "sd_C4K7yVlBWTkyDi0x",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_C4K7yVlBWTkyDi0x",
+        "category": "General",
+        "x": 165,
+        "y": 260,
+        "wires": [
+            [
+                "sd_2VlY1gvnXtHOebBw"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "addProduct_service"
+    },
+    {
+        "id": "sd_2VlY1gvnXtHOebBw",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.isImage = bh.input.files?.image\nconsole.log(bh.input)",
+        "functionName": "sd_2VlY1gvnXtHOebBw",
+        "category": "Function",
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "sd_mTUX2NmKcEhegym8"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_mTUX2NmKcEhegym8",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isImage",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isImage",
+        "rules": [
+            {
+                "t": "else"
+            },
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_mTUX2NmKcEhegym8",
+        "category": "Function",
+        "x": 485,
+        "y": 260,
+        "wires": [
+            [
+                "sd_BsdnO1vdnlj542Mi"
+            ],
+            [
+                "sd_jZleK088QykB3kgs"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_jZleK088QykB3kgs",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nbh.local.response={\n    statusCode : 400,\n    message : \"must need image\"\n}",
+        "functionName": "sd_jZleK088QykB3kgs",
+        "category": "Function",
+        "x": 640,
+        "y": 140,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_BsdnO1vdnlj542Mi",
+        "type": "validate",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "erd": "_DM_vm8jywvzs",
+        "entityId": "_EN_psnsdlfz8t",
+        "_UI_entityName": "entity_1",
+        "dbConfigId": "",
+        "validateObject": "bh.input.body",
+        "checkboxThrowError": true,
+        "resultMapping": "",
+        "functionName": "sd_BsdnO1vdnlj542Mi",
+        "category": "Data Model",
+        "x": 645,
+        "y": 360,
+        "wires": [
+            [
+                "sd_QtpqGHnGhOHUbhk0"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "validateObject": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {
+            "resultMapping": true
+        },
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_QtpqGHnGhOHUbhk0",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.isValid = true\nif(!bh.input.body.name){\n  bh.local.isValid=false\n  bh.local.message=\"empty field name\"\n}else if(!bh.input.body.gram){\n  bh.local.isValid=false\n  bh.local.message=\"empty field price\"\n}else if(!bh.input.body.description){\n  bh.local.isValid=false\n bh.local.message=\"empty field description\"\n}else if(!bh.input.body.category){\n    bh.local.isValid=false\n bh.local.message=\"empty field category\"\n}",
+        "functionName": "sd_QtpqGHnGhOHUbhk0",
+        "category": "Function",
+        "x": 800,
+        "y": 360,
+        "wires": [
+            [
+                "sd_rb0bQt43usUv6aG7"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Wgg3iAiMLiETzP54",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "selectedNodes": [
+            "sd_BsdnO1vdnlj542Mi"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "sd_Wgg3iAiMLiETzP54",
+        "category": "General",
+        "x": 645,
+        "y": 480,
+        "wires": [
+            [
+                "sd_eReSr4m4ZRMMVyTr"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "addProduct_service"
+    },
+    {
+        "id": "sd_eReSr4m4ZRMMVyTr",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode : 400,\n    message : bh.error.error[0].message\n}",
+        "functionName": "sd_eReSr4m4ZRMMVyTr",
+        "category": "Function",
+        "x": 645,
+        "y": 600,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_rb0bQt43usUv6aG7",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_rb0bQt43usUv6aG7",
+        "category": "Function",
+        "x": 925,
+        "y": 360,
+        "wires": [
+            [
+                "sd_9ThPGk4VAORjNTBo"
+            ],
+            [
+                "sd_4lUj9DXgwQB1jSSZ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_4lUj9DXgwQB1jSSZ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode : 400,\n    message : bh.local.message\n}",
+        "functionName": "sd_4lUj9DXgwQB1jSSZ",
+        "category": "Function",
+        "x": 1060,
+        "y": 240,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_khoBFH8EWsG4uodr",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.input.body",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_khoBFH8EWsG4uodr",
+        "category": "Storage",
+        "x": 1245,
+        "y": 500,
+        "wires": [
+            [
+                "sd_mfucgqMZPb1pM0Wa"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_9ThPGk4VAORjNTBo",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const axios = require('axios');\n\nbh.local.findQuery = {\"name\":bh.input.body.name}\nconst key = bh.input.body.category\nbh.local.collection = \"product\"\nbh.input.body.image = bh.input.files.image\nconst api = \"https://api.exchangerate-api.com/v4/latest/USD\";\nconst metalpriceapi = \"https://api.metals.live/v1/spot\"\n\nlet metalprice = await axios.get(metalpriceapi)\n\n\n\nlet currency = await axios.get(api)\n\n\n \n    const result = metalprice.data.find(obj => obj.hasOwnProperty(key));\n    const price = result[key]\n    let fromRate = currency.data.rates.USD;\n    let toRate = currency.data.rates.INR;\n    let convertedPrice =\n        (((toRate / fromRate) * price).toFixed(2))/31.1035;\n        bh.input.body.price = convertedPrice*bh.input.body.gram\n\n        console.log(bh.input.body)",
+        "functionName": "sd_9ThPGk4VAORjNTBo",
+        "category": "Function",
+        "x": 1065,
+        "y": 500,
+        "wires": [
+            [
+                "sd_khoBFH8EWsG4uodr"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
+    },
+    {
+        "id": "sd_mfucgqMZPb1pM0Wa",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:bh.local.result\n  }",
+        "functionName": "sd_mfucgqMZPb1pM0Wa",
+        "category": "Function",
+        "x": 1405,
+        "y": 500,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "addProduct_service",
+        "generated": true
     }
 ]

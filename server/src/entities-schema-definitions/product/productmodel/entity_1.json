@@ -1,0 +1,82 @@
+{
+    "name": "entity_1",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "id": "_EN_psnsdlfz8t",
+    "y": 104,
+    "properties": {
+        "id": {
+            "name": "id",
+            "format": "",
+            "type": "number",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_9fsni75tol",
+                "nullable": false
+            }
+        },
+        "name": {
+            "name": "name",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_c5fgbuv3hq",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        },
+        "gram": {
+            "name": "gram",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_r3ln8bi82z",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        },
+        "description": {
+            "name": "description",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_5winlcuf9n",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        },
+        "category": {
+            "name": "category",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_5pgd2ixlxq",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        }
+    },
+    "required": [
+        "name",
+        "gram",
+        "description",
+        "category"
+    ],
+    "value": "",
+    "x": 140,
+    "userList": {
+        "SSD_SERVICE_ID_sd_xbNeNUCGJ7jhR2iZ": [
+            "sd_BsdnO1vdnlj542Mi"
+        ]
+    }
+}

@@ -1,0 +1,293 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "type": "tab",
+        "createdDate": "2023-05-03T13:29:59.026Z",
+        "label": "getAUser_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "getAUser_service",
+        "relativeParentPath": "getAUser"
+    },
+    {
+        "id": "sd_uc90oALL4XbIi13s",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_uc90oALL4XbIi13s",
+        "category": "General",
+        "x": 180,
+        "y": 300,
+        "wires": [
+            [
+                "sd_MgyPeqnGfpiWXMpD"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "getAUser_service"
+    },
+    {
+        "id": "sd_MgyPeqnGfpiWXMpD",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const regex = /^\\d{10}$/;\n\nif (regex.test(bh.input.params.phone+\"\")) {\n  bh.local.isValid = true\n} else {\n  bh.local.isValid = false\n}\n\nconsole.log('shinas')",
+        "functionName": "sd_MgyPeqnGfpiWXMpD",
+        "category": "Function",
+        "x": 300,
+        "y": 300,
+        "wires": [
+            [
+                "sd_xIZ9s71EhQTNBMaC"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_xIZ9s71EhQTNBMaC",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_xIZ9s71EhQTNBMaC",
+        "category": "Function",
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "sd_xyPhDeFs5sldGnfH"
+            ],
+            [
+                "sd_rfR7Qw5jyTbGJFtG"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_xyPhDeFs5sldGnfH",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.findQuery = {mobile:bh.input.params.phone}\nbh.local.collection = \"customer\"\nconsole.log(bh.local.findQuery)",
+        "functionName": "sd_xyPhDeFs5sldGnfH",
+        "category": "Function",
+        "x": 545,
+        "y": 180,
+        "wires": [
+            [
+                "sd_SoccYjm5xLwOd7Ab"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_rfR7Qw5jyTbGJFtG",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"number is  not valid\"\n}",
+        "functionName": "sd_rfR7Qw5jyTbGJFtG",
+        "category": "Function",
+        "x": 545,
+        "y": 420,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_SoccYjm5xLwOd7Ab",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_SoccYjm5xLwOd7Ab",
+        "category": "Storage",
+        "x": 685,
+        "y": 180,
+        "wires": [
+            [
+                "sd_9feZyjuluseTpBG4"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_9feZyjuluseTpBG4",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "result",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.result",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_9feZyjuluseTpBG4",
+        "category": "Function",
+        "x": 840,
+        "y": 180,
+        "wires": [
+            [
+                "sd_wAksi2odnymCmFw8"
+            ],
+            [
+                "sd_CpHaFMjv5E1NzdwZ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_wAksi2odnymCmFw8",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:bh.local.result\n}",
+        "functionName": "sd_wAksi2odnymCmFw8",
+        "category": "Function",
+        "x": 940,
+        "y": 100,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    },
+    {
+        "id": "sd_CpHaFMjv5E1NzdwZ",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:400,\n    message:\"no result found\"\n}",
+        "functionName": "sd_CpHaFMjv5E1NzdwZ",
+        "category": "Function",
+        "x": 945,
+        "y": 240,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "getAUser_service",
+        "generated": true
+    }
+]

@@ -1,0 +1,15 @@
+{
+    "/product/:id": {
+        "get": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "getAProduct_api"
+            ]
+        }
+    }
+}
