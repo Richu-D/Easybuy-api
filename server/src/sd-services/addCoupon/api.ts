@@ -128,8 +128,8 @@ export class api {
       )
     );
 
-    this.app['post'](
-      `${this.serviceBasePath}/get-coupon`,
+    this.app['get'](
+      `${this.serviceBasePath}/get-coupon/:couponcode`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,

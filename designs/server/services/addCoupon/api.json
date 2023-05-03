@@ -73,7 +73,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "api",
-        "functionName": "sd_7DCGiYiRjpFOPMSo"
+        "functionName": "sd_7DCGiYiRjpFOPMSo",
+        "generated": false
     },
     {
         "id": "sd_tMbBmJO4QaWMh6BI",
@@ -263,7 +264,8 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "api"
+        "serviceName": "api",
+        "generated": false
     },
     {
         "id": "sd_I8koTTun8xQ5pQbD",
@@ -313,6 +315,7 @@
             "send": "bh.local.errMsg"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -345,11 +348,11 @@
         "viewType": "server",
         "nodeType": "start",
         "name": "getCoupon",
-        "path": "/get-coupon",
+        "path": "/get-coupon/:couponcode",
         "uploadpath": "",
         "summary": "",
         "description": "",
-        "method": "post",
+        "method": "get",
         "sequenceId": "",
         "consumes": "",
         "produces": "",
@@ -399,7 +402,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "api",
-        "functionName": "sd_qaUHLndtgXtStQQK"
+        "functionName": "sd_qaUHLndtgXtStQQK",
+        "generated": false
     },
     {
         "id": "sd_MwWWrR8nyPJcmZSj",
@@ -443,9 +447,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
+        "generated": true,
         "generateNext": false,
-        "serviceName": "api",
-        "generated": true
+        "serviceName": "api"
     },
     {
         "id": "sd_qImlhKm6xflrRiyO",
@@ -473,6 +477,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",

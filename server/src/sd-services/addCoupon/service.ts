@@ -296,7 +296,7 @@ export class service {
     try {
       console.log(bh.input.body);
       bh.local.collection = 'coupon';
-      bh.local.query = { couponcode: bh.input.body.couponcode };
+      bh.local.query = { couponcode: bh.input.params.couponcode };
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_YZ66ONsANHVc42aA(bh, parentSpanInst);
       //appendnew_next_sd_Hn4f11OXaprIsdOE
@@ -435,7 +435,7 @@ export class service {
     );
     try {
       bh.local.response = {
-        response: bh.local.couponData,
+        response: bh.local.couponData[0],
         statusCode: 200,
       };
       this.tracerService.sendData(spanInst, bh);

@@ -19,8 +19,8 @@
             ]
         }
     },
-    "/get-coupon": {
-        "post": {
+    "/get-coupon/:couponcode": {
+        "get": {
             "summary": "",
             "description": "",
             "consumes": [],
