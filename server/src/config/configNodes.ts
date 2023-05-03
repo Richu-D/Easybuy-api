@@ -8,7 +8,7 @@ export default {
             "dbOption": {
                 "name": "mongodb_0",
                 "type": "mongodb",
-                "url": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority",
+                "url": process.env.MONGO_URL,
                 "options": ""
             },
             "disabledb": false,
@@ -49,7 +49,7 @@ export default {
             "oracle_synchronize": false,
             "mongodb_name": "mongodb_0",
             "mongodb_type": "mongodb",
-            "mongodb_url": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority",
+            "mongodb_url": process.env.MONGO_URL,
             "mongodb_options": "",
             "mysql_name": "mongodb_0",
             "mysql_type": "mongodb",
@@ -218,8 +218,8 @@ export default {
                     "value": false
                 },
                 "mongodb_url": {
-                    "type": "str",
-                    "value": "mongodb+srv://rishal:rishal025@cluster0.vsljsdc.mongodb.net/easybuy?retryWrites=true&w=majority"
+                    "type": "server_env",
+                    "value": "MONGO_URL"
                 },
                 "mongodb_options": {
                     "type": "str",

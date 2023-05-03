@@ -1,0 +1,166 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_JBSoGI8HE5Fr9gcq",
+        "type": "tab",
+        "createdDate": "2023-05-03T07:45:45.278Z",
+        "label": "employeeLogin_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "employeeLogin_api",
+        "relativeParentPath": "employeeLogin"
+    },
+    {
+        "id": "sd_zxCT0DK7moJQ2Zhv",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_JBSoGI8HE5Fr9gcq",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "employeeLogin",
+        "path": "/employee/login",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 145,
+        "y": 160,
+        "wires": [
+            [
+                "sd_KwxavTpf3DEVqNGE"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "employeeLogin_api",
+        "functionName": "sd_zxCT0DK7moJQ2Zhv"
+    },
+    {
+        "id": "sd_iS67VT5Pc0CRXJKz",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_JBSoGI8HE5Fr9gcq",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "cookies": [],
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_iS67VT5Pc0CRXJKz",
+        "category": "HTTP",
+        "x": 465,
+        "y": 160,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_api",
+        "generated": true
+    },
+    {
+        "id": "sd_KwxavTpf3DEVqNGE",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_JBSoGI8HE5Fr9gcq",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+            "type": "tab",
+            "createdDate": "2023-05-03T07:46:16.936Z",
+            "label": "employeeLogin_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_6WucQmrOLZVw2f4R",
+            "flowName": "employeeLoginStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./employeeLogin_service",
+        "startName": "employeeLoginStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_KwxavTpf3DEVqNGE",
+        "category": "General",
+        "x": 305,
+        "y": 160,
+        "wires": [
+            [
+                "sd_iS67VT5Pc0CRXJKz"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_api",
+        "generated": true
+    }
+]

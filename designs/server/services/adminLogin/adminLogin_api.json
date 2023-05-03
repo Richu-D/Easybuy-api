@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_7PEQ6IKkw8FKDYw7",
+        "type": "tab",
+        "createdDate": "2023-05-03T08:27:14.966Z",
+        "label": "adminLogin_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "adminLogin_api",
+        "relativeParentPath": "adminLogin"
+    },
+    {
+        "id": "sd_JQeiqgytdKaG4ldQ",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_7PEQ6IKkw8FKDYw7",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/admin/login",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "sd_qnc3r5qPc3KtMTqs"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "adminLogin_api",
+        "functionName": "sd_JQeiqgytdKaG4ldQ"
+    },
+    {
+        "id": "sd_NKy5p9G3ZSmYv3Sw",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_7PEQ6IKkw8FKDYw7",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_NKy5p9G3ZSmYv3Sw",
+        "category": "HTTP",
+        "x": 500,
+        "y": 160,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminLogin_api",
+        "generated": true
+    },
+    {
+        "id": "sd_qnc3r5qPc3KtMTqs",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_7PEQ6IKkw8FKDYw7",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_oZYnKtIC90NGL7Si",
+            "type": "tab",
+            "createdDate": "2023-05-03T08:27:37.410Z",
+            "label": "adminLogin_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_zwdzAAt98VdNJNc5",
+            "flowName": "adminLoginStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./adminLogin_service",
+        "startName": "adminLoginStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_qnc3r5qPc3KtMTqs",
+        "category": "General",
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "sd_NKy5p9G3ZSmYv3Sw"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "adminLogin_api",
+        "generated": true
+    }
+]

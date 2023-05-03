@@ -1,0 +1,166 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_6ZMBFIN51dlDTZmq",
+        "type": "tab",
+        "createdDate": "2023-05-03T08:03:39.791Z",
+        "label": "employeeLogout_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "employeeLogout_api",
+        "relativeParentPath": "employeeLogout"
+    },
+    {
+        "id": "sd_oeRwJ4cHfY3y9Fyx",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_6ZMBFIN51dlDTZmq",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/employee/logout",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "sd_qHkEeu5C2BiL3n8z"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "employeeLogout_api",
+        "functionName": "sd_oeRwJ4cHfY3y9Fyx",
+        "generated": false
+    },
+    {
+        "id": "sd_JatiRUmhVasEhjb7",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_6ZMBFIN51dlDTZmq",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "response",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "bh.local",
+            "value": "response.statusCode",
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": "bh.local.response.statusCode",
+            "obj": "bh.local.response",
+            "send": "bh.local.response"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_JatiRUmhVasEhjb7",
+        "category": "HTTP",
+        "x": 560,
+        "y": 160,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogout_api",
+        "generated": true
+    },
+    {
+        "id": "sd_qHkEeu5C2BiL3n8z",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_6ZMBFIN51dlDTZmq",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_lAeWa0tygE9cdTuP",
+            "type": "tab",
+            "createdDate": "2023-05-03T08:04:13.898Z",
+            "label": "employeeLogout_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_dLgBsYlsMCALI8Ve",
+            "flowName": "employeeLogoutStart"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./employeeLogout_service",
+        "startName": "employeeLogoutStart",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_qHkEeu5C2BiL3n8z",
+        "category": "General",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "sd_JatiRUmhVasEhjb7"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generated": true,
+        "generateNext": false,
+        "serviceName": "employeeLogout_api"
+    }
+]

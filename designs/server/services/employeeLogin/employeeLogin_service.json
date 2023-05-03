@@ -1,0 +1,322 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "type": "tab",
+        "createdDate": "2023-05-03T07:46:16.936Z",
+        "label": "employeeLogin_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "employeeLogin_service",
+        "relativeParentPath": "employeeLogin"
+    },
+    {
+        "id": "sd_6WucQmrOLZVw2f4R",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "employeeLoginStart",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "employeeLoginStart",
+        "category": "General",
+        "x": 120,
+        "y": 160,
+        "wires": [
+            [
+                "sd_rTxx2jEntbU5XTud"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "employeeLogin_service"
+    },
+    {
+        "id": "sd_rTxx2jEntbU5XTud",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// bh.local.data={\n//     employeeid:\"easybuy007\",\n//     password:\"1234\"\n// }\nbh.local.pipeline=[{$match:{employeeid:bh.input.body.employeeid}}]\n\nbh.local.collection='employees'",
+        "functionName": "sd_rTxx2jEntbU5XTud",
+        "category": "Function",
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "sd_zm3c984Vx4sXY9P3"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_zm3c984Vx4sXY9P3",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "aggregate",
+        "argumentArray": [
+            "aggregate"
+        ],
+        "aggregate": "bh.local.pipeline",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_zm3c984Vx4sXY9P3",
+        "category": "Storage",
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "sd_uJjBivHwJx72wg33"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "aggregate": {
+                "type": "bh.local",
+                "value": "pipeline",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_uJjBivHwJx72wg33",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// console.log(\"res\",bh.local.result[0])\nconst bcrypt=require('bcryptjs')\n\nbh.local.isEmployee=false\n\nif(bh.local.result[0]===undefined){\n    bh.local.isEmployee=''\n\n}else{\n    if(await bcrypt.compare(bh.input.body.password,bh.local.result[0].password)){\n        bh.local.isEmployee=true\n\n    }\n}",
+        "functionName": "sd_uJjBivHwJx72wg33",
+        "category": "Function",
+        "x": 465,
+        "y": 160,
+        "wires": [
+            [
+                "sd_MqS7oTSiLUVlo4dN"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_H81lTqJRhKcMjeer",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:401,\n    message:'INCORRECT_PASSWORD'\n}",
+        "functionName": "sd_H81lTqJRhKcMjeer",
+        "category": "Function",
+        "x": 840,
+        "y": 80,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_OrE7FtQuqwst1P0Z",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:404,\n    message:'EMPLOYEE_NOT_FOUND'\n}",
+        "functionName": "sd_OrE7FtQuqwst1P0Z",
+        "category": "Function",
+        "x": 820,
+        "y": 220,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_5F0HOY5oGC4RlE7j",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response={\n    statusCode:200,\n    message:'EMPLOYEE_LOGED_IN'\n}",
+        "functionName": "sd_5F0HOY5oGC4RlE7j",
+        "category": "Function",
+        "x": 825,
+        "y": 360,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_ELnSjBc2E9WIyOhP",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.employee={\n    ...bh.input.body\n}\n\n// console.log(\"session data\",bh.local.employee)",
+        "functionName": "sd_ELnSjBc2E9WIyOhP",
+        "category": "Function",
+        "x": 525,
+        "y": 360,
+        "wires": [
+            [
+                "sd_Ztsz0UI767ZGJmXa"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_MqS7oTSiLUVlo4dN",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isEmployee",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isEmployee",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            },
+            {
+                "t": "empty"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "functionName": "sd_MqS7oTSiLUVlo4dN",
+        "category": "Function",
+        "x": 585,
+        "y": 160,
+        "wires": [
+            [
+                "sd_ELnSjBc2E9WIyOhP"
+            ],
+            [
+                "sd_H81lTqJRhKcMjeer"
+            ],
+            [
+                "sd_OrE7FtQuqwst1P0Z"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Ztsz0UI767ZGJmXa",
+        "type": "Session",
+        "z": "SSD_SERVICE_ID_sd_taqdi2Cq0OCADEjU",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "operationType": "update",
+        "data": "",
+        "resultMapping": "bh",
+        "dataMapping": "bh.local.employee",
+        "functionName": "sd_Ztsz0UI767ZGJmXa",
+        "category": "HTTP",
+        "x": 665,
+        "y": 360,
+        "wires": [
+            [
+                "sd_5F0HOY5oGC4RlE7j"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "resultMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "dataMapping": {
+                "type": "bh.local",
+                "value": "employee",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "employeeLogin_service",
+        "generated": true
+    }
+]

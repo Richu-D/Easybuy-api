@@ -1,0 +1,58 @@
+{
+    "name": "entity_1",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "",
+    "type": "object",
+    "id": "_EN_5v2p7vodho",
+    "y": 34,
+    "properties": {
+        "name": {
+            "name": "name",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_enx72sydb7",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        },
+        "employeeid": {
+            "name": "employeeid",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_45lpu5uaty",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        },
+        "password": {
+            "name": "password",
+            "format": "",
+            "type": "string",
+            "description": "",
+            "default": "",
+            "__n__metadata__": {
+                "id": "_Att_a2xpcqaups",
+                "subCategoryType": null,
+                "nullable": false
+            }
+        }
+    },
+    "required": [
+        "name",
+        "employeeid",
+        "password"
+    ],
+    "value": "",
+    "x": 146,
+    "userList": {
+        "SSD_SERVICE_ID_sd_Te4AVcqMelS1ePBw": [
+            "sd_AhD0Z2GbwTnbhano"
+        ]
+    }
+}
