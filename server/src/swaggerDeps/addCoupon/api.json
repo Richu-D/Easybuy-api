@@ -18,5 +18,25 @@
                 "api"
             ]
         }
+    },
+    "/get-coupon": {
+        "post": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "couponCode",
+                    "description": "for getting the coupon code",
+                    "required": false
+                }
+            ],
+            "responses": {},
+            "tags": [
+                "api"
+            ]
+        }
     }
 }

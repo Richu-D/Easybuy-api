@@ -127,6 +127,38 @@ export class api {
         this.generatedMiddlewares
       )
     );
+
+    this.app['post'](
+      `${this.serviceBasePath}/get-coupon`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_MwWWrR8nyPJcmZSj(bh, parentSpanInst);
+          //appendnew_next_sd_qaUHLndtgXtStQQK
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_qaUHLndtgXtStQQK');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_api_HttpIn
   }
   //   service flows_api
@@ -248,6 +280,44 @@ export class api {
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_KzMJIJmzYSfA8y2Q');
+    }
+  }
+
+  async sd_MwWWrR8nyPJcmZSj(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_MwWWrR8nyPJcmZSj',
+      parentSpanInst
+    );
+    try {
+      const SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomFInstance: SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF.service =
+        SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF.service.getInstance();
+      bh = await SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomFInstance.getCouponService(
+        spanInst,
+        bh
+      );
+
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_qImlhKm6xflrRiyO(bh, parentSpanInst);
+      //appendnew_next_sd_MwWWrR8nyPJcmZSj
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_MwWWrR8nyPJcmZSj',
+        spanInst,
+        'sd_MwWWrR8nyPJcmZSj'
+      );
+    }
+  }
+
+  async sd_qImlhKm6xflrRiyO(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(bh.local.response.statusCode).send(bh.local.response);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_qImlhKm6xflrRiyO');
     }
   }
 

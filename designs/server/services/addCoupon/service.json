@@ -42,7 +42,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.body)\nbh.local.collection = 'coupon'\nbh.local.findCoupon = { couponcode: bh.input.body.couponcode }\n",
+        "script": "bh.local.collection = 'coupon'\nbh.local.findCoupon = { couponcode: bh.input.body.couponcode }\n",
         "functionName": "sd_plvIz0vn2Ik0QC8S",
         "category": "Function",
         "x": 205,
@@ -224,8 +224,8 @@
         "pipeline": "",
         "functionName": "sd_srmxlBZGEpdLhQ47",
         "category": "Storage",
-        "x": 725,
-        "y": 140,
+        "x": 745,
+        "y": 100,
         "wires": [
             []
         ],
@@ -257,6 +257,224 @@
                 "constant": false
             }
         },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_Qy7aGZtOIZ22Itol",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "getCouponService",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "getCouponService",
+        "category": "General",
+        "x": 85,
+        "y": 240,
+        "wires": [
+            [
+                "sd_Hn4f11OXaprIsdOE"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "service"
+    },
+    {
+        "id": "sd_Hn4f11OXaprIsdOE",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.body)\nbh.local.collection = \"coupon\"\nbh.local.query = {couponcode: bh.input.body.couponcode};",
+        "functionName": "sd_Hn4f11OXaprIsdOE",
+        "category": "Function",
+        "x": 240,
+        "y": 240,
+        "wires": [
+            [
+                "sd_YZ66ONsANHVc42aA"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_YZ66ONsANHVc42aA",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.couponData",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.query",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_YZ66ONsANHVc42aA",
+        "category": "Storage",
+        "x": 385,
+        "y": 240,
+        "wires": [
+            [
+                "sd_6CGwxr9EpJwyFpGk"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "couponData",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "query",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_m0h7RpiDZjgCHj9Y",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "noCoupon",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.noCoupon",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_m0h7RpiDZjgCHj9Y",
+        "category": "Function",
+        "x": 625,
+        "y": 240,
+        "wires": [
+            [
+                "sd_BKHbVFB953WHQDLX"
+            ],
+            [
+                "sd_jL6AQ0HFlfnlhAlo"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_6CGwxr9EpJwyFpGk",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "if(bh.local.couponData.length === 0) {\n    bh.local.noCoupon = true\n} else {\n    bh.local.noCoupon = false\n}",
+        "functionName": "sd_6CGwxr9EpJwyFpGk",
+        "category": "Function",
+        "x": 505,
+        "y": 240,
+        "wires": [
+            [
+                "sd_m0h7RpiDZjgCHj9Y"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_BKHbVFB953WHQDLX",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response = {\n    response: \"sorry! no coupon found\",\n    statusCode: 404\n}",
+        "functionName": "sd_BKHbVFB953WHQDLX",
+        "category": "Function",
+        "x": 745,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "service",
+        "generated": true
+    },
+    {
+        "id": "sd_jL6AQ0HFlfnlhAlo",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hPcHtfWB2Wb8YomF",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response = {\n    response: bh.local.couponData,\n    statusCode: 200\n}",
+        "functionName": "sd_jL6AQ0HFlfnlhAlo",
+        "category": "Function",
+        "x": 745,
+        "y": 300,
+        "wires": [
+            []
+        ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "service",
