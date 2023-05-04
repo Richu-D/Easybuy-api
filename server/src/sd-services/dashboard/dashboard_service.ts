@@ -257,8 +257,8 @@ export class dashboard_service {
 
       bh.local.response = {
         status: 200,
-        clients: bh.local.result[0].count,
-        earnings: bh.local.earningsResult[0].totalEarnings,
+        clients: bh.local.result[0]?.count,
+        earnings: bh.local.earningsResult[0]?.totalEarnings,
         gold,
         silver,
         platinum,
