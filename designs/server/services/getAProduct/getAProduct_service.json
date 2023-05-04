@@ -28,7 +28,7 @@
         "y": 240,
         "wires": [
             [
-                "sd_9SzLGIzAoGOgqa5g"
+                "sd_VpXJMowTVWH9oAus"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -46,16 +46,13 @@
         "functionName": "sd_9SzLGIzAoGOgqa5g",
         "category": "Function",
         "x": 285,
-        "y": 240,
+        "y": 340,
         "wires": [
-            [
-                "sd_FGNttqHri1VLsJhE"
-            ]
+            []
         ],
         "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "getAProduct_service",
-        "generated": true
+        "generateNext": true,
+        "serviceName": "getAProduct_service"
     },
     {
         "id": "sd_FGNttqHri1VLsJhE",
@@ -80,20 +77,15 @@
         "outputs": 2,
         "functionName": "sd_FGNttqHri1VLsJhE",
         "category": "Function",
-        "x": 440,
-        "y": 240,
+        "x": 385,
+        "y": 360,
         "wires": [
-            [
-                "sd_VpXJMowTVWH9oAus"
-            ],
-            [
-                "sd_yAN6qnIeW8bFzHLa"
-            ]
+            [],
+            []
         ],
         "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "getAProduct_service",
-        "generated": true
+        "generateNext": true,
+        "serviceName": "getAProduct_service"
     },
     {
         "id": "sd_VpXJMowTVWH9oAus",
@@ -102,7 +94,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "const { ObjectId } = require('mongodb');\n\nbh.local.findQuery = {_id:ObjectId(bh.input.params.id)}\nbh.local.collection = \"product\"",
+        "script": "bh.local.findQuery = {_id: bh.input.params.id}\nconsole.log(bh.input.params)\nbh.local.collection = \"product\"",
         "functionName": "sd_VpXJMowTVWH9oAus",
         "category": "Function",
         "x": 580,
@@ -127,15 +119,14 @@
         "script": "bh.local.response={\n    statusCode:400,\n    message:\"its not valid\"\n}",
         "functionName": "sd_yAN6qnIeW8bFzHLa",
         "category": "Function",
-        "x": 585,
+        "x": 485,
         "y": 340,
         "wires": [
             []
         ],
         "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "getAProduct_service",
-        "generated": true
+        "generateNext": true,
+        "serviceName": "getAProduct_service"
     },
     {
         "id": "sd_R8LeAZ9gbFB58gFH",

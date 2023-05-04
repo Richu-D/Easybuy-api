@@ -106,7 +106,7 @@ export class getAProduct_service {
     );
     try {
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_9SzLGIzAoGOgqa5g(bh, parentSpanInst);
+      bh = await this.sd_VpXJMowTVWH9oAus(bh, parentSpanInst);
       //appendnew_next_sd_t1YbYlQHl9Sl0mn5
       return bh;
     } catch (e) {
@@ -122,83 +122,14 @@ export class getAProduct_service {
 
   //appendnew_flow_getAProduct_service_start
 
-  async sd_9SzLGIzAoGOgqa5g(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_9SzLGIzAoGOgqa5g',
-      parentSpanInst
-    );
-    try {
-      const { ObjectId } = require('mongodb');
-
-      if (ObjectId.isValid(bh.input.params.id)) {
-        bh.local.isValid = true;
-      } else {
-        bh.local.isValid = false;
-      }
-      console.log('===========');
-      this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_FGNttqHri1VLsJhE(bh, parentSpanInst);
-      //appendnew_next_sd_9SzLGIzAoGOgqa5g
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_9SzLGIzAoGOgqa5g',
-        spanInst,
-        'sd_9SzLGIzAoGOgqa5g'
-      );
-    }
-  }
-
-  async sd_FGNttqHri1VLsJhE(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_FGNttqHri1VLsJhE',
-      parentSpanInst
-    );
-    try {
-      if (
-        this.sdService.operators['true'](
-          bh.local.isValid,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_VpXJMowTVWH9oAus(bh, parentSpanInst);
-      } else if (
-        this.sdService.operators['false'](
-          bh.local.isValid,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_yAN6qnIeW8bFzHLa(bh, parentSpanInst);
-      }
-      this.tracerService.sendData(spanInst, bh);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_FGNttqHri1VLsJhE',
-        spanInst,
-        'sd_FGNttqHri1VLsJhE'
-      );
-    }
-  }
-
   async sd_VpXJMowTVWH9oAus(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_VpXJMowTVWH9oAus',
       parentSpanInst
     );
     try {
-      const { ObjectId } = require('mongodb');
-
-      bh.local.findQuery = { _id: ObjectId(bh.input.params.id) };
+      bh.local.findQuery = { _id: bh.input.params.id };
+      console.log(bh.input.params);
       bh.local.collection = 'product';
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_R8LeAZ9gbFB58gFH(bh, parentSpanInst);
@@ -345,30 +276,6 @@ export class getAProduct_service {
         'sd_cBp9L1sldiJzirWh',
         spanInst,
         'sd_cBp9L1sldiJzirWh'
-      );
-    }
-  }
-
-  async sd_yAN6qnIeW8bFzHLa(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_yAN6qnIeW8bFzHLa',
-      parentSpanInst
-    );
-    try {
-      bh.local.response = {
-        statusCode: 400,
-        message: 'its not valid',
-      };
-      this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_yAN6qnIeW8bFzHLa
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_yAN6qnIeW8bFzHLa',
-        spanInst,
-        'sd_yAN6qnIeW8bFzHLa'
       );
     }
   }

@@ -313,6 +313,10 @@ export class addProduct_service {
       bh.input.body.price = convertedPrice * bh.input.body.gram;
 
       console.log(bh.input.body);
+
+      bh.input.body._id = Math.floor(
+        100000 + Math.random() * 900000
+      ).toString();
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_khoBFH8EWsG4uodr(bh, parentSpanInst);
       //appendnew_next_sd_9ThPGk4VAORjNTBo
