@@ -298,9 +298,8 @@ export class order_service {
     );
     try {
       // bh.local.collection = 'orders';
-      const { ObjectId } = require('mongodb');
 
-      const arr = bh.input.body.product.map((p) => ObjectId(p.productid));
+      const arr = bh.input.body.product.map((p) => p.productid);
 
       bh.local.query = { _id: { $in: arr } };
       bh.local.collection = 'product';
@@ -597,7 +596,6 @@ export class order_service {
       parentSpanInst
     );
     try {
-      const { ObjectId } = require('mongodb');
       bh.local.orderCreated.paymentStatus = bh.local.razorresp.status;
       bh.local.orderCreated.paymentid = bh.local.razorresp.id;
 

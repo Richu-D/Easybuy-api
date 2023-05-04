@@ -134,15 +134,15 @@ export class customerList_service {
       console.log(bh.local.query, 'bh.local.query');
       bh.local.aggregate = [
         {
-          $match: { employeeId: bh.input.params.empId },
+          $match: { empId: bh.input.params.empId },
         },
         {
           $project: {
-            products: {
-              $arrayElemAt: ['$products', 0],
+            product: {
+              $arrayElemAt: ['$product', 0],
             },
-            userPhoneNumber: 1,
-            grandTotal: 1,
+            customerNumber: 1,
+            totalAmount: 1,
             paymentStatus: 1,
             paymentid: 1,
           },
@@ -150,15 +150,15 @@ export class customerList_service {
         {
           $lookup: {
             from: 'product',
-            localField: 'products.productId',
+            localField: 'product.productid',
             foreignField: '_id',
             as: 'productDetails',
           },
         },
         {
           $project: {
-            userPhoneNumber: 1,
-            grandTotal: 1,
+            customerNumber: 1,
+            totalAmount: 1,
             paymentStatus: 1,
             paymentid: 1,
             productDetails: {
