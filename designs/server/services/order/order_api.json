@@ -171,5 +171,165 @@
         "generateNext": false,
         "serviceName": "order_api",
         "generated": true
+    },
+    {
+        "id": "sd_B8gDTWePkBAkl7Ml",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_kgQ7erhXW7NIRdnJ",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/place-order",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [
+                {
+                    "key": "order",
+                    "desc": "order details to db",
+                    "type": "body",
+                    "required": false,
+                    "rowId": "sd_GlrT17ZMJP4MhvID",
+                    "valid": true
+                }
+            ],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 105,
+        "y": 260,
+        "wires": [
+            [
+                "sd_7iS8m9xJ3Eh8vsbC"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "order_api",
+        "functionName": "sd_B8gDTWePkBAkl7Ml"
+    },
+    {
+        "id": "sd_pnMYmeqPtoLSHlFh",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_kgQ7erhXW7NIRdnJ",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "result",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": 200,
+            "obj": "bh.local.result",
+            "send": "bh.local.result"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_pnMYmeqPtoLSHlFh",
+        "category": "HTTP",
+        "x": 425,
+        "y": 260,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_api",
+        "generated": true
+    },
+    {
+        "id": "sd_7iS8m9xJ3Eh8vsbC",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_kgQ7erhXW7NIRdnJ",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+            "type": "tab",
+            "createdDate": "2023-04-30T16:32:46.056Z",
+            "label": "order_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_Jxl8T3BV9xhp9XHp",
+            "flowName": "createPlaceOrder"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./order_service",
+        "startName": "createPlaceOrder",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_7iS8m9xJ3Eh8vsbC",
+        "category": "General",
+        "x": 270,
+        "y": 260,
+        "wires": [
+            [
+                "sd_pnMYmeqPtoLSHlFh"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_api",
+        "generated": true
     }
 ]

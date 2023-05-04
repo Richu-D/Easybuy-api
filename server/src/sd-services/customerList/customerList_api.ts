@@ -14,9 +14,9 @@ import { Middleware } from '../../middleware/Middleware'; //_splitter_
 import * as settings from '../../config/config'; //_splitter_
 import log from '../../utils/Logger'; //_splitter_
 import { TracerService } from '../../services/TracerService'; //_splitter_
-import * as SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd from './order_service'; //_splitter_
+import * as SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP from './customerList_service'; //_splitter_
 //append_imports_end
-export class order_api {
+export class customerList_api {
   private sdService = new SDBaseService();
   private tracerService = new TracerService();
   private app;
@@ -32,7 +32,7 @@ export class order_api {
     middlewareCall,
     globalTimers
   ) {
-    this.serviceName = 'order_api';
+    this.serviceName = 'customerList_api';
     this.app = app;
     this.serviceBasePath = this.app.settings.base;
     this.generatedMiddlewares = generatedeMiddlewares;
@@ -47,7 +47,7 @@ export class order_api {
     globalTimers?
   ) {
     if (!instance) {
-      instance = new order_api(
+      instance = new customerList_api(
         app,
         generatedeMiddlewares,
         routeCall,
@@ -81,22 +81,22 @@ export class order_api {
 
   async mountTimers() {
     try {
-      //appendnew_flow_order_api_TimerStart
+      //appendnew_flow_customerList_api_TimerStart
     } catch (e) {
       throw e;
     }
   }
 
   private mountAllMiddlewares() {
-    log.debug('mounting all middlewares for service :: order_api');
+    log.debug('mounting all middlewares for service :: customerList_api');
 
-    //appendnew_flow_order_api_MiddlewareStart
+    //appendnew_flow_customerList_api_MiddlewareStart
   }
   private mountAllPaths() {
-    log.debug('mounting all paths for service :: order_api');
+    log.debug('mounting all paths for service :: customerList_api');
 
-    this.app['post'](
-      `${this.serviceBasePath}/order`,
+    this.app['get'](
+      `${this.serviceBasePath}/customer-list/:empId`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
         null,
@@ -114,10 +114,10 @@ export class order_api {
             next
           );
           let parentSpanInst = null;
-          bh = await this.sd_zkmPbbknk57IC1ae(bh, parentSpanInst);
-          //appendnew_next_sd_qnSOdNo9li3Rgm8u
+          bh = await this.sd_2BGOB94gcwHCUG5D(bh, parentSpanInst);
+          //appendnew_next_sd_YPv9YFz5qx6AEKG1
         } catch (e) {
-          return await this.errorHandler(bh, e, 'sd_qnSOdNo9li3Rgm8u');
+          return await this.errorHandler(bh, e, 'sd_YPv9YFz5qx6AEKG1');
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
@@ -126,117 +126,47 @@ export class order_api {
         this.generatedMiddlewares
       )
     );
-
-    this.app['post'](
-      `${this.serviceBasePath}/place-order`,
-      cookieParser(),
-      this.sdService.getMiddlesWaresBySequenceId(
-        null,
-        'pre',
-        this.generatedMiddlewares
-      ),
-
-      async (req, res, next) => {
-        let bh: any = {};
-        try {
-          bh = this.sdService.__constructDefault(
-            { local: {}, input: {} },
-            req,
-            res,
-            next
-          );
-          let parentSpanInst = null;
-          bh = await this.sd_7iS8m9xJ3Eh8vsbC(bh, parentSpanInst);
-          //appendnew_next_sd_B8gDTWePkBAkl7Ml
-        } catch (e) {
-          return await this.errorHandler(bh, e, 'sd_B8gDTWePkBAkl7Ml');
-        }
-      },
-      this.sdService.getMiddlesWaresBySequenceId(
-        null,
-        'post',
-        this.generatedMiddlewares
-      )
-    );
-    //appendnew_flow_order_api_HttpIn
+    //appendnew_flow_customerList_api_HttpIn
   }
-  //   service flows_order_api
+  //   service flows_customerList_api
 
-  //appendnew_flow_order_api_start
+  //appendnew_flow_customerList_api_start
 
-  async sd_zkmPbbknk57IC1ae(bh, parentSpanInst) {
+  async sd_2BGOB94gcwHCUG5D(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
-      'sd_zkmPbbknk57IC1ae',
+      'sd_2BGOB94gcwHCUG5D',
       parentSpanInst
     );
     try {
-      const SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAdInstance: SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd.order_service =
-        SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd.order_service.getInstance();
-      bh = await SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAdInstance.createOrder(
+      const SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YPInstance: SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP.customerList_service =
+        SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP.customerList_service.getInstance();
+      bh = await SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YPInstance.cutomerListService(
         spanInst,
         bh
       );
 
       this.tracerService.sendData(spanInst, bh);
-      await this.sd_lDyCpZqwUIxiTOHl(bh, parentSpanInst);
-      //appendnew_next_sd_zkmPbbknk57IC1ae
+      await this.sd_SWRAUd7eGB68BxvC(bh, parentSpanInst);
+      //appendnew_next_sd_2BGOB94gcwHCUG5D
       return bh;
     } catch (e) {
       return await this.errorHandler(
         bh,
         e,
-        'sd_zkmPbbknk57IC1ae',
+        'sd_2BGOB94gcwHCUG5D',
         spanInst,
-        'sd_zkmPbbknk57IC1ae'
+        'sd_2BGOB94gcwHCUG5D'
       );
     }
   }
 
-  async sd_lDyCpZqwUIxiTOHl(bh, parentSpanInst) {
+  async sd_SWRAUd7eGB68BxvC(bh, parentSpanInst) {
     try {
-      bh.web.res.status(200).send(bh.local.result);
+      bh.web.res.status(200).send(bh.local.out);
 
       return bh;
     } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_lDyCpZqwUIxiTOHl');
-    }
-  }
-
-  async sd_7iS8m9xJ3Eh8vsbC(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_7iS8m9xJ3Eh8vsbC',
-      parentSpanInst
-    );
-    try {
-      const SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAdInstance: SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd.order_service =
-        SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd.order_service.getInstance();
-      bh = await SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAdInstance.createPlaceOrder(
-        spanInst,
-        bh
-      );
-
-      this.tracerService.sendData(spanInst, bh);
-      await this.sd_pnMYmeqPtoLSHlFh(bh, parentSpanInst);
-      //appendnew_next_sd_7iS8m9xJ3Eh8vsbC
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_7iS8m9xJ3Eh8vsbC',
-        spanInst,
-        'sd_7iS8m9xJ3Eh8vsbC'
-      );
-    }
-  }
-
-  async sd_pnMYmeqPtoLSHlFh(bh, parentSpanInst) {
-    try {
-      bh.web.res.status(200).send(bh.local.result);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(bh, e, 'sd_pnMYmeqPtoLSHlFh');
+      return await this.errorHandler(bh, e, 'sd_SWRAUd7eGB68BxvC');
     }
   }
 
@@ -261,5 +191,5 @@ export class order_api {
       }
     }
   }
-  //appendnew_flow_order_api_Catch
+  //appendnew_flow_customerList_api_Catch
 }

@@ -1,0 +1,15 @@
+{
+    "/customer-list/:empId": {
+        "get": {
+            "summary": "",
+            "description": "",
+            "consumes": [],
+            "produces": [],
+            "parameters": [],
+            "responses": {},
+            "tags": [
+                "customerList_api"
+            ]
+        }
+    }
+}

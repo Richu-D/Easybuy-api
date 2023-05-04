@@ -1,4 +1,8 @@
 //CORE_REFERENCE_IMPORTS
+//CORE_REFERENCE_IMPORT-customerList_service-SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP
+import { customerList_service as SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP } from './sd-services/customerList/customerList_service';
+//CORE_REFERENCE_IMPORT-customerList_api-SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA
+import { customerList_api as SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA } from './sd-services/customerList/customerList_api';
 //CORE_REFERENCE_IMPORT-test-SSD_SERVICE_ID_sd_JKvVuXopzhhSxUll
 import { test as SSD_SERVICE_ID_sd_JKvVuXopzhhSxUll } from './sd-services/test';
 //CORE_REFERENCE_IMPORT-getAUser_service-SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu
@@ -105,6 +109,10 @@ export const UserRoutes = [
 
 
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-customerList_service-SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP
+SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP,
+//CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-customerList_api-SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA
+SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-test-SSD_SERVICE_ID_sd_JKvVuXopzhhSxUll
 SSD_SERVICE_ID_sd_JKvVuXopzhhSxUll,
 //CORE_REFERENCE_PUSH_TO_ROUTE_ARRAY-getAUser_service-SSD_SERVICE_ID_sd_1s5DGGxSUshIxNZu

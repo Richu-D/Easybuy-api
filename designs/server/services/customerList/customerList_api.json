@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA",
+        "type": "tab",
+        "createdDate": "2023-05-04T11:04:31.831Z",
+        "label": "customerList_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "customerList_api",
+        "relativeParentPath": "customerList"
+    },
+    {
+        "id": "sd_YPv9YFz5qx6AEKG1",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/customer-list/:empId",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "get",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 180,
+        "y": 80,
+        "wires": [
+            [
+                "sd_2BGOB94gcwHCUG5D"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "customerList_api",
+        "functionName": "sd_YPv9YFz5qx6AEKG1"
+    },
+    {
+        "id": "sd_2BGOB94gcwHCUG5D",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+            "type": "tab",
+            "createdDate": "2023-05-04T11:04:40.001Z",
+            "label": "customerList_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_tOAKy4hUcy2nkaWw",
+            "flowName": "cutomerListService"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./customerList_service",
+        "startName": "cutomerListService",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_2BGOB94gcwHCUG5D",
+        "category": "General",
+        "x": 345,
+        "y": 80,
+        "wires": [
+            [
+                "sd_SWRAUd7eGB68BxvC"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_api",
+        "generated": true
+    },
+    {
+        "id": "sd_SWRAUd7eGB68BxvC",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_MkYXM3o6wv1PDjSA",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "out",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": 200,
+            "obj": "bh.local.out",
+            "send": "bh.local.out"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_SWRAUd7eGB68BxvC",
+        "category": "HTTP",
+        "x": 565,
+        "y": 80,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_api",
+        "generated": true
+    }
+]

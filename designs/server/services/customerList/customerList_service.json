@@ -1,0 +1,247 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "type": "tab",
+        "createdDate": "2023-05-04T11:04:40.001Z",
+        "label": "customerList_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "customerList_service",
+        "relativeParentPath": "customerList"
+    },
+    {
+        "id": "sd_tOAKy4hUcy2nkaWw",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "cutomerListService",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "cutomerListService",
+        "category": "General",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "sd_2aSel4ihaOfnoenA"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "customerList_service"
+    },
+    {
+        "id": "sd_2aSel4ihaOfnoenA",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.params)\nbh.local.collection = \"orders\"\nbh.local.query = {empId: bh.input.params.empId};\nbh.local.aggregate = ([\n    {\n        $match: {empId: bh.input.params.empId}\n    },\n    {\n        $project:{\n             product: {\n        $arrayElemAt: [\"$product\", 0]\n      },\n            customerNumber:1,\n            totalAmount:1,\n            paymentStatus:1,\n            paymentid:1\n\n        }\n    },\n     {\n    $lookup: {\n      from: \"product\",\n      localField: \"product.productid\",\n      foreignField: \"_id\",\n      as: \"productDetails\"\n    }\n  },\n   {\n        $project:{\n            customerNumber:1,\n            totalAmount:1,\n            paymentStatus:1,\n            paymentid:1,\n            productDetails:{\n              $arrayElemAt: [\"$productDetails\", 0]\n            }\n\n        }\n    },\n])",
+        "functionName": "sd_2aSel4ihaOfnoenA",
+        "category": "Function",
+        "x": 260,
+        "y": 80,
+        "wires": [
+            [
+                "sd_kjF3CBejwgttWfnB"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    },
+    {
+        "id": "sd_bdrYj3Cmy2cAdI2x",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.query",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_bdrYj3Cmy2cAdI2x",
+        "category": "Storage",
+        "x": 385,
+        "y": 220,
+        "wires": [
+            [
+                "sd_RLoQCFQrVuAOJGaq"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "query",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "customerList_service"
+    },
+    {
+        "id": "sd_RLoQCFQrVuAOJGaq",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const {ObjectId} = require(\"mongodb\")\n\nconst recentprchs = bh.local.result[0].product.length-1\nbh.local.result[0].product = bh.local.result[0].product[recentprchs].productid\nbh.local.result.forEach(x=>{\n    x.product = ObjectId(x.product)\n})\nbh.local.out = bh.local.result\n\n",
+        "functionName": "sd_RLoQCFQrVuAOJGaq",
+        "category": "Function",
+        "x": 565,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "customerList_service"
+    },
+    {
+        "id": "sd_kjF3CBejwgttWfnB",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.aggResult",
+        "operation": "aggregate",
+        "argumentArray": [
+            "aggregate"
+        ],
+        "aggregate": "bh.local.aggregate",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_kjF3CBejwgttWfnB",
+        "category": "Storage",
+        "x": 385,
+        "y": 80,
+        "wires": [
+            [
+                "sd_QQz4vLmQdnW8fVQO"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "aggResult",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "aggregate": {
+                "type": "bh.local",
+                "value": "aggregate",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    },
+    {
+        "id": "sd_QQz4vLmQdnW8fVQO",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.out = bh.local.aggResult\n",
+        "functionName": "sd_QQz4vLmQdnW8fVQO",
+        "category": "Function",
+        "x": 505,
+        "y": 80,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    }
+]

@@ -42,10 +42,10 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.collection = 'orders';",
+        "script": "bh.local.collection = 'orders';\n\n",
         "functionName": "sd_DKydWL8w0LPjBsvB",
         "category": "Function",
-        "x": 245,
+        "x": 225,
         "y": 80,
         "wires": [
             [
@@ -94,7 +94,7 @@
         "pipeline": "",
         "functionName": "sd_B0d0DSpjmuevaSbL",
         "category": "Storage",
-        "x": 465,
+        "x": 485,
         "y": 80,
         "wires": [
             [
@@ -216,6 +216,582 @@
             [
                 "sd_B0d0DSpjmuevaSbL"
             ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Jxl8T3BV9xhp9XHp",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "createPlaceOrder",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "createPlaceOrder",
+        "category": "General",
+        "x": 105,
+        "y": 360,
+        "wires": [
+            [
+                "sd_HXSlgMwQB38G7Pel"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "order_service"
+    },
+    {
+        "id": "sd_HXSlgMwQB38G7Pel",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "// bh.local.collection = 'orders';\nconst {ObjectId} = require(\"mongodb\")\n\n\nconst arr = bh.input.body.product.map((p) => ObjectId(p.productid));\n\nbh.local.query = {_id: {$in: arr}};\nbh.local.collection = \"product\"\nbh.local.orderCollection = \"orders\"\nbh.local.couponCollection = \"coupon\"\nbh.local.findQuery = {\"couponcode\":bh.input.body.couponcode}\n\nbh.local.filter = {\n    projection: {\n        \"price\": 1\n    }\n}\n// bh.local.result = arr",
+        "functionName": "sd_HXSlgMwQB38G7Pel",
+        "category": "Function",
+        "x": 225,
+        "y": 360,
+        "wires": [
+            [
+                "sd_kj2TTaVA8iBqMpbv"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_HS10cygK7MNtAXDT",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.input.body",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_HS10cygK7MNtAXDT",
+        "category": "Storage",
+        "x": 765,
+        "y": 200,
+        "wires": [
+            [
+                "sd_whtV0BXasXtwB5Ou"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.input",
+                "value": "body",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "order_service"
+    },
+    {
+        "id": "sd_whtV0BXasXtwB5Ou",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response = {\n    statusCode: 200,\n    body: \"order created successfully!\"\n}",
+        "functionName": "sd_whtV0BXasXtwB5Ou",
+        "category": "Function",
+        "x": 900,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "order_service"
+    },
+    {
+        "id": "sd_obvt7A6NUMqzSabu",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.body,'heyyyyy');\nconst Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" })\n\ninstance.paymentLink.create({\n  amount: 500,\n  currency: \"INR\",\n  accept_partial: true,\n  first_min_partial_amount: 100,\n  description: \"For XYZ purpose\",\n  customer: {\n    contact: `+91${bh.input.body.userPhoneNumber}`\n  },\n  notify: {\n    sms: true,\n    email: false,\n    whatsapp: true\n  },\n  reminder_enable: true,\n  notes: {\n    policy_name: \"Jeevan Bima\"\n  },\n  callback_url: \"https://google.com\",\n  callback_method: \"get\"\n}).then((response) => {\n  console.log(response);\n})",
+        "functionName": "sd_obvt7A6NUMqzSabu",
+        "category": "Function",
+        "x": 645,
+        "y": 200,
+        "wires": [
+            [
+                "sd_HS10cygK7MNtAXDT"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "order_service"
+    },
+    {
+        "id": "sd_kj2TTaVA8iBqMpbv",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "bh.local.filter",
+        "resultMapping": "bh.local.result",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.query",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_kj2TTaVA8iBqMpbv",
+        "category": "Storage",
+        "x": 425,
+        "y": 360,
+        "wires": [
+            [
+                "sd_O2pItd3j5mzgk25Q"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh.local",
+                "value": "filter",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "query",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_O2pItd3j5mzgk25Q",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "let arr = bh.input.body.product.map((x) => {\nbh.local.result.find((y) => {\n        if(x.productid == y._id) {\n            x.price = y.price\n        }\n    }) \n    return x\n})\n\nbh.local.total = arr.reduce((acc, curr) => {\n    acc = acc + curr.price * curr.count \n    return acc\n}, 0)\n\nbh.local.orderCreated = {\n    customerNumber: bh.input.body.userPhoneNumber,\n    empId: bh.input.body.employeeId,\n    totalAmount: bh.local.total, \n    product: arr,\n}\n\n",
+        "functionName": "sd_O2pItd3j5mzgk25Q",
+        "category": "Function",
+        "x": 565,
+        "y": 360,
+        "wires": [
+            [
+                "sd_CT0i6ritVFz9JNhp"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_CT0i6ritVFz9JNhp",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.couponCollection",
+        "options": "",
+        "resultMapping": "bh.local.couponFind",
+        "operation": "find",
+        "argumentArray": [
+            "query"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh.local.findQuery",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_CT0i6ritVFz9JNhp",
+        "category": "Storage",
+        "x": 705,
+        "y": 360,
+        "wires": [
+            [
+                "sd_AswNpWZEpOaTfMLV"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "couponCollection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "couponFind",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "findQuery",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_AswNpWZEpOaTfMLV",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.local.couponFind)",
+        "functionName": "sd_AswNpWZEpOaTfMLV",
+        "category": "Function",
+        "x": 825,
+        "y": 360,
+        "wires": [
+            [
+                "sd_l11SHFGqNOmy628x"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_l11SHFGqNOmy628x",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "check",
+        "property": "couponFind",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.couponFind",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str",
+                "gv": "\"0\""
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "check",
+        "category": "Function",
+        "x": 940,
+        "y": 360,
+        "wires": [
+            [
+                "sd_Br7e96bgYxaN2zxn"
+            ],
+            [
+                "sd_Hp8gItFudSH0fAcU"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Br7e96bgYxaN2zxn",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nconst discountPercentage = bh.local.couponFind[0]?.percentage\n\n\nconst totalAmount = bh.local.orderCreated.totalAmount\nconst discoutedPrice = totalAmount - (discountPercentage/100) * totalAmount\n\nbh.local.orderCreated.totalAmount= discoutedPrice\n\n\n\n\n",
+        "functionName": "sd_Br7e96bgYxaN2zxn",
+        "category": "Function",
+        "x": 1085,
+        "y": 220,
+        "wires": [
+            [
+                "sd_1aKatrQ39tIIjatI"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Hp8gItFudSH0fAcU",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.local.orderCreated)",
+        "functionName": "sd_Hp8gItFudSH0fAcU",
+        "category": "Function",
+        "x": 1085,
+        "y": 460,
+        "wires": [
+            [
+                "sd_1aKatrQ39tIIjatI"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_1aKatrQ39tIIjatI",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "\nconst Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" })\n\n// instance.paymentLink.create({\n//   amount: Math.round(bh.local.orderCreated.totalAmount),\n//   currency: \"INR\",\n//   accept_partial: true,\n//   first_min_partial_amount: 100,\n//   description: \"For XYZ purpose\",\n//   customer: {\n//     contact: `+91${bh.input.body.userPhoneNumber}`\n//   },\n//   notify: {\n//     sms: true,\n//     email: false,\n//     whatsapp: true\n//   },\n//   reminder_enable: true,\n//   notes: {\n//     policy_name: \"Jeevan Bima\"\n//   },\n//   callback_url: \"https://google.com\",\n//   callback_method: \"get\"\n// }).then((response) => {\n//   console.log(response)\n//   bh.local.result = response;\n// })\n\nconst resp = await instance.paymentLink.create({\n  amount: Math.round(bh.local.orderCreated.totalAmount),\n  currency: \"INR\",\n  accept_partial: true,\n  first_min_partial_amount: 100,\n  description: \"For XYZ purpose\",\n  customer: {\n    contact: `+91${bh.input.body.userPhoneNumber}`\n  },\n  notify: {\n    sms: true,\n    email: false,\n    whatsapp: true\n  },\n  reminder_enable: true,\n  notes: {\n    policy_name: \"Jeevan Bima\"\n  },\n  callback_url: \"https://google.com\",\n  callback_method: \"get\"\n})\n\nbh.local.razorresp = resp",
+        "functionName": "sd_1aKatrQ39tIIjatI",
+        "category": "Function",
+        "x": 1225,
+        "y": 360,
+        "wires": [
+            [
+                "sd_CjZ81CJf4kyTD2uD"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_cjLmFd0z2K4JvvvL",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.orderCollection",
+        "options": "",
+        "resultMapping": "bh.local.insertresp",
+        "operation": "insertOne",
+        "argumentArray": [
+            "document"
+        ],
+        "aggregate": "",
+        "operations": "",
+        "query": "bh",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "bh.local.orderCreated",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_cjLmFd0z2K4JvvvL",
+        "category": "Storage",
+        "x": 1485,
+        "y": 360,
+        "wires": [
+            [
+                "sd_iAaLFv9i6sSko6od"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "orderCollection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "insertresp",
+                "constant": false
+            },
+            "query": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            },
+            "document": {
+                "type": "bh.local",
+                "value": "orderCreated",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_CjZ81CJf4kyTD2uD",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "const {ObjectId} = require(\"mongodb\")\nbh.local.orderCreated.paymentStatus = bh.local.razorresp.status\nbh.local.orderCreated.paymentid = bh.local.razorresp.id\n\nbh.local.orderCreated.product.forEach((x)=>{\n    x.productid = ObjectId(x.productid)\n})\n",
+        "functionName": "sd_CjZ81CJf4kyTD2uD",
+        "category": "Function",
+        "x": 1340,
+        "y": 360,
+        "wires": [
+            [
+                "sd_cjLmFd0z2K4JvvvL"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_iAaLFv9i6sSko6od",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.result = bh.local.orderCreated",
+        "functionName": "sd_iAaLFv9i6sSko6od",
+        "category": "Function",
+        "x": 1580,
+        "y": 360,
+        "wires": [
+            []
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
