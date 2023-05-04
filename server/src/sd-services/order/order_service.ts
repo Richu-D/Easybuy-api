@@ -128,11 +128,9 @@ export class order_service {
       parentSpanInst
     );
     try {
-      console.log(bh.input.body);
       bh.local.collection = 'orders';
-
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_B0d0DSpjmuevaSbL(bh, parentSpanInst);
+      bh = await this.sd_JsdEMqwtxNcCaDId(bh, parentSpanInst);
       //appendnew_next_sd_DKydWL8w0LPjBsvB
       return bh;
     } catch (e) {
@@ -142,6 +140,59 @@ export class order_service {
         'sd_DKydWL8w0LPjBsvB',
         spanInst,
         'sd_DKydWL8w0LPjBsvB'
+      );
+    }
+  }
+
+  async sd_JsdEMqwtxNcCaDId(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_JsdEMqwtxNcCaDId',
+      parentSpanInst
+    );
+    try {
+      console.log(bh.input.body, 'heyyyyy');
+      const Razorpay = require('razorpay');
+      var instance = new Razorpay({
+        key_id: 'rzp_test_JK2eMcWr8sfXEU',
+        key_secret: 'LwCYMNILRX63OEKmwIzORX0f',
+      });
+
+      instance.paymentLink
+        .create({
+          amount: 500,
+          currency: 'INR',
+          accept_partial: true,
+          first_min_partial_amount: 100,
+          description: 'For XYZ purpose',
+          customer: {
+            contact: `+91${bh.input.body.userPhoneNumber}`,
+          },
+          notify: {
+            sms: true,
+            email: false,
+            whatsapp: true,
+          },
+          reminder_enable: true,
+          notes: {
+            policy_name: 'Jeevan Bima',
+          },
+          callback_url: 'https://google.com',
+          callback_method: 'get',
+        })
+        .then((response) => {
+          console.log(response);
+        });
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_B0d0DSpjmuevaSbL(bh, parentSpanInst);
+      //appendnew_next_sd_JsdEMqwtxNcCaDId
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_JsdEMqwtxNcCaDId',
+        spanInst,
+        'sd_JsdEMqwtxNcCaDId'
       );
     }
   }

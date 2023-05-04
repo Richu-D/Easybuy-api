@@ -85,20 +85,20 @@
         "headers": {},
         "responseBody": {
             "type": "bh.local",
-            "value": "response",
+            "value": "result",
             "ssd_typedInputField": true
         },
         "httpcode": {
-            "type": "bh.local",
-            "value": "response.statusCode",
+            "type": "num",
+            "value": 200,
             "ssd_typedInputField": true
         },
         "responseType": "obj",
         "swaggerResponse": {},
         "responseMapping": {
-            "status": "bh.local.response.statusCode",
-            "obj": "bh.local.response",
-            "send": "bh.local.response"
+            "status": 200,
+            "obj": "bh.local.result",
+            "send": "bh.local.result"
         },
         "dataModelIsArray": false,
         "inputs": 1,

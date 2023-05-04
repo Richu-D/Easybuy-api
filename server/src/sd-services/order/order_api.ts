@@ -162,7 +162,7 @@ export class order_api {
 
   async sd_lDyCpZqwUIxiTOHl(bh, parentSpanInst) {
     try {
-      bh.web.res.status(bh.local.response.statusCode).send(bh.local.response);
+      bh.web.res.status(200).send(bh.local.result);
 
       return bh;
     } catch (e) {

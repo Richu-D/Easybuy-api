@@ -42,14 +42,14 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.body)\nbh.local.collection = 'orders';\n",
+        "script": "bh.local.collection = 'orders';",
         "functionName": "sd_DKydWL8w0LPjBsvB",
         "category": "Function",
         "x": 245,
         "y": 80,
         "wires": [
             [
-                "sd_B0d0DSpjmuevaSbL"
+                "sd_JsdEMqwtxNcCaDId"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -94,7 +94,7 @@
         "pipeline": "",
         "functionName": "sd_B0d0DSpjmuevaSbL",
         "category": "Storage",
-        "x": 390,
+        "x": 465,
         "y": 80,
         "wires": [
             [
@@ -144,7 +144,7 @@
         "script": "bh.local.response = {\n    statusCode: 200,\n    body: \"order created successfully!\"\n}",
         "functionName": "sd_00YKSZmMcrTD2gfN",
         "category": "Function",
-        "x": 545,
+        "x": 620,
         "y": 80,
         "wires": [
             []
@@ -194,6 +194,28 @@
         "y": 220,
         "wires": [
             []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "order_service",
+        "generated": true
+    },
+    {
+        "id": "sd_JsdEMqwtxNcCaDId",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_hU73HCE9PDt8KaAd",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.body,'heyyyyy');\nconst Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" })\n\ninstance.paymentLink.create({\n  amount: 500,\n  currency: \"INR\",\n  accept_partial: true,\n  first_min_partial_amount: 100,\n  description: \"For XYZ purpose\",\n  customer: {\n    contact: `+91${bh.input.body.userPhoneNumber}`\n  },\n  notify: {\n    sms: true,\n    email: false,\n    whatsapp: true\n  },\n  reminder_enable: true,\n  notes: {\n    policy_name: \"Jeevan Bima\"\n  },\n  callback_url: \"https://google.com\",\n  callback_method: \"get\"\n}).then((response) => {\n  console.log(response);\n})",
+        "functionName": "sd_JsdEMqwtxNcCaDId",
+        "category": "Function",
+        "x": 365,
+        "y": 80,
+        "wires": [
+            [
+                "sd_B0d0DSpjmuevaSbL"
+            ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
