@@ -601,9 +601,9 @@ export class order_service {
       bh.local.orderCreated.paymentStatus = bh.local.razorresp.status;
       bh.local.orderCreated.paymentid = bh.local.razorresp.id;
 
-      bh.local.orderCreated.product.forEach((x) => {
-        x.productid = ObjectId(x.productid);
-      });
+      // bh.local.orderCreated.product.forEach((x)=>{
+      //     x.productid = ObjectId(x.productid)
+      // })
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_cjLmFd0z2K4JvvvL(bh, parentSpanInst);

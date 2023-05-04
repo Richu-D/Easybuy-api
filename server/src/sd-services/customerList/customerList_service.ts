@@ -131,17 +131,18 @@ export class customerList_service {
       console.log(bh.input.params);
       bh.local.collection = 'orders';
       bh.local.query = { empId: bh.input.params.empId };
+      console.log(bh.local.query, 'bh.local.query');
       bh.local.aggregate = [
         {
-          $match: { empId: bh.input.params.empId },
+          $match: { employeeId: bh.input.params.empId },
         },
         {
           $project: {
-            product: {
-              $arrayElemAt: ['$product', 0],
+            products: {
+              $arrayElemAt: ['$products', 0],
             },
-            customerNumber: 1,
-            totalAmount: 1,
+            userPhoneNumber: 1,
+            grandTotal: 1,
             paymentStatus: 1,
             paymentid: 1,
           },
@@ -149,15 +150,15 @@ export class customerList_service {
         {
           $lookup: {
             from: 'product',
-            localField: 'product.productid',
+            localField: 'products.productId',
             foreignField: '_id',
             as: 'productDetails',
           },
         },
         {
           $project: {
-            customerNumber: 1,
-            totalAmount: 1,
+            userPhoneNumber: 1,
+            grandTotal: 1,
             paymentStatus: 1,
             paymentid: 1,
             productDetails: {
@@ -215,7 +216,7 @@ export class customerList_service {
     );
     try {
       bh.local.out = bh.local.aggResult;
-
+      console.log(bh.local.aggResult, 'aggresult');
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_QQz4vLmQdnW8fVQO
       return bh;
