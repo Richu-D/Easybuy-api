@@ -18,7 +18,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "\nbh.local.isEmployeeLoggedIn=false;\n\nif(bh.local.session?.data?.employeeid){\n   bh.local.isEmployeeLoggedIn= true;\n \n}",
+        "script": "bh.local.isEmployeeLoggedIn=false;\n\nif(bh.local.session?.data?.employeeid){\n   bh.local.isEmployeeLoggedIn= true;\n}",
         "functionName": "sd_BhkpAqtL7jriORVG",
         "category": "Function",
         "x": 385,
@@ -81,6 +81,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -129,6 +130,7 @@
             "status": 0,
             "next": "bh"
         },
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "editableListData": {

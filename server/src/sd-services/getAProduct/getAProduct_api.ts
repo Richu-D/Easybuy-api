@@ -99,7 +99,7 @@ export class getAProduct_api {
       `${this.serviceBasePath}/product/:id`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'employeeCheck',
         'pre',
         this.generatedMiddlewares
       ),
@@ -121,7 +121,7 @@ export class getAProduct_api {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'employeeCheck',
         'post',
         this.generatedMiddlewares
       )

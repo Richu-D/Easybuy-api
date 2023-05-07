@@ -131,7 +131,7 @@ export class order_api {
       `${this.serviceBasePath}/place-order`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'employeeCheck',
         'pre',
         this.generatedMiddlewares
       ),
@@ -153,7 +153,7 @@ export class order_api {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'employeeCheck',
         'post',
         this.generatedMiddlewares
       )

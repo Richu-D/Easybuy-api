@@ -1,5 +1,5 @@
 {
-    "/customer-list/:empId": {
+    "/customer-list": {
         "get": {
             "summary": "",
             "description": "",

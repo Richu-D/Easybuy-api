@@ -18,12 +18,12 @@
         "viewType": "server",
         "nodeType": "start",
         "name": "",
-        "path": "/customer-list/:empId",
+        "path": "/customer-list",
         "uploadpath": "",
         "summary": "",
         "description": "",
         "method": "get",
-        "sequenceId": "",
+        "sequenceId": "employeeCheck",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -99,7 +99,7 @@
         "accept_bh": true,
         "functionName": "sd_2BGOB94gcwHCUG5D",
         "category": "General",
-        "x": 345,
+        "x": 385,
         "y": 80,
         "wires": [
             [
@@ -137,6 +137,7 @@
             "send": "bh.local.out"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",

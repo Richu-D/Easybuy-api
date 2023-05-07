@@ -24,11 +24,11 @@
         "accept_bh": true,
         "functionName": "cutomerListService",
         "category": "General",
-        "x": 120,
+        "x": 65,
         "y": 80,
         "wires": [
             [
-                "sd_2aSel4ihaOfnoenA"
+                "sd_Qo1tIEvtIWXyOJE3"
             ]
         ],
         "__n_excludedFromValidation__": {},
@@ -42,7 +42,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.params)\nbh.local.collection = \"orders\"\nbh.local.query = {empId: bh.input.params.empId};\nconsole.log(bh.local.query,\"bh.local.query\")\nbh.local.aggregate = ([\n    {\n        $match: {empId: bh.input.params.empId}\n    },\n    {\n        $project:{\n             product: {\n        $arrayElemAt: [\"$product\", 0]\n      },\n            customerNumber:1,\n            totalAmount:1,\n            paymentStatus:1,\n            paymentid:1\n\n        }\n    },\n     {\n    $lookup: {\n      from: \"product\",\n      localField: \"product.productid\",\n      foreignField: \"_id\",\n      as: \"productDetails\"\n    }\n  },\n   {\n        $project:{\n            customerNumber:1,\n            totalAmount:1,\n            paymentStatus:1,\n            paymentid:1,\n            productDetails:{\n              $arrayElemAt: [\"$productDetails\", 0]\n            }\n\n        }\n    },\n])",
+        "script": "console.log(bh.input.params)\nconsole.log(bh.local.employee.data.employeeid)\nbh.local.collection = \"orders\"\nbh.local.query = {empId: bh.local.employee.data.employeeid};\nconsole.log(bh.local.query,\"bh.local.query\")\nbh.local.aggregate = ([\n    {\n        $match: {empId: bh.local.employee.data.employeeid}\n    },\n    {\n        $project:{\n             product: {\n        $arrayElemAt: [\"$product\", 0]\n      },\n            customerNumber:1,\n            totalAmount:1,\n            paymentStatus:1,\n            paymentid:1\n\n        }\n    },\n     {\n    $lookup: {\n      from: \"product\",\n      localField: \"product.productid\",\n      foreignField: \"_id\",\n      as: \"productDetails\"\n    }\n  },\n   {\n        $project:{\n            customerNumber:1,\n            totalAmount:1,\n            paymentStatus:1,\n            paymentid:1,\n            productDetails:{\n              $arrayElemAt: [\"$productDetails\", 0]\n            }\n\n        }\n    },\n])",
         "functionName": "sd_2aSel4ihaOfnoenA",
         "category": "Function",
         "x": 260,
@@ -239,6 +239,43 @@
         "wires": [
             []
         ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Qo1tIEvtIWXyOJE3",
+        "type": "Session",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "operationType": "get",
+        "data": "",
+        "resultMapping": "bh.local.employee",
+        "dataMapping": "bh",
+        "functionName": "sd_Qo1tIEvtIWXyOJE3",
+        "category": "HTTP",
+        "x": 165,
+        "y": 80,
+        "wires": [
+            [
+                "sd_2aSel4ihaOfnoenA"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "employee",
+                "constant": false
+            },
+            "dataMapping": {
+                "type": "bh",
+                "value": "",
+                "constant": false
+            }
+        },
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "customerList_service",

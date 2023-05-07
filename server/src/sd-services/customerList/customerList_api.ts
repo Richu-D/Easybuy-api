@@ -96,10 +96,10 @@ export class customerList_api {
     log.debug('mounting all paths for service :: customerList_api');
 
     this.app['get'](
-      `${this.serviceBasePath}/customer-list/:empId`,
+      `${this.serviceBasePath}/customer-list`,
       cookieParser(),
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'employeeCheck',
         'pre',
         this.generatedMiddlewares
       ),
@@ -121,7 +121,7 @@ export class customerList_api {
         }
       },
       this.sdService.getMiddlesWaresBySequenceId(
-        null,
+        'employeeCheck',
         'post',
         this.generatedMiddlewares
       )

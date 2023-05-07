@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "get",
-        "sequenceId": "",
+        "sequenceId": "employeeCheck",
         "consumes": "",
         "produces": "",
         "filetype": "path",
@@ -63,8 +63,7 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "getAProduct_api",
-        "functionName": "sd_hBtsir4mya7CCgO7",
-        "generated": false
+        "functionName": "sd_hBtsir4mya7CCgO7"
     },
     {
         "id": "sd_gqUjrRkhbOjyXABa",
@@ -92,6 +91,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -159,8 +159,8 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
-        "generated": true,
         "generateNext": false,
-        "serviceName": "getAProduct_api"
+        "serviceName": "getAProduct_api",
+        "generated": true
     }
 ]

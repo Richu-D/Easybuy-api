@@ -106,7 +106,7 @@ export class customerList_service {
     );
     try {
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_2aSel4ihaOfnoenA(bh, parentSpanInst);
+      bh = await this.sd_Qo1tIEvtIWXyOJE3(bh, parentSpanInst);
       //appendnew_next_cutomerListService
       return bh;
     } catch (e) {
@@ -122,6 +122,32 @@ export class customerList_service {
 
   //appendnew_flow_customerList_service_start
 
+  async sd_Qo1tIEvtIWXyOJE3(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_Qo1tIEvtIWXyOJE3',
+      parentSpanInst
+    );
+    try {
+      let requestObject = bh.web.req;
+      if (requestObject.session) {
+        bh.local.employee = JSON.parse(JSON.stringify(requestObject.session));
+      }
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_2aSel4ihaOfnoenA(bh, parentSpanInst);
+      //appendnew_next_sd_Qo1tIEvtIWXyOJE3
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_Qo1tIEvtIWXyOJE3',
+        spanInst,
+        'sd_Qo1tIEvtIWXyOJE3'
+      );
+    }
+  }
+
   async sd_2aSel4ihaOfnoenA(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_2aSel4ihaOfnoenA',
@@ -129,12 +155,13 @@ export class customerList_service {
     );
     try {
       console.log(bh.input.params);
+      console.log(bh.local.employee.data.employeeid);
       bh.local.collection = 'orders';
-      bh.local.query = { empId: bh.input.params.empId };
+      bh.local.query = { empId: bh.local.employee.data.employeeid };
       console.log(bh.local.query, 'bh.local.query');
       bh.local.aggregate = [
         {
-          $match: { empId: bh.input.params.empId },
+          $match: { empId: bh.local.employee.data.employeeid },
         },
         {
           $project: {

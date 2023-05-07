@@ -44,8 +44,8 @@
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 145,
-        "y": 160,
+        "x": 105,
+        "y": 80,
         "wires": [
             [
                 "sd_KwxavTpf3DEVqNGE"
@@ -63,7 +63,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "employeeLogin_api",
-        "functionName": "sd_zxCT0DK7moJQ2Zhv"
+        "functionName": "sd_zxCT0DK7moJQ2Zhv",
+        "generated": false
     },
     {
         "id": "sd_iS67VT5Pc0CRXJKz",
@@ -109,8 +110,8 @@
         },
         "functionName": "sd_iS67VT5Pc0CRXJKz",
         "category": "HTTP",
-        "x": 465,
-        "y": 160,
+        "x": 485,
+        "y": 80,
         "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
@@ -151,16 +152,16 @@
         "accept_bh": true,
         "functionName": "sd_KwxavTpf3DEVqNGE",
         "category": "General",
-        "x": 305,
-        "y": 160,
+        "x": 285,
+        "y": 80,
         "wires": [
             [
                 "sd_iS67VT5Pc0CRXJKz"
             ]
         ],
         "__n_excludedFromValidation__": {},
+        "generated": true,
         "generateNext": false,
-        "serviceName": "employeeLogin_api",
-        "generated": true
+        "serviceName": "employeeLogin_api"
     }
 ]

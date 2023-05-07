@@ -139,6 +139,12 @@ export class dashboard_service {
         {
           $group: {
             _id: '$customerNumber',
+            // count: { $sum: 1 }
+          },
+        },
+        {
+          $group: {
+            _id: null,
             count: { $sum: 1 },
           },
         },
@@ -157,6 +163,7 @@ export class dashboard_service {
           },
         },
       ];
+
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_Aw45Cat5RckiXfqv(bh, parentSpanInst);
       //appendnew_next_sd_jEQPDGzihLL5fXm3
@@ -264,6 +271,9 @@ export class dashboard_service {
         platinum,
       };
 
+      console.log('bh.local.result');
+      console.log(bh.local.result);
+      console.log('bh.local.result');
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_Dhw4JVkYzT3Fjn7e
       return bh;
