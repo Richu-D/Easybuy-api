@@ -120,6 +120,27 @@ export class invoice_service {
     }
   }
 
+  async sendInvoice(parentSpanInst, bh) {
+    const spanInst = this.tracerService.createSpan(
+      'sendInvoice',
+      parentSpanInst
+    );
+    try {
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_F3u4BbFmLY3UFGlf(bh, parentSpanInst);
+      //appendnew_next_sendInvoice
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_cm1ABcxd7ZLyf0YC',
+        spanInst,
+        'sendInvoice'
+      );
+    }
+  }
+
   //appendnew_flow_invoice_service_start
 
   async sd_gIodzh3YvwMSGZlq(bh, parentSpanInst) {
@@ -361,6 +382,50 @@ export class invoice_service {
         'sd_6uW3PO29Nqz9dGcp',
         spanInst,
         'sd_6uW3PO29Nqz9dGcp'
+      );
+    }
+  }
+
+  async sd_F3u4BbFmLY3UFGlf(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_F3u4BbFmLY3UFGlf',
+      parentSpanInst
+    );
+    try {
+      console.log(bh.input.body.invoice, 'invoice');
+
+      const nodemailer = require('nodemailer');
+
+      try {
+        let transporter = nodemailer.createTransport({
+          service: 'hotmail',
+          auth: {
+            user: 'easybuy786@outlook.com',
+            pass: '12345678easybuy',
+          },
+        });
+
+        transporter.sendMail({
+          from: 'easybuy786@outlook.com',
+          to: bh.input.body.email,
+          subject: 'Invoice',
+          text: 'Here is your invoice!',
+          html: `<div>${bh.input.body.invoice}</div>`,
+        });
+      } catch (error) {
+        console.log(error, 'mailer.helpers Error');
+      }
+
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_F3u4BbFmLY3UFGlf
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_F3u4BbFmLY3UFGlf',
+        spanInst,
+        'sd_F3u4BbFmLY3UFGlf'
       );
     }
   }

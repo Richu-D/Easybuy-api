@@ -126,6 +126,38 @@ export class invoice_api {
         this.generatedMiddlewares
       )
     );
+
+    this.app['post'](
+      `${this.serviceBasePath}/invoice`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_TJomGx6dg0g8mN7q(bh, parentSpanInst);
+          //appendnew_next_sd_XtmK2LDlCg7yICpm
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_XtmK2LDlCg7yICpm');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_invoice_api_HttpIn
   }
   //   service flows_invoice_api
@@ -167,6 +199,44 @@ export class invoice_api {
       return bh;
     } catch (e) {
       return await this.errorHandler(bh, e, 'sd_JWjw4UV3kQQK6GmJ');
+    }
+  }
+
+  async sd_TJomGx6dg0g8mN7q(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_TJomGx6dg0g8mN7q',
+      parentSpanInst
+    );
+    try {
+      const SSD_SERVICE_ID_sd_6D5Q5UozZdfajRteInstance: SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte.invoice_service =
+        SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte.invoice_service.getInstance();
+      bh = await SSD_SERVICE_ID_sd_6D5Q5UozZdfajRteInstance.sendInvoice(
+        spanInst,
+        bh
+      );
+
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_WosEMFEDL9ziDI7U(bh, parentSpanInst);
+      //appendnew_next_sd_TJomGx6dg0g8mN7q
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_TJomGx6dg0g8mN7q',
+        spanInst,
+        'sd_TJomGx6dg0g8mN7q'
+      );
+    }
+  }
+
+  async sd_WosEMFEDL9ziDI7U(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send('ok');
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_WosEMFEDL9ziDI7U');
     }
   }
 

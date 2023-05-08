@@ -30,6 +30,7 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
+        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -44,8 +45,8 @@
         "outputs": 1,
         "validateRequestUsingSwaggerDocs": false,
         "category": "HTTP",
-        "x": 105,
-        "y": 80,
+        "x": 45,
+        "y": 440,
         "wires": [
             [
                 "sd_BOJ74bu25DJeqRcn"
@@ -99,8 +100,8 @@
         "accept_bh": true,
         "functionName": "sd_BOJ74bu25DJeqRcn",
         "category": "General",
-        "x": 260,
-        "y": 80,
+        "x": 200,
+        "y": 440,
         "wires": [
             [
                 "sd_JWjw4UV3kQQK6GmJ"
@@ -137,6 +138,7 @@
             "send": "bh.local.result"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -154,9 +156,160 @@
         },
         "functionName": "sd_JWjw4UV3kQQK6GmJ",
         "category": "HTTP",
-        "x": 420,
-        "y": 80,
+        "x": 360,
+        "y": 440,
         "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_api",
+        "generated": true
+    },
+    {
+        "id": "sd_XtmK2LDlCg7yICpm",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/invoice",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "post",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 40,
+        "y": 220,
+        "wires": [
+            [
+                "sd_TJomGx6dg0g8mN7q"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "invoice_api",
+        "functionName": "sd_XtmK2LDlCg7yICpm"
+    },
+    {
+        "id": "sd_WosEMFEDL9ziDI7U",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "str",
+            "value": "ok",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": 200,
+            "obj": "\"ok\"",
+            "send": "\"ok\""
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_WosEMFEDL9ziDI7U",
+        "category": "HTTP",
+        "x": 445,
+        "y": 220,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_api",
+        "generated": true
+    },
+    {
+        "id": "sd_TJomGx6dg0g8mN7q",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+            "type": "tab",
+            "createdDate": "2023-05-08T18:27:39.683Z",
+            "label": "invoice_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_cm1ABcxd7ZLyf0YC",
+            "flowName": "sendInvoice"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./invoice_service",
+        "startName": "sendInvoice",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_TJomGx6dg0g8mN7q",
+        "category": "General",
+        "x": 225,
+        "y": 220,
+        "wires": [
+            [
+                "sd_WosEMFEDL9ziDI7U"
+            ]
+        ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "invoice_api",

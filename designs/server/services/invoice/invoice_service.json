@@ -211,5 +211,49 @@
         "generateNext": false,
         "serviceName": "invoice_service",
         "generated": true
+    },
+    {
+        "id": "sd_cm1ABcxd7ZLyf0YC",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "sendInvoice",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sendInvoice",
+        "category": "General",
+        "x": 125,
+        "y": 360,
+        "wires": [
+            [
+                "sd_F3u4BbFmLY3UFGlf"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "invoice_service"
+    },
+    {
+        "id": "sd_F3u4BbFmLY3UFGlf",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.body.invoice,\"invoice\")\n\n    \nconst nodemailer =  require(\"nodemailer\")\n\ntry {\n  \n\n  let transporter = nodemailer.createTransport({\n    service:\"hotmail\", \n    auth: {\n      user: \"easybuy786@outlook.com\",\n      pass: \"12345678easybuy\", \n    },\n  });\n\n  transporter.sendMail({\n    from: \"easybuy786@outlook.com\",\n    to: bh.input.body.email, \n    subject: \"Invoice\", \n    text: \"Here is your invoice!\", \n    html:`<div>${bh.input.body.invoice}</div>` \n  });\n\n  \n  \n} catch (error) {\n  console.log(error,\"mailer.helpers Error\");\n}\n  \n  ",
+        "functionName": "sd_F3u4BbFmLY3UFGlf",
+        "category": "Function",
+        "x": 280,
+        "y": 380,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
     }
 ]

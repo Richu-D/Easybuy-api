@@ -226,7 +226,7 @@ export class customerList_service {
         );
         bh.local.aggResult[i].payment = result;
         // .payment
-        bh.local.aggResult[i].productDetails = null;
+        // bh.local.aggResult[i].productDetails = null
       }
 
       bh.local.out = bh.local.aggResult;

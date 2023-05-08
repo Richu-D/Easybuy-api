@@ -231,7 +231,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\n\nfor(let i=0; i<bh.local.aggResult.length; i++) {\n    let result = await instance.paymentLink.fetch(bh.local.aggResult[i].paymentid);\n    bh.local.aggResult[i].payment = result\n    // .payment\n    bh.local.aggResult[i].productDetails = null\n}\n\nbh.local.out = bh.local.aggResult\n",
+        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\n\nfor(let i=0; i<bh.local.aggResult.length; i++) {\n    let result = await instance.paymentLink.fetch(bh.local.aggResult[i].paymentid);\n    bh.local.aggResult[i].payment = result\n    // .payment\n    // bh.local.aggResult[i].productDetails = null\n}\n\nbh.local.out = bh.local.aggResult\n",
         "functionName": "sd_2Sr5lwEip8ST9Ckg",
         "category": "Function",
         "x": 505,
