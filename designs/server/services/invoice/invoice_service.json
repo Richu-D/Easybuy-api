@@ -1,0 +1,215 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "type": "tab",
+        "createdDate": "2023-05-08T18:27:39.683Z",
+        "label": "invoice_service",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "invoice_service",
+        "relativeParentPath": "invoice"
+    },
+    {
+        "id": "sd_VQmWfu8sYPOoR8Tw",
+        "type": "Start",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "client-server",
+        "nodeType": "start",
+        "name": "",
+        "outputs": 1,
+        "inputVariables": [],
+        "localVariables": [],
+        "accept_bh": true,
+        "functionName": "sd_VQmWfu8sYPOoR8Tw",
+        "category": "General",
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "sd_gIodzh3YvwMSGZlq"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "invoice_service"
+    },
+    {
+        "id": "sd_gIodzh3YvwMSGZlq",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.input.params)\nconst { ObjectId } = require('mongodb');\n\nconst idString = bh.input.params.id;\n\nif (ObjectId.isValid(idString)) {\n  bh.local.isIdValid = true\n} else {\n  bh.local.isIdValid = false\n}\n\nbh.local.collection = \"orders\";\nbh.local.query = [\n    { $match: { _id: ObjectId(idString) } },\n    { $unwind: \"$product\" },\n    {\n      $lookup: {\n        from: 'product',\n        localField: 'product.productid',\n        foreignField: '_id',\n        as: 'productDetails'\n      }\n    },\n  {\n    $group: {\n      _id: \"$_id\",\n      customerNumber: { $first: \"$customerNumber\" },\n      empId: { $first: \"$empId\" },\n      totalAmount: { $first: \"$totalAmount\" },\n      paymentStatus: { $first: \"$paymentStatus\" },\n      paymentid: { $first: \"$paymentid\" },\n      discountPercentage: { $first: \"$couponDetails\" },\n      products: {\n        $push: {\n          productid: \"$product.productid\",\n          count: \"$product.count\",\n          price: \"$product.price\",\n          productDetails: {\n            _id: { $arrayElemAt: [\"$productDetails._id\", 0] },\n            name: { $arrayElemAt: [\"$productDetails.name\", 0] },\n            gram: { $toInt: { $arrayElemAt: [\"$productDetails.gram\", 0] } }\n          },\n          totalPrice: {\n            $multiply: [\n              \"$product.count\",\n              // { $toInt: { $arrayElemAt: [\"$productDetails.gram\", 0] } },\n              \"$product.price\"\n            ]\n          }\n        }\n      }\n    }\n  }\n    // {\n    //   $group: {\n    //     _id: '$_id',\n    //     customerNumber: { $first: '$customerNumber' },\n    //     empId: { $first: '$empId' },\n    //     totalAmount: { $first: '$totalAmount' },\n    //     paymentStatus: { $first: '$paymentStatus' },\n    //     paymentid: { $first: '$paymentid' },\n    //     products: {\n    //       $push: {\n    //         productid: '$product.productid',\n    //         count: '$product.count',\n    //         price: '$product.price',\n    //         productDetails: {\n    //         //  $push: {\n    //             _id: '$productDetails._id',\n    //             name: '$productDetails.name',\n    //             gram: '$productDetails.gram'\n    //         //  }\n    //         }\n    //       }\n    //     }\n    //   }\n    // }\n\n  //   {\n  //   $group: {\n  //     _id: {\n  //       id: \"$_id\",\n  //       customerNumber: \"$customerNumber\",\n  //       empId: \"$empId\",\n  //       paymentStatus: \"$paymentStatus\",\n  //       paymentid: \"$paymentid\"\n  //     },\n  //     products: {\n  //       $push: {\n  //         productid: \"$productDetails._id\",\n  //         count: \"$productDetails.count\",\n  //         price: \"$productDetails.product.price\",\n  //         productDetails: {\n  //           name: \"$productDetails.product.name\",\n  //           gram: \"$productDetails.gram\"\n  //         },\n  //         total_price: {\n  //           $multiply: [\"$productDetails.count\", \"$productDetails.product.price\"]\n  //         }\n  //       }\n  //     },\n  //     totalAmount: { $sum: { $multiply: [\"$productDetails.count\", \"$productDetails.product.price\"] } }\n  //   }\n  // },\n  // {\n  //   $addFields: {\n  //     \"products.total_price\": {\n  //       $sum: \"$products.total_price\"\n  //     }\n  //   }\n  // },\n  ]",
+        "functionName": "sd_gIodzh3YvwMSGZlq",
+        "category": "Function",
+        "x": 260,
+        "y": 140,
+        "wires": [
+            [
+                "sd_sdVumFRSw5JbpqEP"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    },
+    {
+        "id": "sd_sdVumFRSw5JbpqEP",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isIdValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isIdValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_sdVumFRSw5JbpqEP",
+        "category": "Function",
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "sd_9yGjAXNXMtOFPAsU"
+            ],
+            [
+                "sd_6uW3PO29Nqz9dGcp"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    },
+    {
+        "id": "sd_9yGjAXNXMtOFPAsU",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(\"valid\")",
+        "functionName": "sd_9yGjAXNXMtOFPAsU",
+        "category": "Function",
+        "x": 500,
+        "y": 100,
+        "wires": [
+            [
+                "sd_OLGNasvXDlRSL3TD"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    },
+    {
+        "id": "sd_6uW3PO29Nqz9dGcp",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(\"not valid\")",
+        "functionName": "sd_6uW3PO29Nqz9dGcp",
+        "category": "Function",
+        "x": 505,
+        "y": 200,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    },
+    {
+        "id": "sd_OLGNasvXDlRSL3TD",
+        "type": "Mongodb",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
+        "collection": "bh.local.collection",
+        "options": "",
+        "resultMapping": "bh.local.result",
+        "operation": "aggregate",
+        "argumentArray": [
+            "aggregate"
+        ],
+        "aggregate": "bh.local.query",
+        "operations": "",
+        "query": "bh.local.query",
+        "fieldOrSpec": "",
+        "filter": "",
+        "key": "",
+        "docId": "",
+        "indexName": "",
+        "replacement": "",
+        "update": "",
+        "xAxis": "",
+        "yAxis": "",
+        "indexes": "",
+        "docs": "",
+        "document": "",
+        "newName": "",
+        "doc": "",
+        "filePath": "",
+        "fileName": "",
+        "pipeline": "",
+        "functionName": "sd_OLGNasvXDlRSL3TD",
+        "category": "Storage",
+        "x": 625,
+        "y": 100,
+        "wires": [
+            []
+        ],
+        "__ssdTypeInputs__": {
+            "collection": {
+                "type": "bh.local",
+                "value": "collection",
+                "constant": false
+            },
+            "options": {
+                "type": "bh",
+                "value": "",
+                "nullable": "true",
+                "constant": false
+            },
+            "resultMapping": {
+                "type": "bh.local",
+                "value": "result",
+                "constant": false
+            },
+            "query": {
+                "type": "bh.local",
+                "value": "query",
+                "constant": false
+            },
+            "aggregate": {
+                "type": "bh.local",
+                "value": "query",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    }
+]

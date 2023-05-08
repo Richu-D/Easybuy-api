@@ -1,0 +1,165 @@
+[
+    {
+        "id": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "type": "tab",
+        "createdDate": "2023-05-08T18:27:31.600Z",
+        "label": "invoice_api",
+        "disabled": false,
+        "info": "",
+        "functionSeq": 0,
+        "generateNext": true,
+        "serviceName": "invoice_api",
+        "relativeParentPath": "invoice"
+    },
+    {
+        "id": "sd_cIQojfYNhm3vaupR",
+        "type": "HttpIn",
+        "z": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "viewType": "server",
+        "nodeType": "start",
+        "name": "",
+        "path": "/invoice/:id",
+        "uploadpath": "",
+        "summary": "",
+        "description": "",
+        "method": "get",
+        "sequenceId": "",
+        "consumes": "",
+        "produces": "",
+        "filetype": "path",
+        "acceptFileUpload": false,
+        "useDataModel": false,
+        "dataModelIsArray": false,
+        "erd": "",
+        "erdName": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "responses": [],
+            "params": [],
+            "produces": [],
+            "consumes": []
+        },
+        "inputs": 0,
+        "outputs": 1,
+        "validateRequestUsingSwaggerDocs": false,
+        "category": "HTTP",
+        "x": 105,
+        "y": 80,
+        "wires": [
+            [
+                "sd_BOJ74bu25DJeqRcn"
+            ]
+        ],
+        "__ssdTypeInputs__": {
+            "uploadpath": {
+                "type": "str",
+                "value": "",
+                "nullable": "true",
+                "nullableValue": "",
+                "constant": false
+            }
+        },
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "invoice_api",
+        "functionName": "sd_cIQojfYNhm3vaupR"
+    },
+    {
+        "id": "sd_BOJ74bu25DJeqRcn",
+        "type": "CallService",
+        "z": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "outputs": 1,
+        "isValidNode": true,
+        "noerr": 0,
+        "service": {
+            "id": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+            "type": "tab",
+            "createdDate": "2023-05-08T18:27:39.683Z",
+            "label": "invoice_service",
+            "disabled": false,
+            "info": "",
+            "functionSeq": 0
+        },
+        "flow": {
+            "flowId": "sd_VQmWfu8sYPOoR8Tw",
+            "flowName": "sd_VQmWfu8sYPOoR8Tw"
+        },
+        "inputVariables": [],
+        "bhVariables": [],
+        "outputMapping": [],
+        "callService": "./invoice_service",
+        "startName": "sd_VQmWfu8sYPOoR8Tw",
+        "inputParams": [
+            "bh"
+        ],
+        "accept_bh": true,
+        "functionName": "sd_BOJ74bu25DJeqRcn",
+        "category": "General",
+        "x": 260,
+        "y": 80,
+        "wires": [
+            [
+                "sd_JWjw4UV3kQQK6GmJ"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_api",
+        "generated": true
+    },
+    {
+        "id": "sd_JWjw4UV3kQQK6GmJ",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_Wyq5OKVHiw1T0e8v",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "result",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": 200,
+            "obj": "bh.local.result",
+            "send": "bh.local.result"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_JWjw4UV3kQQK6GmJ",
+        "category": "HTTP",
+        "x": 420,
+        "y": 80,
+        "wires": [],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_api",
+        "generated": true
+    }
+]

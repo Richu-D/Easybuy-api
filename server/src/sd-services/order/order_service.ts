@@ -499,6 +499,7 @@ export class order_service {
         totalAmount - (discountPercentage / 100) * totalAmount;
 
       bh.local.orderCreated.totalAmount = discoutedPrice;
+      bh.local.orderCreated.couponDetails = bh.local.couponFind[0]?.percentage;
 
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_1aKatrQ39tIIjatI(bh, parentSpanInst);
@@ -672,7 +673,7 @@ export class order_service {
       parentSpanInst
     );
     try {
-      console.log(bh.local.orderCreated);
+      bh.local.orderCreated.couponDetails = 0;
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_1aKatrQ39tIIjatI(bh, parentSpanInst);
       //appendnew_next_sd_Hp8gItFudSH0fAcU
