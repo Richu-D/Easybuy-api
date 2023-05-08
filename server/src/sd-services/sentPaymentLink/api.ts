@@ -214,9 +214,9 @@ export class api {
     }
   }
 
-  async sd_YTelYMrBQEm9uz3O(parentSpanInst, ...others) {
+  async fetchStatus(parentSpanInst, ...others) {
     const spanInst = this.tracerService.createSpan(
-      'sd_YTelYMrBQEm9uz3O',
+      'fetchStatus',
       parentSpanInst
     );
     try {
@@ -227,7 +227,7 @@ export class api {
       bh = this.sdService.__constructDefault(bh);
       this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_FmuT0Y7XL5MiN8eI(bh, parentSpanInst);
-      //appendnew_next_sd_YTelYMrBQEm9uz3O
+      //appendnew_next_fetchStatus
       return (
         // formatting output variables
         {
@@ -241,7 +241,7 @@ export class api {
         e,
         'sd_YTelYMrBQEm9uz3O',
         spanInst,
-        'sd_YTelYMrBQEm9uz3O'
+        'fetchStatus'
       );
     }
   }
@@ -382,7 +382,7 @@ export class api {
       parentSpanInst
     );
     try {
-      let outputVariables = await this.sd_YTelYMrBQEm9uz3O(spanInst);
+      let outputVariables = await this.fetchStatus(spanInst);
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_m7qVDxRKTzeEd1a0
       return bh;
@@ -409,11 +409,12 @@ export class api {
         key_secret: 'LwCYMNILRX63OEKmwIzORX0f',
       });
 
-      instance.paymentLink.fetch('plink_LkjIZ3pS8p8sHK').then((Response) => {
-        console.log('heeeeeeeeeeeeeee');
-        console.log(Response);
-      });
+      bh.local.resultStatus = await instance.paymentLink.fetch(
+        'plink_Ln3IBLtTfIslTw'
+      );
+      console.log(bh.local.resultStatus);
       this.tracerService.sendData(spanInst, bh);
+      await this.sd_AZ33NSIT8vAvwCtU(bh, parentSpanInst);
       //appendnew_next_sd_FmuT0Y7XL5MiN8eI
       return bh;
     } catch (e) {
@@ -424,6 +425,16 @@ export class api {
         spanInst,
         'sd_FmuT0Y7XL5MiN8eI'
       );
+    }
+  }
+
+  async sd_AZ33NSIT8vAvwCtU(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.local.resultStatus);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_AZ33NSIT8vAvwCtU');
     }
   }
 

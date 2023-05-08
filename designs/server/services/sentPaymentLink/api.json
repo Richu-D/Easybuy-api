@@ -157,7 +157,6 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
-        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -248,7 +247,6 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
-        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -305,13 +303,13 @@
         },
         "flow": {
             "flowId": "sd_YTelYMrBQEm9uz3O",
-            "flowName": "sd_YTelYMrBQEm9uz3O"
+            "flowName": "fetchStatus"
         },
         "inputVariables": [],
         "bhVariables": [],
         "outputMapping": [],
         "callService": "./api",
-        "startName": "sd_YTelYMrBQEm9uz3O",
+        "startName": "fetchStatus",
         "inputParams": [],
         "accept_bh": false,
         "functionName": "sd_m7qVDxRKTzeEd1a0",
@@ -332,12 +330,12 @@
         "z": "SSD_SERVICE_ID_sd_znQocInVjaH22QnE",
         "viewType": "client-server",
         "nodeType": "start",
-        "name": "",
+        "name": "fetchStatus",
         "outputs": 1,
         "inputVariables": [],
         "localVariables": [],
         "accept_bh": false,
-        "functionName": "sd_YTelYMrBQEm9uz3O",
+        "functionName": "fetchStatus",
         "category": "General",
         "x": 120,
         "y": 620,
@@ -357,13 +355,15 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\ninstance.paymentLink.fetch('plink_LkjIZ3pS8p8sHK').then((Response) => {\n    console.log('heeeeeeeeeeeeeee')\n    console.log(Response);\n})",
+        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\nbh.local.resultStatus = await instance.paymentLink.fetch('plink_Ln3IBLtTfIslTw')\nconsole.log(bh.local.resultStatus)",
         "functionName": "sd_FmuT0Y7XL5MiN8eI",
         "category": "Function",
         "x": 285,
         "y": 620,
         "wires": [
-            []
+            [
+                "sd_AZ33NSIT8vAvwCtU"
+            ]
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
@@ -560,6 +560,57 @@
         "wires": [
             []
         ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "api",
+        "generated": true
+    },
+    {
+        "id": "sd_AZ33NSIT8vAvwCtU",
+        "type": "HttpOut",
+        "z": "SSD_SERVICE_ID_sd_znQocInVjaH22QnE",
+        "viewType": "server",
+        "nodeType": "flow",
+        "name": "",
+        "headers": {},
+        "responseBody": {
+            "type": "bh.local",
+            "value": "resultStatus",
+            "ssd_typedInputField": true
+        },
+        "httpcode": {
+            "type": "num",
+            "value": 200,
+            "ssd_typedInputField": true
+        },
+        "responseType": "obj",
+        "swaggerResponse": {},
+        "responseMapping": {
+            "status": 200,
+            "obj": "bh.local.resultStatus",
+            "send": "bh.local.resultStatus"
+        },
+        "dataModelIsArray": false,
+        "inputs": 1,
+        "outputs": 0,
+        "erd": "",
+        "entity": "",
+        "ref": "",
+        "editableListData": {
+            "headers": [],
+            "produces": [],
+            "responses": []
+        },
+        "cookiesList": {},
+        "switchStates": {
+            "headers": "Map",
+            "cookies": "Map"
+        },
+        "functionName": "sd_AZ33NSIT8vAvwCtU",
+        "category": "HTTP",
+        "x": 465,
+        "y": 620,
+        "wires": [],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
         "serviceName": "api",

@@ -225,41 +225,19 @@
         "generated": true
     },
     {
-        "id": "sd_QQz4vLmQdnW8fVQO",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "script": "\n\nfor(let i=0;i<bh.local.aggResult.length;i++){\n   \n    let paymentId = bh.local.aggResult[i].paymentid\n    \n  \n    for(let j=0;j<bh.local.allPaymentData.payment_links.length;j++){\n        \n        if(bh.local.allPaymentData.payment_links[j].id.includes(paymentId)){\n            bh.local.aggResult[i].status = bh.local.allPaymentData.payment_links[j].status\n            \n        }\n    }\n}\nbh.local.out = bh.local.aggResult",
-        "functionName": "sd_QQz4vLmQdnW8fVQO",
-        "category": "Function",
-        "x": 705,
-        "y": 80,
-        "wires": [
-            []
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": false,
-        "serviceName": "customerList_service",
-        "generated": true
-    },
-    {
         "id": "sd_2Sr5lwEip8ST9Ckg",
         "type": "Script",
         "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\nbh.local.allPaymentData = await instance.paymentLink.all()\n\n\n",
+        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\n\nfor(let i=0; i<bh.local.aggResult.length; i++) {\n    let result = await instance.paymentLink.fetch(bh.local.aggResult[i].paymentid);\n    bh.local.aggResult[i].payment = result\n    // .payment\n    bh.local.aggResult[i].productDetails = null\n}\n\nbh.local.out = bh.local.aggResult\n",
         "functionName": "sd_2Sr5lwEip8ST9Ckg",
         "category": "Function",
         "x": 505,
         "y": 80,
         "wires": [
-            [
-                "sd_QQz4vLmQdnW8fVQO"
-            ]
+            []
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": false,
