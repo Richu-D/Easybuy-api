@@ -93,7 +93,7 @@
         "optionsSuccessStatus": "",
         "functionName": "sd_Tp9jNbUvUZ1kJnAn",
         "category": "Global",
-        "x": 465,
+        "x": 445,
         "y": 100,
         "wires": [
             [
@@ -187,12 +187,12 @@
         "cookieDomain": "",
         "cookieSecure": false,
         "cookieExpires": "",
-        "cookieHttpOnly": true,
+        "cookieHttpOnly": false,
         "cookieMaxAge": "3600000",
         "cookiePath": "",
         "cookieSameSite": "\"lax\"",
         "proxy": false,
-        "resave": true,
+        "resave": false,
         "rolling": false,
         "saveUninitialized": false,
         "secret": "\"secret\"",
@@ -204,7 +204,7 @@
         "autoremoveInterval": "",
         "functionName": "sd_Q1qrnpK4gblwWpG8",
         "category": "Global",
-        "x": 180,
+        "x": 245,
         "y": 100,
         "wires": [
             [

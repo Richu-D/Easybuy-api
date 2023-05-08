@@ -185,7 +185,7 @@
         "summary": "",
         "description": "",
         "method": "post",
-        "sequenceId": "employeeCheck",
+        "sequenceId": "",
         "consumes": "",
         "produces": "",
         "filetype": "path",

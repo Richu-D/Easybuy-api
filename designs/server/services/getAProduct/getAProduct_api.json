@@ -23,7 +23,7 @@
         "summary": "",
         "description": "",
         "method": "get",
-        "sequenceId": "employeeCheck",
+        "sequenceId": "",
         "consumes": "",
         "produces": "",
         "filetype": "path",

@@ -30,7 +30,6 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
-        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -64,7 +63,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "api",
-        "functionName": "sd_EdfmCUBZa97PcFIP"
+        "functionName": "sd_EdfmCUBZa97PcFIP",
+        "generated": false
     },
     {
         "id": "sd_BlgD7G1N9ORXGyBs",
@@ -110,7 +110,8 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "api"
+        "serviceName": "api",
+        "generated": false
     },
     {
         "id": "sd_edJSL6xvQgjmuRST",
@@ -226,9 +227,9 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
+        "generated": true,
         "generateNext": false,
-        "serviceName": "api",
-        "generated": true
+        "serviceName": "api"
     },
     {
         "id": "sd_s5LFMhMYlCzNqsdo",
@@ -283,7 +284,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "api",
-        "functionName": "sd_s5LFMhMYlCzNqsdo"
+        "functionName": "sd_s5LFMhMYlCzNqsdo",
+        "generated": false
     },
     {
         "id": "sd_m7qVDxRKTzeEd1a0",
@@ -349,7 +351,8 @@
         ],
         "__n_excludedFromValidation__": {},
         "generateNext": true,
-        "serviceName": "api"
+        "serviceName": "api",
+        "generated": false
     },
     {
         "id": "sd_FmuT0Y7XL5MiN8eI",

@@ -20,14 +20,14 @@ export let Middlewares = {
     let sess: expressSession.SessionOptions = {
       cookie: {
         secure: false,
-        httpOnly: true,
+        httpOnly: false,
         maxAge: 3600000,
         sameSite: 'lax',
       },
 
       proxy: false,
 
-      resave: true,
+      resave: false,
 
       rolling: false,
 
