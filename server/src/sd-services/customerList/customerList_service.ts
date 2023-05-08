@@ -194,7 +194,7 @@ export class customerList_service {
         {}
       );
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_QQz4vLmQdnW8fVQO(bh, parentSpanInst);
+      bh = await this.sd_2Sr5lwEip8ST9Ckg(bh, parentSpanInst);
       //appendnew_next_sd_kjF3CBejwgttWfnB
       return bh;
     } catch (e) {
@@ -208,14 +208,52 @@ export class customerList_service {
     }
   }
 
+  async sd_2Sr5lwEip8ST9Ckg(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_2Sr5lwEip8ST9Ckg',
+      parentSpanInst
+    );
+    try {
+      const Razorpay = require('razorpay');
+      var instance = new Razorpay({
+        key_id: 'rzp_test_JK2eMcWr8sfXEU',
+        key_secret: 'LwCYMNILRX63OEKmwIzORX0f',
+      });
+
+      bh.local.allPaymentData = await instance.paymentLink.all();
+
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_QQz4vLmQdnW8fVQO(bh, parentSpanInst);
+      //appendnew_next_sd_2Sr5lwEip8ST9Ckg
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_2Sr5lwEip8ST9Ckg',
+        spanInst,
+        'sd_2Sr5lwEip8ST9Ckg'
+      );
+    }
+  }
+
   async sd_QQz4vLmQdnW8fVQO(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_QQz4vLmQdnW8fVQO',
       parentSpanInst
     );
     try {
+      for (let i = 0; i < bh.local.aggResult.length; i++) {
+        let paymentId = bh.local.aggResult[i].paymentid;
+
+        for (let j = 0; j < bh.local.allPaymentData.payment_links.length; j++) {
+          if (bh.local.allPaymentData.payment_links[j].id.includes(paymentId)) {
+            bh.local.aggResult[i].status =
+              bh.local.allPaymentData.payment_links[j].status;
+          }
+        }
+      }
       bh.local.out = bh.local.aggResult;
-      console.log(bh.local.aggResult, 'aggresult');
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_QQz4vLmQdnW8fVQO
       return bh;

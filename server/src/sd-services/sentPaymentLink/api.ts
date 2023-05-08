@@ -157,6 +157,38 @@ export class api {
         this.generatedMiddlewares
       )
     );
+
+    this.app['get'](
+      `${this.serviceBasePath}/payment_all`,
+      cookieParser(),
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'pre',
+        this.generatedMiddlewares
+      ),
+
+      async (req, res, next) => {
+        let bh: any = {};
+        try {
+          bh = this.sdService.__constructDefault(
+            { local: {}, input: {} },
+            req,
+            res,
+            next
+          );
+          let parentSpanInst = null;
+          bh = await this.sd_LslOm5CkZ7ktgclb(bh, parentSpanInst);
+          //appendnew_next_sd_0c4dHF8Smrt3mYW5
+        } catch (e) {
+          return await this.errorHandler(bh, e, 'sd_0c4dHF8Smrt3mYW5');
+        }
+      },
+      this.sdService.getMiddlesWaresBySequenceId(
+        null,
+        'post',
+        this.generatedMiddlewares
+      )
+    );
     //appendnew_flow_api_HttpIn
   }
   //   service flows_api
@@ -210,6 +242,27 @@ export class api {
         'sd_YTelYMrBQEm9uz3O',
         spanInst,
         'sd_YTelYMrBQEm9uz3O'
+      );
+    }
+  }
+
+  async getAllPayment(parentSpanInst, bh) {
+    const spanInst = this.tracerService.createSpan(
+      'getAllPayment',
+      parentSpanInst
+    );
+    try {
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_ZcDdmrXDMdDSixZT(bh, parentSpanInst);
+      //appendnew_next_getAllPayment
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_cslTr1P61T1D5LSH',
+        spanInst,
+        'getAllPayment'
       );
     }
   }
@@ -370,6 +423,65 @@ export class api {
         'sd_FmuT0Y7XL5MiN8eI',
         spanInst,
         'sd_FmuT0Y7XL5MiN8eI'
+      );
+    }
+  }
+
+  async sd_LslOm5CkZ7ktgclb(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_LslOm5CkZ7ktgclb',
+      parentSpanInst
+    );
+    try {
+      bh = await this.getAllPayment(spanInst, bh);
+      this.tracerService.sendData(spanInst, bh);
+      await this.sd_62vtL5DWWn9lh5M3(bh, parentSpanInst);
+      //appendnew_next_sd_LslOm5CkZ7ktgclb
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_LslOm5CkZ7ktgclb',
+        spanInst,
+        'sd_LslOm5CkZ7ktgclb'
+      );
+    }
+  }
+
+  async sd_62vtL5DWWn9lh5M3(bh, parentSpanInst) {
+    try {
+      bh.web.res.status(200).send(bh.local.allPaymentData);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(bh, e, 'sd_62vtL5DWWn9lh5M3');
+    }
+  }
+
+  async sd_ZcDdmrXDMdDSixZT(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_ZcDdmrXDMdDSixZT',
+      parentSpanInst
+    );
+    try {
+      const Razorpay = require('razorpay');
+      var instance = new Razorpay({
+        key_id: 'rzp_test_JK2eMcWr8sfXEU',
+        key_secret: 'LwCYMNILRX63OEKmwIzORX0f',
+      });
+
+      bh.local.allPaymentData = await instance.paymentLink.all();
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_ZcDdmrXDMdDSixZT
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_ZcDdmrXDMdDSixZT',
+        spanInst,
+        'sd_ZcDdmrXDMdDSixZT'
       );
     }
   }
