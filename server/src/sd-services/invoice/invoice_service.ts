@@ -127,7 +127,7 @@ export class invoice_service {
     );
     try {
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_F3u4BbFmLY3UFGlf(bh, parentSpanInst);
+      bh = await this.sendMail(bh, parentSpanInst);
       //appendnew_next_sendInvoice
       return bh;
     } catch (e) {
@@ -386,38 +386,44 @@ export class invoice_service {
     }
   }
 
-  async sd_F3u4BbFmLY3UFGlf(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_F3u4BbFmLY3UFGlf',
-      parentSpanInst
-    );
+  async sendMail(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan('sendMail', parentSpanInst);
     try {
-      console.log(bh.input.body.invoice, 'invoice');
+      console.log(bh.input.body, typeof bh.input.body.invoice);
+
+      const htmlMinifier = require('html-minifier').minify;
+      const minifiedInvoice = htmlMinifier(bh.input.body.invoice, {
+        removeComments: true,
+        collapseWhitespace: true,
+        minifyCSS: true,
+        minifyJS: true,
+      });
 
       const nodemailer = require('nodemailer');
 
-      try {
-        let transporter = nodemailer.createTransport({
-          service: 'hotmail',
-          auth: {
-            user: 'easybuy786@outlook.com',
-            pass: '12345678easybuy',
-          },
-        });
+      let transporter = nodemailer.createTransport({
+        service: 'hotmail',
+        auth: {
+          user: 'easybuyapi@outlook.com',
+          pass: 'brototype123',
+        },
+      });
 
-        transporter.sendMail({
-          from: 'easybuy786@outlook.com',
-          to: bh.input.body.email,
-          subject: 'Invoice',
-          text: 'Here is your invoice!',
-          html: `<div>${bh.input.body.invoice}</div>`,
-        });
-      } catch (error) {
-        console.log(error, 'mailer.helpers Error');
-      }
+      transporter.sendMail({
+        from: 'easybuyapi@outlook.com',
+        to: bh.input.body.email,
+        subject: 'Invoice',
+        text: 'Here is your invoice!',
+        html: `<span>${minifiedInvoice}</span>`,
+      });
+
+      //  attachments: [{   // stream as an attachment
+      //           filename: 'invoice.jpg',
+      //           content: bh.input.body.invoice
+      //       }]
 
       this.tracerService.sendData(spanInst, bh);
-      //appendnew_next_sd_F3u4BbFmLY3UFGlf
+      //appendnew_next_sendMail
       return bh;
     } catch (e) {
       return await this.errorHandler(
@@ -425,7 +431,28 @@ export class invoice_service {
         e,
         'sd_F3u4BbFmLY3UFGlf',
         spanInst,
-        'sd_F3u4BbFmLY3UFGlf'
+        'sendMail'
+      );
+    }
+  }
+
+  async sd_YZ9ErhwPKy2WPpFW(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_YZ9ErhwPKy2WPpFW',
+      parentSpanInst
+    );
+    try {
+      console.log(bh.error);
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_YZ9ErhwPKy2WPpFW
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_YZ9ErhwPKy2WPpFW',
+        spanInst,
+        'sd_YZ9ErhwPKy2WPpFW'
       );
     }
   }
@@ -439,7 +466,8 @@ export class invoice_service {
     bh.errorFunName = functionName;
     this.tracerService.sendData(parentSpanInst, bh, true);
     if (
-      false
+      false ||
+      (await this.sd_Bi6ebXaGq6SU4RM5(bh, parentSpanInst))
       /*appendnew_next_Catch*/
     ) {
       return bh;
@@ -450,6 +478,15 @@ export class invoice_service {
         throw e;
       }
     }
+  }
+  async sd_Bi6ebXaGq6SU4RM5(bh, parentSpanInst) {
+    const nodes = ['sd_F3u4BbFmLY3UFGlf'];
+    if (nodes.includes(bh.errorSource)) {
+      bh = await this.sd_YZ9ErhwPKy2WPpFW(bh, parentSpanInst);
+      //appendnew_next_sd_Bi6ebXaGq6SU4RM5
+      return true;
+    }
+    return false;
   }
   //appendnew_flow_invoice_service_Catch
 }
