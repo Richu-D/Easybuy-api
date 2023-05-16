@@ -20,8 +20,8 @@
         "name": "addCoupon",
         "path": "/admin/coupon",
         "uploadpath": "",
-        "summary": "",
-        "description": "",
+        "summary": "Add coupon by admin",
+        "description": "coupon details as req body to add a coupon by the Admin",
         "method": "post",
         "sequenceId": "",
         "consumes": "",
@@ -48,7 +48,13 @@
                 }
             ],
             "produces": [],
-            "consumes": []
+            "consumes": [
+                {
+                    "key": "application/json",
+                    "rowId": "sd_uPZKvpzA7DvLjtdR",
+                    "valid": true
+                }
+            ]
         },
         "inputs": 0,
         "outputs": 1,
@@ -111,7 +117,20 @@
         "editableListData": {
             "headers": [],
             "produces": [],
-            "responses": []
+            "responses": [
+                {
+                    "key": "Coupon added successfully",
+                    "value": "200",
+                    "rowId": "sd_JgN6LS1Qgl85IGco",
+                    "valid": true
+                },
+                {
+                    "key": "Coupon already added",
+                    "value": "404",
+                    "rowId": "sd_QWS9cchfqYXd5O92",
+                    "valid": true
+                }
+            ]
         },
         "cookiesList": {},
         "switchStates": {

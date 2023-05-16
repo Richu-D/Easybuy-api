@@ -160,6 +160,69 @@ export class invoice_service {
         bh.local.isIdValid = false;
       }
 
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_sdVumFRSw5JbpqEP(bh, parentSpanInst);
+      //appendnew_next_sd_gIodzh3YvwMSGZlq
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_gIodzh3YvwMSGZlq',
+        spanInst,
+        'sd_gIodzh3YvwMSGZlq'
+      );
+    }
+  }
+
+  async sd_sdVumFRSw5JbpqEP(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_sdVumFRSw5JbpqEP',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.local.isIdValid,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_9yGjAXNXMtOFPAsU(bh, parentSpanInst);
+      } else if (
+        this.sdService.operators['false'](
+          bh.local.isIdValid,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_6uW3PO29Nqz9dGcp(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_sdVumFRSw5JbpqEP',
+        spanInst,
+        'sd_sdVumFRSw5JbpqEP'
+      );
+    }
+  }
+
+  async sd_9yGjAXNXMtOFPAsU(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_9yGjAXNXMtOFPAsU',
+      parentSpanInst
+    );
+    try {
+      const { ObjectId } = require('mongodb');
+      const idString = bh.input.params.id;
+
       bh.local.collection = 'orders';
       bh.local.query = [
         { $match: { _id: ObjectId(idString) } },
@@ -264,67 +327,6 @@ export class invoice_service {
         // },
       ];
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_sdVumFRSw5JbpqEP(bh, parentSpanInst);
-      //appendnew_next_sd_gIodzh3YvwMSGZlq
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_gIodzh3YvwMSGZlq',
-        spanInst,
-        'sd_gIodzh3YvwMSGZlq'
-      );
-    }
-  }
-
-  async sd_sdVumFRSw5JbpqEP(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_sdVumFRSw5JbpqEP',
-      parentSpanInst
-    );
-    try {
-      if (
-        this.sdService.operators['true'](
-          bh.local.isIdValid,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_9yGjAXNXMtOFPAsU(bh, parentSpanInst);
-      } else if (
-        this.sdService.operators['false'](
-          bh.local.isIdValid,
-          undefined,
-          undefined,
-          undefined
-        )
-      ) {
-        bh = await this.sd_6uW3PO29Nqz9dGcp(bh, parentSpanInst);
-      }
-      this.tracerService.sendData(spanInst, bh);
-
-      return bh;
-    } catch (e) {
-      return await this.errorHandler(
-        bh,
-        e,
-        'sd_sdVumFRSw5JbpqEP',
-        spanInst,
-        'sd_sdVumFRSw5JbpqEP'
-      );
-    }
-  }
-
-  async sd_9yGjAXNXMtOFPAsU(bh, parentSpanInst) {
-    const spanInst = this.tracerService.createSpan(
-      'sd_9yGjAXNXMtOFPAsU',
-      parentSpanInst
-    );
-    try {
-      console.log('valid');
-      this.tracerService.sendData(spanInst, bh);
       bh = await this.sd_OLGNasvXDlRSL3TD(bh, parentSpanInst);
       //appendnew_next_sd_9yGjAXNXMtOFPAsU
       return bh;
@@ -352,6 +354,7 @@ export class invoice_service {
         {}
       );
       this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_mSShKv8Vl8XkVUyy(bh, parentSpanInst);
       //appendnew_next_sd_OLGNasvXDlRSL3TD
       return bh;
     } catch (e) {
@@ -365,13 +368,39 @@ export class invoice_service {
     }
   }
 
+  async sd_mSShKv8Vl8XkVUyy(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_mSShKv8Vl8XkVUyy',
+      parentSpanInst
+    );
+    try {
+      bh.local.statusCode = 200;
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_mSShKv8Vl8XkVUyy
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_mSShKv8Vl8XkVUyy',
+        spanInst,
+        'sd_mSShKv8Vl8XkVUyy'
+      );
+    }
+  }
+
   async sd_6uW3PO29Nqz9dGcp(bh, parentSpanInst) {
     const spanInst = this.tracerService.createSpan(
       'sd_6uW3PO29Nqz9dGcp',
       parentSpanInst
     );
     try {
-      console.log('not valid');
+      bh.local.result = {
+        message: 'Id is not valid',
+        code: 401,
+      };
+
+      bh.local.statusCode = 401;
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_6uW3PO29Nqz9dGcp
       return bh;

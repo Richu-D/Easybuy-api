@@ -219,7 +219,7 @@ export class dashboard_service {
         {}
       );
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_Dhw4JVkYzT3Fjn7e(bh, parentSpanInst);
+      bh = await this.sd_E7R7eb2Ffs7YbLek(bh, parentSpanInst);
       //appendnew_next_sd_3ZCwK3AO86upqqe4
       return bh;
     } catch (e) {
@@ -229,6 +229,97 @@ export class dashboard_service {
         'sd_3ZCwK3AO86upqqe4',
         spanInst,
         'sd_3ZCwK3AO86upqqe4'
+      );
+    }
+  }
+
+  async sd_E7R7eb2Ffs7YbLek(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_E7R7eb2Ffs7YbLek',
+      parentSpanInst
+    );
+    try {
+      if (bh.local.result.length === 0) {
+        bh.local.isNotValid = true;
+        bh.local.isNotValidMsg = 'employee Id is not valid';
+        bh.local.statusCode = 401;
+      } else {
+        bh.local.isNotValid = false;
+      }
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_mQVkVHnodMdPq432(bh, parentSpanInst);
+      //appendnew_next_sd_E7R7eb2Ffs7YbLek
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_E7R7eb2Ffs7YbLek',
+        spanInst,
+        'sd_E7R7eb2Ffs7YbLek'
+      );
+    }
+  }
+
+  async sd_mQVkVHnodMdPq432(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_mQVkVHnodMdPq432',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.local.isNotValid,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_fP5qZKywiqbvOZpq(bh, parentSpanInst);
+      } else if (
+        this.sdService.operators['false'](
+          bh.local.isNotValid,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_Dhw4JVkYzT3Fjn7e(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_mQVkVHnodMdPq432',
+        spanInst,
+        'sd_mQVkVHnodMdPq432'
+      );
+    }
+  }
+
+  async sd_fP5qZKywiqbvOZpq(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_fP5qZKywiqbvOZpq',
+      parentSpanInst
+    );
+    try {
+      bh.local.response = {
+        status: bh.local.statusCode,
+        message: bh.local.isNotValidMsg,
+      };
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_fP5qZKywiqbvOZpq
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_fP5qZKywiqbvOZpq',
+        spanInst,
+        'sd_fP5qZKywiqbvOZpq'
       );
     }
   }

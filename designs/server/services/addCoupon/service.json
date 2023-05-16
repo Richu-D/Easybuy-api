@@ -293,7 +293,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.body)\nbh.local.collection = \"coupon\"\nbh.local.query = {couponcode: bh.input.params.couponcode};",
+        "script": "bh.local.collection = \"coupon\"\nbh.local.query = {couponcode: bh.input.params.couponcode};",
         "functionName": "sd_Hn4f11OXaprIsdOE",
         "category": "Function",
         "x": 240,

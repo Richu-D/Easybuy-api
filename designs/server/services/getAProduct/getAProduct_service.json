@@ -24,8 +24,8 @@
         "accept_bh": true,
         "functionName": "sd_t1YbYlQHl9Sl0mn5",
         "category": "General",
-        "x": 180,
-        "y": 240,
+        "x": 145,
+        "y": 140,
         "wires": [
             [
                 "sd_VpXJMowTVWH9oAus"
@@ -45,42 +45,9 @@
         "script": "const { ObjectId } = require('mongodb');\n\nif (ObjectId.isValid(bh.input.params.id)) {\n  bh.local.isValid = true\n} else {\n bh.local.isValid = false\n}\nconsole.log(\"===========\")",
         "functionName": "sd_9SzLGIzAoGOgqa5g",
         "category": "Function",
-        "x": 285,
-        "y": 340,
+        "x": 245,
+        "y": 300,
         "wires": [
-            []
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": true,
-        "serviceName": "getAProduct_service"
-    },
-    {
-        "id": "sd_FGNttqHri1VLsJhE",
-        "type": "Switch",
-        "z": "SSD_SERVICE_ID_sd_yLS697urXP4KRMxs",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "property": "isValid",
-        "propertyType": "bh.local",
-        "propertyGv": "bh.local.isValid",
-        "rules": [
-            {
-                "t": "true"
-            },
-            {
-                "t": "false"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 2,
-        "functionName": "sd_FGNttqHri1VLsJhE",
-        "category": "Function",
-        "x": 385,
-        "y": 360,
-        "wires": [
-            [],
             []
         ],
         "__n_excludedFromValidation__": {},
@@ -97,7 +64,7 @@
         "script": "bh.local.findQuery = {_id: bh.input.params.id}\nconsole.log(bh.input.params)\nbh.local.collection = \"product\"",
         "functionName": "sd_VpXJMowTVWH9oAus",
         "category": "Function",
-        "x": 580,
+        "x": 265,
         "y": 140,
         "wires": [
             [
@@ -165,7 +132,7 @@
         "pipeline": "",
         "functionName": "sd_R8LeAZ9gbFB58gFH",
         "category": "Storage",
-        "x": 700,
+        "x": 385,
         "y": 140,
         "wires": [
             [
@@ -226,7 +193,7 @@
         "outputs": 2,
         "functionName": "sd_JdBKjOPF1kKKNlds",
         "category": "Function",
-        "x": 840,
+        "x": 525,
         "y": 140,
         "wires": [
             [
@@ -251,7 +218,7 @@
         "script": "const product = bh.local.result[0]\n const imageData = {\n    data: product.image[0].buffer.toString('base64'),\n    contentType: product.image[0].mimetype\n  };\n\n  const resp = {\n    id: product._id,\n    name: product.name,\n    price: product.price,\n    description: product.description,\n    image: imageData,\n    weight:product.gram,\n    category:product.category\n  }\n\nbh.local.response={\n    statusCode:200,\n    result:resp\n}",
         "functionName": "sd_ofD4dHIVyaDDqQAY",
         "category": "Function",
-        "x": 940,
+        "x": 625,
         "y": 60,
         "wires": [
             []
@@ -271,7 +238,7 @@
         "script": "bh.local.response={\n    statusCode:400,\n    message:\"no result found\"\n}",
         "functionName": "sd_cBp9L1sldiJzirWh",
         "category": "Function",
-        "x": 945,
+        "x": 630,
         "y": 200,
         "wires": [
             []

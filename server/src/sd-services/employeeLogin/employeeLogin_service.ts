@@ -374,7 +374,7 @@ export class employeeLogin_service {
     );
     try {
       bh.local.response = {
-        statusCode: 404,
+        statusCode: 401,
         message: 'EMPLOYEE_NOT_FOUND',
       };
       this.tracerService.sendData(spanInst, bh);

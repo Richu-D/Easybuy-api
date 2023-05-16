@@ -1,9 +1,11 @@
 {
     "/admin/coupon": {
         "post": {
-            "summary": "",
-            "description": "",
-            "consumes": [],
+            "summary": "Add coupon by admin",
+            "description": "coupon details as req body to add a coupon by the Admin",
+            "consumes": [
+                "application/json"
+            ],
             "produces": [],
             "parameters": [
                 {
@@ -13,7 +15,14 @@
                     "required": true
                 }
             ],
-            "responses": {},
+            "responses": {
+                "200": {
+                    "description": "Coupon added successfully"
+                },
+                "404": {
+                    "description": "Coupon already added"
+                }
+            },
             "tags": [
                 "api"
             ]

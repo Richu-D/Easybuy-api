@@ -30,6 +30,7 @@
         "acceptFileUpload": false,
         "useDataModel": false,
         "dataModelIsArray": false,
+        "uploadFileOptions": "",
         "erd": "",
         "erdName": "",
         "entity": "",
@@ -125,14 +126,14 @@
             "ssd_typedInputField": true
         },
         "httpcode": {
-            "type": "num",
-            "value": 200,
+            "type": "bh.local",
+            "value": "outCode",
             "ssd_typedInputField": true
         },
         "responseType": "obj",
         "swaggerResponse": {},
         "responseMapping": {
-            "status": 200,
+            "status": "bh.local.outCode",
             "obj": "bh.local.out",
             "send": "bh.local.out"
         },

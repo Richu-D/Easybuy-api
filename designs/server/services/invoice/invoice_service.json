@@ -42,7 +42,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(bh.input.params)\nconst { ObjectId } = require('mongodb');\n\nconst idString = bh.input.params.id;\n\nif (ObjectId.isValid(idString)) {\n  bh.local.isIdValid = true\n} else {\n  bh.local.isIdValid = false\n}\n\nbh.local.collection = \"orders\";\nbh.local.query = [\n    { $match: { _id: ObjectId(idString) } },\n    { $unwind: \"$product\" },\n    {\n      $lookup: {\n        from: 'product',\n        localField: 'product.productid',\n        foreignField: '_id',\n        as: 'productDetails'\n      }\n    },\n  {\n    $group: {\n      _id: \"$_id\",\n      customerNumber: { $first: \"$customerNumber\" },\n      empId: { $first: \"$empId\" },\n      totalAmount: { $first: \"$totalAmount\" },\n      paymentStatus: { $first: \"$paymentStatus\" },\n      paymentid: { $first: \"$paymentid\" },\n      discountPercentage: { $first: \"$couponDetails\" },\n      products: {\n        $push: {\n          productid: \"$product.productid\",\n          count: \"$product.count\",\n          price: \"$product.price\",\n          productDetails: {\n            _id: { $arrayElemAt: [\"$productDetails._id\", 0] },\n            name: { $arrayElemAt: [\"$productDetails.name\", 0] },\n            gram: { $toInt: { $arrayElemAt: [\"$productDetails.gram\", 0] } }\n          },\n          totalPrice: {\n            $multiply: [\n              \"$product.count\",\n              // { $toInt: { $arrayElemAt: [\"$productDetails.gram\", 0] } },\n              \"$product.price\"\n            ]\n          }\n        }\n      }\n    }\n  }\n    // {\n    //   $group: {\n    //     _id: '$_id',\n    //     customerNumber: { $first: '$customerNumber' },\n    //     empId: { $first: '$empId' },\n    //     totalAmount: { $first: '$totalAmount' },\n    //     paymentStatus: { $first: '$paymentStatus' },\n    //     paymentid: { $first: '$paymentid' },\n    //     products: {\n    //       $push: {\n    //         productid: '$product.productid',\n    //         count: '$product.count',\n    //         price: '$product.price',\n    //         productDetails: {\n    //         //  $push: {\n    //             _id: '$productDetails._id',\n    //             name: '$productDetails.name',\n    //             gram: '$productDetails.gram'\n    //         //  }\n    //         }\n    //       }\n    //     }\n    //   }\n    // }\n\n  //   {\n  //   $group: {\n  //     _id: {\n  //       id: \"$_id\",\n  //       customerNumber: \"$customerNumber\",\n  //       empId: \"$empId\",\n  //       paymentStatus: \"$paymentStatus\",\n  //       paymentid: \"$paymentid\"\n  //     },\n  //     products: {\n  //       $push: {\n  //         productid: \"$productDetails._id\",\n  //         count: \"$productDetails.count\",\n  //         price: \"$productDetails.product.price\",\n  //         productDetails: {\n  //           name: \"$productDetails.product.name\",\n  //           gram: \"$productDetails.gram\"\n  //         },\n  //         total_price: {\n  //           $multiply: [\"$productDetails.count\", \"$productDetails.product.price\"]\n  //         }\n  //       }\n  //     },\n  //     totalAmount: { $sum: { $multiply: [\"$productDetails.count\", \"$productDetails.product.price\"] } }\n  //   }\n  // },\n  // {\n  //   $addFields: {\n  //     \"products.total_price\": {\n  //       $sum: \"$products.total_price\"\n  //     }\n  //   }\n  // },\n  ]",
+        "script": "console.log(bh.input.params)\nconst { ObjectId } = require('mongodb');\n\nconst idString = bh.input.params.id;\n\nif (ObjectId.isValid(idString)) {\n  bh.local.isIdValid = true\n} else {\n  bh.local.isIdValid = false\n}\n\n",
         "functionName": "sd_gIodzh3YvwMSGZlq",
         "category": "Function",
         "x": 260,
@@ -80,7 +80,7 @@
         "outputs": 2,
         "functionName": "sd_sdVumFRSw5JbpqEP",
         "category": "Function",
-        "x": 400,
+        "x": 385,
         "y": 140,
         "wires": [
             [
@@ -102,7 +102,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(\"valid\")",
+        "script": "const { ObjectId } = require('mongodb');\nconst idString = bh.input.params.id;\n\n\nbh.local.collection = \"orders\";\nbh.local.query = [\n    { $match: { _id: ObjectId(idString) } },\n    { $unwind: \"$product\" },\n    {\n      $lookup: {\n        from: 'product',\n        localField: 'product.productid',\n        foreignField: '_id',\n        as: 'productDetails'\n      }\n    },\n  {\n    $group: {\n      _id: \"$_id\",\n      customerNumber: { $first: \"$customerNumber\" },\n      empId: { $first: \"$empId\" },\n      totalAmount: { $first: \"$totalAmount\" },\n      paymentStatus: { $first: \"$paymentStatus\" },\n      paymentid: { $first: \"$paymentid\" },\n      discountPercentage: { $first: \"$couponDetails\" },\n      products: {\n        $push: {\n          productid: \"$product.productid\",\n          count: \"$product.count\",\n          price: \"$product.price\",\n          productDetails: {\n            _id: { $arrayElemAt: [\"$productDetails._id\", 0] },\n            name: { $arrayElemAt: [\"$productDetails.name\", 0] },\n            gram: { $toInt: { $arrayElemAt: [\"$productDetails.gram\", 0] } }\n          },\n          totalPrice: {\n            $multiply: [\n              \"$product.count\",\n              // { $toInt: { $arrayElemAt: [\"$productDetails.gram\", 0] } },\n              \"$product.price\"\n            ]\n          }\n        }\n      }\n    }\n  }\n    // {\n    //   $group: {\n    //     _id: '$_id',\n    //     customerNumber: { $first: '$customerNumber' },\n    //     empId: { $first: '$empId' },\n    //     totalAmount: { $first: '$totalAmount' },\n    //     paymentStatus: { $first: '$paymentStatus' },\n    //     paymentid: { $first: '$paymentid' },\n    //     products: {\n    //       $push: {\n    //         productid: '$product.productid',\n    //         count: '$product.count',\n    //         price: '$product.price',\n    //         productDetails: {\n    //         //  $push: {\n    //             _id: '$productDetails._id',\n    //             name: '$productDetails.name',\n    //             gram: '$productDetails.gram'\n    //         //  }\n    //         }\n    //       }\n    //     }\n    //   }\n    // }\n\n  //   {\n  //   $group: {\n  //     _id: {\n  //       id: \"$_id\",\n  //       customerNumber: \"$customerNumber\",\n  //       empId: \"$empId\",\n  //       paymentStatus: \"$paymentStatus\",\n  //       paymentid: \"$paymentid\"\n  //     },\n  //     products: {\n  //       $push: {\n  //         productid: \"$productDetails._id\",\n  //         count: \"$productDetails.count\",\n  //         price: \"$productDetails.product.price\",\n  //         productDetails: {\n  //           name: \"$productDetails.product.name\",\n  //           gram: \"$productDetails.gram\"\n  //         },\n  //         total_price: {\n  //           $multiply: [\"$productDetails.count\", \"$productDetails.product.price\"]\n  //         }\n  //       }\n  //     },\n  //     totalAmount: { $sum: { $multiply: [\"$productDetails.count\", \"$productDetails.product.price\"] } }\n  //   }\n  // },\n  // {\n  //   $addFields: {\n  //     \"products.total_price\": {\n  //       $sum: \"$products.total_price\"\n  //     }\n  //   }\n  // },\n  ]",
         "functionName": "sd_9yGjAXNXMtOFPAsU",
         "category": "Function",
         "x": 500,
@@ -124,7 +124,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "console.log(\"not valid\")",
+        "script": "bh.local.result = {\n    message: \"Id is not valid\",\n    code: 401\n}\n\nbh.local.statusCode = 401",
         "functionName": "sd_6uW3PO29Nqz9dGcp",
         "category": "Function",
         "x": 505,
@@ -177,7 +177,9 @@
         "x": 625,
         "y": 100,
         "wires": [
-            []
+            [
+                "sd_mSShKv8Vl8XkVUyy"
+            ]
         ],
         "__ssdTypeInputs__": {
             "collection": {
@@ -246,8 +248,28 @@
         "script": "console.log(bh.input.body.invoice,\"invoice\")\n\n    \nconst nodemailer =  require(\"nodemailer\")\n\ntry {\n  \n\n  let transporter = nodemailer.createTransport({\n    service:\"hotmail\", \n    auth: {\n      user: \"easybuy786@outlook.com\",\n      pass: \"12345678easybuy\", \n    },\n  });\n\n  transporter.sendMail({\n    from: \"easybuy786@outlook.com\",\n    to: bh.input.body.email, \n    subject: \"Invoice\", \n    text: \"Here is your invoice!\", \n    html:`<div>${bh.input.body.invoice}</div>` \n  });\n\n  \n  \n} catch (error) {\n  console.log(error,\"mailer.helpers Error\");\n}\n  \n  ",
         "functionName": "sd_F3u4BbFmLY3UFGlf",
         "category": "Function",
-        "x": 280,
-        "y": 380,
+        "x": 265,
+        "y": 360,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    },
+    {
+        "id": "sd_mSShKv8Vl8XkVUyy",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.statusCode = 200",
+        "functionName": "sd_mSShKv8Vl8XkVUyy",
+        "category": "Function",
+        "x": 745,
+        "y": 100,
         "wires": [
             []
         ],

@@ -194,7 +194,7 @@ export class invoice_api {
 
   async sd_JWjw4UV3kQQK6GmJ(bh, parentSpanInst) {
     try {
-      bh.web.res.status(200).send(bh.local.result);
+      bh.web.res.status(bh.local.statusCode).send(bh.local.result);
 
       return bh;
     } catch (e) {

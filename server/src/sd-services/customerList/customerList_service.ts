@@ -194,7 +194,7 @@ export class customerList_service {
         {}
       );
       this.tracerService.sendData(spanInst, bh);
-      bh = await this.sd_2Sr5lwEip8ST9Ckg(bh, parentSpanInst);
+      bh = await this.sd_XNcTPTwUYD5qia5w(bh, parentSpanInst);
       //appendnew_next_sd_kjF3CBejwgttWfnB
       return bh;
     } catch (e) {
@@ -204,6 +204,100 @@ export class customerList_service {
         'sd_kjF3CBejwgttWfnB',
         spanInst,
         'sd_kjF3CBejwgttWfnB'
+      );
+    }
+  }
+
+  async sd_XNcTPTwUYD5qia5w(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_XNcTPTwUYD5qia5w',
+      parentSpanInst
+    );
+    try {
+      if (bh.local.aggResult.length === 0) {
+        bh.local.isEmpty = true;
+        bh.local.isEmptyMsg = 'employeeId is not valid';
+        bh.local.code = 401;
+      } else {
+        bh.local.isEmpty = false;
+        bh.local.code = 200;
+      }
+      this.tracerService.sendData(spanInst, bh);
+      bh = await this.sd_N3jUWffEDU4Qf1Qh(bh, parentSpanInst);
+      //appendnew_next_sd_XNcTPTwUYD5qia5w
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_XNcTPTwUYD5qia5w',
+        spanInst,
+        'sd_XNcTPTwUYD5qia5w'
+      );
+    }
+  }
+
+  async sd_N3jUWffEDU4Qf1Qh(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_N3jUWffEDU4Qf1Qh',
+      parentSpanInst
+    );
+    try {
+      if (
+        this.sdService.operators['true'](
+          bh.local.isEmpty,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_PgegRpRtv2QPF58Q(bh, parentSpanInst);
+      } else if (
+        this.sdService.operators['false'](
+          bh.local.isEmpty,
+          undefined,
+          undefined,
+          undefined
+        )
+      ) {
+        bh = await this.sd_2Sr5lwEip8ST9Ckg(bh, parentSpanInst);
+      }
+      this.tracerService.sendData(spanInst, bh);
+
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_N3jUWffEDU4Qf1Qh',
+        spanInst,
+        'sd_N3jUWffEDU4Qf1Qh'
+      );
+    }
+  }
+
+  async sd_PgegRpRtv2QPF58Q(bh, parentSpanInst) {
+    const spanInst = this.tracerService.createSpan(
+      'sd_PgegRpRtv2QPF58Q',
+      parentSpanInst
+    );
+    try {
+      bh.local.out = {
+        message: bh.local.isEmptyMsg,
+        statusCode: bh.local.code,
+      };
+
+      bh.local.outCode = 401;
+      this.tracerService.sendData(spanInst, bh);
+      //appendnew_next_sd_PgegRpRtv2QPF58Q
+      return bh;
+    } catch (e) {
+      return await this.errorHandler(
+        bh,
+        e,
+        'sd_PgegRpRtv2QPF58Q',
+        spanInst,
+        'sd_PgegRpRtv2QPF58Q'
       );
     }
   }
@@ -230,6 +324,7 @@ export class customerList_service {
       }
 
       bh.local.out = bh.local.aggResult;
+      bh.local.outCode = 200;
 
       this.tracerService.sendData(spanInst, bh);
       //appendnew_next_sd_2Sr5lwEip8ST9Ckg

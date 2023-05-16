@@ -183,7 +183,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.response={\n    statusCode:404,\n    message:'EMPLOYEE_NOT_FOUND'\n}",
+        "script": "bh.local.response={\n    statusCode:401,\n    message:'EMPLOYEE_NOT_FOUND'\n}",
         "functionName": "sd_OrE7FtQuqwst1P0Z",
         "category": "Function",
         "x": 820,

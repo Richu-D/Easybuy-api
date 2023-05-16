@@ -294,7 +294,6 @@ export class service {
       parentSpanInst
     );
     try {
-      console.log(bh.input.body);
       bh.local.collection = 'coupon';
       bh.local.query = { couponcode: bh.input.params.couponcode };
       this.tracerService.sendData(spanInst, bh);

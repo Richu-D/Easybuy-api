@@ -162,7 +162,7 @@
         "nodeType": "start",
         "name": "",
         "selectedNodes": [
-            "sd_hPw3YDcFCVuCLedU"
+            "sd_Jxl8T3BV9xhp9XHp"
         ],
         "selectCatchType": "selectednodes",
         "masternodeList": "",
@@ -187,7 +187,7 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "bh.local.response = bh.error",
+        "script": "bh.local.result = bh.error",
         "functionName": "sd_XgDo6WDxCJiMBYCz",
         "category": "Function",
         "x": 330,

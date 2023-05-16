@@ -64,7 +64,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "invoice_api",
-        "functionName": "sd_cIQojfYNhm3vaupR"
+        "functionName": "sd_cIQojfYNhm3vaupR",
+        "generated": false
     },
     {
         "id": "sd_BOJ74bu25DJeqRcn",
@@ -126,19 +127,18 @@
             "ssd_typedInputField": true
         },
         "httpcode": {
-            "type": "num",
-            "value": 200,
+            "type": "bh.local",
+            "value": "statusCode",
             "ssd_typedInputField": true
         },
         "responseType": "obj",
         "swaggerResponse": {},
         "responseMapping": {
-            "status": 200,
+            "status": "bh.local.statusCode",
             "obj": "bh.local.result",
             "send": "bh.local.result"
         },
         "dataModelIsArray": false,
-        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -216,7 +216,8 @@
         "__n_excludedFromValidation__": {},
         "generateNext": true,
         "serviceName": "invoice_api",
-        "functionName": "sd_XtmK2LDlCg7yICpm"
+        "functionName": "sd_XtmK2LDlCg7yICpm",
+        "generated": false
     },
     {
         "id": "sd_WosEMFEDL9ziDI7U",
@@ -244,6 +245,7 @@
             "send": "\"ok\""
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -311,8 +313,8 @@
             ]
         ],
         "__n_excludedFromValidation__": {},
+        "generated": true,
         "generateNext": false,
-        "serviceName": "invoice_api",
-        "generated": true
+        "serviceName": "invoice_api"
     }
 ]

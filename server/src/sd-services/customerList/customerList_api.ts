@@ -162,7 +162,7 @@ export class customerList_api {
 
   async sd_SWRAUd7eGB68BxvC(bh, parentSpanInst) {
     try {
-      bh.web.res.status(200).send(bh.local.out);
+      bh.web.res.status(bh.local.outCode).send(bh.local.out);
 
       return bh;
     } catch (e) {

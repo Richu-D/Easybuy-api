@@ -175,7 +175,7 @@
         "y": 80,
         "wires": [
             [
-                "sd_Dhw4JVkYzT3Fjn7e"
+                "sd_E7R7eb2Ffs7YbLek"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -268,8 +268,88 @@
         "script": "const axios = require('axios');\nconst api = \"https://api.exchangerate-api.com/v4/latest/USD\";\nconst metalpriceapi = \"https://api.metals.live/v1/spot\"\n\nlet metalprice = await axios.get(metalpriceapi);\nconsole.log(metalprice.data);\n\n\n\nlet currency = await axios.get(api)\n\n    // const price = result[key]\n    let fromRate = currency.data.rates.USD;\n    let toRate = currency.data.rates.INR;\n    // let convertedPrice =\n    //     (((toRate / fromRate) * price).toFixed(2))/31.1035;\n\nconst gold = (((toRate / fromRate) * metalprice.data[0].gold).toFixed(2))/31.1035;\nconst silver = (((toRate / fromRate) * metalprice.data[1].silver).toFixed(2))/31.1035;\nconst platinum = (((toRate / fromRate) * metalprice.data[2].platinum).toFixed(2))/31.1035;\n\nbh.local.response = {\n    status: 200,\n    clients: bh.local.result[0]?.count,\n    earnings: bh.local.earningsResult[0]?.totalEarnings,\n    gold,\n    silver,\n    platinum\n}\n\nconsole.log(\"bh.local.result\");\nconsole.log(bh.local.result);\nconsole.log(\"bh.local.result\");",
         "functionName": "sd_Dhw4JVkYzT3Fjn7e",
         "category": "Function",
-        "x": 745,
+        "x": 945,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "dashboard_service",
+        "generated": true
+    },
+    {
+        "id": "sd_E7R7eb2Ffs7YbLek",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_aeMlPGKxHXiJYeVt",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "if(bh.local.result.length === 0) {\n   bh.local.isNotValid = true\n   bh.local.isNotValidMsg = \"employee Id is not valid\"\n   bh.local.statusCode = 401\n} else {\n    bh.local.isNotValid = false\n}",
+        "functionName": "sd_E7R7eb2Ffs7YbLek",
+        "category": "Function",
+        "x": 740,
         "y": 80,
+        "wires": [
+            [
+                "sd_mQVkVHnodMdPq432"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "dashboard_service",
+        "generated": true
+    },
+    {
+        "id": "sd_mQVkVHnodMdPq432",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_aeMlPGKxHXiJYeVt",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isNotValid",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isNotValid",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_mQVkVHnodMdPq432",
+        "category": "Function",
+        "x": 840,
+        "y": 80,
+        "wires": [
+            [
+                "sd_fP5qZKywiqbvOZpq"
+            ],
+            [
+                "sd_Dhw4JVkYzT3Fjn7e"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "dashboard_service",
+        "generated": true
+    },
+    {
+        "id": "sd_fP5qZKywiqbvOZpq",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_aeMlPGKxHXiJYeVt",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.response = {\n    status: bh.local.statusCode,\n    message: bh.local.isNotValidMsg\n}",
+        "functionName": "sd_fP5qZKywiqbvOZpq",
+        "category": "Function",
+        "x": 945,
+        "y": 40,
         "wires": [
             []
         ],

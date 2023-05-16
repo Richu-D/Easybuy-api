@@ -58,96 +58,6 @@
         "generated": true
     },
     {
-        "id": "sd_bdrYj3Cmy2cAdI2x",
-        "type": "Mongodb",
-        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
-        "viewType": "server",
-        "nodeType": "flow",
-        "name": "",
-        "databaseConfig": "sd_qYoT2PgM4f1tomGX",
-        "collection": "bh.local.collection",
-        "options": "",
-        "resultMapping": "bh.local.result",
-        "operation": "find",
-        "argumentArray": [
-            "query"
-        ],
-        "aggregate": "",
-        "operations": "",
-        "query": "bh.local.query",
-        "fieldOrSpec": "",
-        "filter": "",
-        "key": "",
-        "docId": "",
-        "indexName": "",
-        "replacement": "",
-        "update": "",
-        "xAxis": "",
-        "yAxis": "",
-        "indexes": "",
-        "docs": "",
-        "document": "",
-        "newName": "",
-        "doc": "",
-        "filePath": "",
-        "fileName": "",
-        "pipeline": "",
-        "functionName": "sd_bdrYj3Cmy2cAdI2x",
-        "category": "Storage",
-        "x": 385,
-        "y": 220,
-        "wires": [
-            [
-                "sd_RLoQCFQrVuAOJGaq"
-            ]
-        ],
-        "__ssdTypeInputs__": {
-            "collection": {
-                "type": "bh.local",
-                "value": "collection",
-                "constant": false
-            },
-            "options": {
-                "type": "bh",
-                "value": "",
-                "nullable": "true",
-                "constant": false
-            },
-            "resultMapping": {
-                "type": "bh.local",
-                "value": "result",
-                "constant": false
-            },
-            "query": {
-                "type": "bh.local",
-                "value": "query",
-                "constant": false
-            }
-        },
-        "__n_excludedFromValidation__": {},
-        "generateNext": true,
-        "serviceName": "customerList_service"
-    },
-    {
-        "id": "sd_RLoQCFQrVuAOJGaq",
-        "type": "Script",
-        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
-        "viewType": "common",
-        "nodeType": "flow",
-        "name": "",
-        "script": "const {ObjectId} = require(\"mongodb\")\n\nconst recentprchs = bh.local.result[0].product.length-1\nbh.local.result[0].product = bh.local.result[0].product[recentprchs].productid\nbh.local.result.forEach(x=>{\n    x.product = ObjectId(x.product)\n})\nbh.local.out = bh.local.result\n\n",
-        "functionName": "sd_RLoQCFQrVuAOJGaq",
-        "category": "Function",
-        "x": 565,
-        "y": 220,
-        "wires": [
-            []
-        ],
-        "__n_excludedFromValidation__": {},
-        "generateNext": true,
-        "serviceName": "customerList_service"
-    },
-    {
         "id": "sd_kjF3CBejwgttWfnB",
         "type": "Mongodb",
         "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
@@ -188,7 +98,7 @@
         "y": 80,
         "wires": [
             [
-                "sd_2Sr5lwEip8ST9Ckg"
+                "sd_XNcTPTwUYD5qia5w"
             ]
         ],
         "__ssdTypeInputs__": {
@@ -231,11 +141,91 @@
         "viewType": "common",
         "nodeType": "flow",
         "name": "",
-        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\n\nfor(let i=0; i<bh.local.aggResult.length; i++) {\n    let result = await instance.paymentLink.fetch(bh.local.aggResult[i].paymentid);\n    bh.local.aggResult[i].payment = result\n    // .payment\n    // bh.local.aggResult[i].productDetails = null\n}\n\nbh.local.out = bh.local.aggResult\n",
+        "script": "const Razorpay = require('razorpay');\nvar instance = new Razorpay({ key_id: \"rzp_test_JK2eMcWr8sfXEU\", key_secret: \"LwCYMNILRX63OEKmwIzORX0f\" });\n\n\nfor(let i=0; i<bh.local.aggResult.length; i++) {\n    let result = await instance.paymentLink.fetch(bh.local.aggResult[i].paymentid);\n    bh.local.aggResult[i].payment = result\n    // .payment\n    // bh.local.aggResult[i].productDetails = null\n}\n\nbh.local.out = bh.local.aggResult\nbh.local.outCode = 200\n",
         "functionName": "sd_2Sr5lwEip8ST9Ckg",
+        "category": "Function",
+        "x": 725,
+        "y": 120,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    },
+    {
+        "id": "sd_N3jUWffEDU4Qf1Qh",
+        "type": "Switch",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "property": "isEmpty",
+        "propertyType": "bh.local",
+        "propertyGv": "bh.local.isEmpty",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "functionName": "sd_N3jUWffEDU4Qf1Qh",
+        "category": "Function",
+        "x": 605,
+        "y": 80,
+        "wires": [
+            [
+                "sd_PgegRpRtv2QPF58Q"
+            ],
+            [
+                "sd_2Sr5lwEip8ST9Ckg"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    },
+    {
+        "id": "sd_XNcTPTwUYD5qia5w",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "if(bh.local.aggResult.length === 0) {\n    bh.local.isEmpty = true\n    bh.local.isEmptyMsg = \"employeeId is not valid\"\n    bh.local.code = 401\n} else {\n    bh.local.isEmpty = false\n    bh.local.code = 200\n}",
+        "functionName": "sd_XNcTPTwUYD5qia5w",
         "category": "Function",
         "x": 505,
         "y": 80,
+        "wires": [
+            [
+                "sd_N3jUWffEDU4Qf1Qh"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "customerList_service",
+        "generated": true
+    },
+    {
+        "id": "sd_PgegRpRtv2QPF58Q",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_qF85PdzcrJoPE5YP",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "bh.local.out = {\n    message: bh.local.isEmptyMsg,\n    statusCode: bh.local.code\n}\n\nbh.local.outCode = 401",
+        "functionName": "sd_PgegRpRtv2QPF58Q",
+        "category": "Function",
+        "x": 725,
+        "y": 40,
         "wires": [
             []
         ],
