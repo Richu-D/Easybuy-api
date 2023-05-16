@@ -244,9 +244,9 @@
         "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
         "viewType": "common",
         "nodeType": "flow",
-        "name": "",
-        "script": "console.log(bh.input.body.invoice,\"invoice\")\n\n    \nconst nodemailer =  require(\"nodemailer\")\n\ntry {\n  \n\n  let transporter = nodemailer.createTransport({\n    service:\"hotmail\", \n    auth: {\n      user: \"easybuy786@outlook.com\",\n      pass: \"12345678easybuy\", \n    },\n  });\n\n  transporter.sendMail({\n    from: \"easybuy786@outlook.com\",\n    to: bh.input.body.email, \n    subject: \"Invoice\", \n    text: \"Here is your invoice!\", \n    html:`<div>${bh.input.body.invoice}</div>` \n  });\n\n  \n  \n} catch (error) {\n  console.log(error,\"mailer.helpers Error\");\n}\n  \n  ",
-        "functionName": "sd_F3u4BbFmLY3UFGlf",
+        "name": "sendMail",
+        "script": "\nconsole.log(bh.input.body,typeof bh.input.body.invoice )\n\nconst htmlMinifier = require('html-minifier').minify;\nconst minifiedInvoice = htmlMinifier(bh.input.body.invoice, {\n  removeComments: true,\n  collapseWhitespace: true,\n  minifyCSS: true,\n  minifyJS: true\n});\n\n    \nconst nodemailer =  require(\"nodemailer\")\n\n\n  \n\n  let transporter = nodemailer.createTransport({\n    service:\"hotmail\", \n    auth: {\n      user: \"easybuyapi@outlook.com\",\n      pass: \"brototype123\", \n    },\n  });\n\n  transporter.sendMail({\n    from: \"easybuyapi@outlook.com\",\n    to: bh.input.body.email, \n    subject: \"Invoice\", \n    text: \"Here is your invoice!\", \n    html:`<span>${minifiedInvoice}</span>` \n\n  });\n\n  \n  //  attachments: [{   // stream as an attachment\n  //           filename: 'invoice.jpg',\n  //           content: bh.input.body.invoice\n  //       }]\n\n  ",
+        "functionName": "sendMail",
         "category": "Function",
         "x": 265,
         "y": 360,
@@ -270,6 +270,52 @@
         "category": "Function",
         "x": 745,
         "y": 100,
+        "wires": [
+            []
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": false,
+        "serviceName": "invoice_service",
+        "generated": true
+    },
+    {
+        "id": "sd_Bi6ebXaGq6SU4RM5",
+        "type": "Catch",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "start",
+        "name": "",
+        "selectedNodes": [
+            "sd_F3u4BbFmLY3UFGlf"
+        ],
+        "selectCatchType": "selectednodes",
+        "masternodeList": "",
+        "ignoreList": "",
+        "functionName": "sd_Bi6ebXaGq6SU4RM5",
+        "category": "General",
+        "x": 445,
+        "y": 380,
+        "wires": [
+            [
+                "sd_YZ9ErhwPKy2WPpFW"
+            ]
+        ],
+        "__n_excludedFromValidation__": {},
+        "generateNext": true,
+        "serviceName": "invoice_service"
+    },
+    {
+        "id": "sd_YZ9ErhwPKy2WPpFW",
+        "type": "Script",
+        "z": "SSD_SERVICE_ID_sd_6D5Q5UozZdfajRte",
+        "viewType": "common",
+        "nodeType": "flow",
+        "name": "",
+        "script": "console.log(bh.error)",
+        "functionName": "sd_YZ9ErhwPKy2WPpFW",
+        "category": "Function",
+        "x": 620,
+        "y": 380,
         "wires": [
             []
         ],
