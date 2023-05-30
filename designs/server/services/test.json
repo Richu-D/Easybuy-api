@@ -109,6 +109,7 @@
             "send": "bh.local.response"
         },
         "dataModelIsArray": false,
+        "cookies": [],
         "inputs": 1,
         "outputs": 0,
         "erd": "",
@@ -126,7 +127,7 @@
         },
         "functionName": "sd_uUbeQwEskCOL6Ik2",
         "category": "HTTP",
-        "x": 385,
+        "x": 505,
         "y": 200,
         "wires": [],
         "__n_excludedFromValidation__": {},
